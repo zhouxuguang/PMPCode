@@ -1,0 +1,12 @@
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Config
+#==============================================================================
+
+
+# subdirs to process
+SUBDIRS = OpenMesh/Core OpenMesh/Tools IsoEx CourseExamples
+
+
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Rules
+#==============================================================================

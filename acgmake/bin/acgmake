@@ -1,0 +1,224 @@
+#! /bin/bash
+
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+# determine location of acgmake script (thanks to Hartmit Schirmacher)
+
+# determine abs or rel path of the called thing (e.g. symlink)
+case $0 in
+   /*) name=$0 ;;
+   .*) name=`pwd`/$0 ;;
+    *) name=`which $0` ;;
+esac
+case $name in
+   /*) ;;
+    *) name=`pwd`/$name ;;
+esac
+PROGNAME=`basename $name`
+LOCATION=`dirname $name`
+
+# expand links until we have the real thing
+while ( [ -L $name ] ) do
+    PROGNAME=`basename $name` 
+    name=`/bin/ls -l $name | sed 's/.* -> //g'`
+    # update $name so that it contains the absolute path
+    case $name in
+        /*)  ;; 
+         *)  name=$LOCATION/$name ;;
+    esac
+    LOCATION=`dirname $name`
+done
+
+# now, if the result does not exist, something's wrong
+if [ ! -s $name ] ; then
+    echo "Cannot determine real location of $0." ;
+    exit 1;
+fi
+
+# now we have:
+# - $PROGNAME: the name of the last symbolic link pointing to this script  
+#              (important for multi-program wrappers)
+# - $LOCATION: the absolute path of where the script resides
+
+
+
+# get ACGMAKE variable (=location of acgmake pckg)
+cd $LOCATION/..
+ACGMAKE=`pwd`
+export ACGMAKE
+cd -
+
+# separate options from targets
+OPTIONS=
+TARGETS=
+for i in $@ ; do
+    case "$i" in
+    -* ) OPTIONS="$OPTIONS $i" ;;
+    * )  TARGETS="$TARGETS $i" ;;
+    esac
+done
+
+
+
+# parse options
+CODE_LEVEL=dbg
+LIB_TYPE=shared
+HIDE="@"
+JOBS=""
+DIST=""
+
+for i in $OPTIONS ; do
+    case "$i" in
+
+
+    # compilation options
+    -dbg )  CODE_LEVEL=dbg ;;
+    -prf )  CODE_LEVEL=prf ;;
+    -opt )  CODE_LEVEL=opt ;;
+    -max )  CODE_LEVEL=max ;;
+
+
+    # linking options
+    -static )    LIB_TYPE=static ;;
+    -shared )    LIB_TYPE=shared ;;
+    -allstatic)  LIB_TYPE=allstatic ;;
+
+
+    # enforce new linking of executables
+    -relink)  RELINK_EXES="yes" ;;
+
+
+    # compiler
+    -comp=* )  COMP=${i#*=} ;;
+
+
+    # debug options
+    -debug )  HIDE="" ;;
+
+
+    # do it parallel !
+    -j )   JOBS="-j" ;;
+    -j?)   JOBS="-j ${i#*j}" ;;
+    -dist) JOBS="-j 8" ; DIST="yes" ;;
+
+
+    # wrong option -> display usage information
+    * )
+         echo "--------------------------------------------------------------"
+         echo "  acgmake version" `cat $ACGMAKE/VERSION`
+         echo "  (C)opyright 2001-2003 Computer Graphics Group, RWTH Aachen"
+         echo "--------------------------------------------------------------"
+         echo ""
+         echo "Usage: acgmake  [options]  [target]"
+         echo 
+         echo "  compilation options:"
+         echo "    -dbg :  no optimization, generate debug information (default)"
+         echo "    -prf :  generate profiling information"
+         echo "    -opt :  turn on optimization (-O2)"
+         echo "    -max :  use maximum optimization (-O3 and more)"
+	 echo
+         echo "    -comp=<compiler> : includes config.<compiler>. Use this to"
+         echo "                       switch between multiple setups."
+         echo 
+         echo "  linking options:"
+         echo "    -shared    :  build shared libraries (default)"
+         echo "    -static    :  build static libraries"
+         echo "    -allstatic :  build a completely static binary, i.e. also"
+         echo "                  system linbs are linked statically."
+         echo 
+         echo "  output options:"
+         echo "    -debug  :  show the triggered commands"
+         echo 
+         echo "  other options:"
+         echo "    -j      :  run several compilation jobs in parallel"
+         echo "    -j<n>   :  run <n> compilation jobs in parallel"
+         echo "               (no space, e.g. -j2)"
+         echo "    -dist   :  distribute compilation unsing distcc, implies -j."
+         echo 
+         echo "  targets:"
+         echo "    build    :  do the work... (default)"
+         echo "    clean    :  remove generated files"
+         echo "    allclean :  remove all generated files, i.e. remove all "
+	 echo "                directories *_dbg, *_prf, *_opt, *_max."
+	 echo "                Be carefull when using this command!"
+         echo "    sysinfo  :  display system parameters"
+         echo 
+	 exit 1;;
+
+    esac
+done
+
+
+
+
+# get environment stuff
+OS=`uname -s`
+if [[ $OS == CYGWIN* ]]; then
+  OS=$OSTYPE
+  HOST=`hostname`
+else
+  HOST=`hostname -s`
+fi
+
+# on some systems one has to use "hostname -d" instead of "domainname"
+DOMAIN=`domainname 2> /dev/null`
+if [ $? != 0 ] ; then 
+    DOMAIN=`hostname -d 2> /dev/null`
+fi
+ARCH=`$ACGMAKE/bin/arch.sh`
+
+
+
+# collect options
+OPTIONS="\
+OS=$OS \
+HOST=$HOST \
+DOMAIN=$DOMAIN \
+ARCH=$ARCH \
+CODE_LEVEL=$CODE_LEVEL \
+LIB_TYPE=$LIB_TYPE \
+DIST=$DIST \
+ACGMAKE=$ACGMAKE \
+HIDE=$HIDE "
+if [ ! -z $COMP ] ; then
+    OPTIONS="$OPTIONS COMP=$COMP"
+fi
+if [ ! -z $RELINK_EXES ] ; then
+    OPTIONS="$OPTIONS RELINK_EXES=YES"
+fi
+
+
+
+# use gmake or make (gmake is preferred)
+if [ $OS = "IRIX64" ] ; then
+    MAKE=gmake
+else
+    MAKE=make
+fi
+
+
+
+# just sysinfo ?
+for target in $TARGETS ; do
+    if [ $target = "sysinfo" ] ; then
+	ACGMAKEFILE='./.tmp_acgmake'
+	echo include $ACGMAKE/Config  > $ACGMAKEFILE
+	echo include $ACGMAKE/Rules  >> $ACGMAKEFILE
+	$MAKE -f $ACGMAKEFILE $OPTIONS sysinfo
+	rm -f $ACGMAKEFILE
+	exit 0
+    fi
+done
+
+
+
+# finally call gmake/make with the collected parameters
+# JOBS is added here and not in OPTIONS because it may contain spaces...
+$MAKE -f ACGMakefile $OPTIONS JOBS="$JOBS" $TARGETS

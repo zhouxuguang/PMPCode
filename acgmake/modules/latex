@@ -1,0 +1,83 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+
+TEX_LATEX       ?= latex
+TEX_BIBTEX      ?= bibtex
+TEX_MAKEINDEX   ?= makeindex
+TEX_DVIPS       ?= dvips -Ppdf -G0
+TEX_PAPER_TYPE  ?= a4
+TEX_PS2PDF      ?= ps2pdf \
+ -dCompatibilityLevel=1.3 \
+ -dMaxSubsetPct=100 \
+ -dSubsetFonts=true \
+ -dEmbedAllFonts=true \
+ -dAutoFilterColorImages=false \
+ -dAutoFilterGrayImages=false \
+ -dColorImageFilter=/FlateEncode \
+ -dGrayImageFilter=/FlateEncode \
+ -dMonoImageFilter=/FlateEncode
+
+
+
+###  TARGETS  #################################################################
+
+
+tex-src-files  := $(wildcard *.tex)
+tex-sty-files  := $(wildcard *.sty)
+tex-main-files := $(shell grep -l "\documentclass" *.tex 2> /dev/null)
+tex-dvi-files  := $(patsubst %.tex,%.dvi,$(tex-main-files))
+tex-ps-files   := $(patsubst %.tex,%.ps,$(tex-main-files))
+tex-pdf-files  := $(patsubst %.tex,%.pdf,$(tex-main-files))
+tex-bib-files  := $(wildcard *.bib)
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+.PHONY: dvi ps pdf
+
+latex-clean: 
+	$(HIDE) rm -f $(tex-dvi-files) $(tex-ps-files) $(tex-pdf-files)
+	$(HIDE) rm -f *.aux *.lbl *.bbl *.blg *.brf *.log *.out *.toc \
+                      *.idx *.ilg *.ind head.tmp body.tmp
+
+
+latex-build: dvi ps pdf
+
+dvi: $(tex-dvi-files)
+ps:  $(tex-ps-files)
+pdf: $(tex-pdf-files)
+
+$(tex-dvi-files): $(tex-src-files) $(tex-bib-files) $(tex-sty-files)
+$(tex-ps-files):  $(tex-dvi-files)
+$(tex-pdf-files): $(tex-ps-files)
+
+
+###  IMPLICIT RULES  ##########################################################
+
+
+%.dvi: %.tex
+	$(TEX_LATEX) $<
+	if [ ! -z `ls *.aux` ] ; then \
+          for i in "*.aux" ; do $(TEX_BIBTEX) `basename $$i .aux` ; done ;\
+  	  $(TEX_LATEX) $< ; \
+	fi
+	if [ ! -z `ls *.idx` ] ; then \
+          for i in "*.idx" ; do $(TEX_MAKEINDEX) $$i ; done ;\
+	fi
+	$(TEX_LATEX) $<
+
+%.ps: %.dvi
+	$(TEX_DVIPS) -t $(TEX_PAPER_TYPE) -o $@ $<
+
+%.pdf: %.ps
+	$(TEX_PS2PDF) -dPDFSETTINGS=/prepress $< $@ 

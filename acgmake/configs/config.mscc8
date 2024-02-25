@@ -1,0 +1,136 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+## SETTINGS ###################################################################
+
+CXX_COMP        := cl
+CXX_LIB         := lib
+CXX_LINK        := link
+
+CXX_SYSLIBS     := 
+CXX_DEFS        += /DWIN32 /DINCLUDE_TEMPLATES /D_USE_MATH_DEFINES
+CXX_CFLAGS      := /GX /GR
+
+CXX_DEFS_DBG    := /DDEBUG
+CXX_CFLAGS_DBG  := 
+CXX_LDFLAGS_DBG := 
+
+CXX_DEFS_PRF    := /DNDEBUG
+CXX_CFLAGS_PRF  := /pg
+CXX_LDFLAGS_PRF := /pg
+
+CXX_DEFS_OPT    := /DNDEBUG
+CXX_CFLAGS_OPT  := /O2
+CXX_LDFLAGS_OPT := 
+
+CXX_DEFS_MAX    := /DNDEBUG
+CXX_CFLAGS_MAX  := /Ox /G7 /GL
+CXX_LDFLAGS_MAX := 
+
+
+ifeq ($(LIB_TYPE),static)
+  CXX_DEFS    += /DACGMAKE_STATIC_BUILD
+endif
+
+ifeq ($(LIB_TYPE),allstatic)
+  CXX_DEFS    += /DACGMAKE_STATIC_BUILD
+  CXX_LDFLAGS += /static
+  CXX_SYSLIBS += /ldl
+endif
+
+
+## FUNCTIONS ##################################################################
+
+define cxx-compile
+$(HIDE) $(CXX_COMP) $(CXX_CFLAGS) /Fo$(2) /c $(1)
+endef
+
+define cxx-compile-exe
+$(HIDE) $(CXX_LINK) $(1) $(CXX_LDFLAGS) /OUT:$(2).exe
+endef
+
+
+define cxx-shared-lib
+$(HIDE) $(CXX_LIB) $(1) /OUT:$(2)
+endef
+
+
+define cxx-static-lib
+$(HIDE) $(CXX_LIB) $(1) /OUT:$(2)
+endef
+
+
+CXX_RPATH :=
+
+cxx-add-ipath += $(addprefix /I,\
+			         $(subst //,/,\
+			         $(patsubst /%,$(CYGWIN_DRIVEROOT)/%,\
+                                 $(patsubst /cygdrive/a%,a:/%,\
+                                 $(patsubst /cygdrive/b%,b:/%,\
+                                 $(patsubst /cygdrive/c%,c:/%,\
+	                         $(patsubst /cygdrive/d%,d:/%,\
+                                 $(patsubst /cygdrive/e%,e:/%,\
+                                 $(patsubst /cygdrive/f%,f:/%,\
+                                 $(patsubst /cygdrive/g%,g:/%,\
+                                 $(patsubst /cygdrive/h%,h:/%,\
+                                 $(patsubst /cygdrive/i%,i:/%,\
+                                 $(patsubst /cygdrive/j%,j:/%,\
+                                 $(patsubst /cygdrive/k%,k:/%,\
+                                 $(patsubst /cygdrive/l%,l:/%,\
+                                 $(patsubst /cygdrive/m%,m:/%,\
+                                 $(patsubst /cygdrive/n%,n:/%,\
+                                 $(patsubst /cygdrive/o%,o:/%,\
+                                 $(patsubst /cygdrive/p%,p:/%,\
+                                 $(patsubst /cygdrive/q%,q:/%,\
+                                 $(patsubst /cygdrive/r%,r:/%,\
+				 $(patsubst /cygdrive/s%,s:/%,\
+				 $(patsubst /cygdrive/t%,t:/%,\
+				 $(patsubst /cygdrive/u%,v:/%,\
+				 $(patsubst /cygdrive/v%,v:/%,\
+				 $(patsubst /cygdrive/w%,w:/%,\
+				 $(patsubst /cygdrive/x%,x:/%,\
+				 $(patsubst /cygdrive/y%,y:/%,\
+				 $(patsubst /cygdrive/z%,z:/%,\
+							      $(1) )))))))))))))))))))))))))))) )
+
+
+cxx-add-lpath += $(addprefix /LIBPATH:,\
+			         $(subst //,/,\
+			         $(patsubst /%,$(CYGWIN_DRIVEROOT)/%,\
+                                 $(patsubst /cygdrive/a%,a:/%,\
+                                 $(patsubst /cygdrive/b%,b:/%,\
+                                 $(patsubst /cygdrive/c%,c:/%,\
+                                 $(patsubst /cygdrive/d%,d:/%,\
+                                 $(patsubst /cygdrive/e%,e:/%,\
+                                 $(patsubst /cygdrive/f%,f:/%,\
+                                 $(patsubst /cygdrive/g%,g:/%,\
+                                 $(patsubst /cygdrive/h%,h:/%,\
+                                 $(patsubst /cygdrive/i%,i:/%,\
+                                 $(patsubst /cygdrive/j%,j:/%,\
+                                 $(patsubst /cygdrive/k%,k:/%,\
+                                 $(patsubst /cygdrive/l%,l:/%,\
+                                 $(patsubst /cygdrive/m%,m:/%,\
+                                 $(patsubst /cygdrive/n%,n:/%,\
+                                 $(patsubst /cygdrive/o%,o:/%,\
+                                 $(patsubst /cygdrive/p%,p:/%,\
+                                 $(patsubst /cygdrive/q%,q:/%,\
+                                 $(patsubst /cygdrive/r%,r:/%,\
+				 $(patsubst /cygdrive/s%,s:/%,\
+				 $(patsubst /cygdrive/t%,t:/%,\
+				 $(patsubst /cygdrive/u%,v:/%,\
+				 $(patsubst /cygdrive/v%,v:/%,\
+				 $(patsubst /cygdrive/w%,w:/%,\
+				 $(patsubst /cygdrive/x%,x:/%,\
+				 $(patsubst /cygdrive/y%,y:/%,\
+				 $(patsubst /cygdrive/z%,z:/%,\
+							     $(1) )))))))))))))))))))))))))))) )
+
+
+cxx-add-rpath =
+cxx-add-libs  += $(addsuffix .lib,$(1))

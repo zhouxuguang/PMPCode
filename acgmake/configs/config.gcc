@@ -1,0 +1,22 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+ifeq ($(OS),Linux)
+  include  $(ACGMAKE)/configs/config.gcc-linux
+else
+  ifeq ($(OS),Darwin)
+    include  $(ACGMAKE)/configs/config.gcc-darwin
+  else
+    ifeq ($(OS),CYGWIN)
+      include  $(ACGMAKE)/configs/config.gcc-cygwin
+    endif
+  endif
+endif
+
+#=============================================================================#
+

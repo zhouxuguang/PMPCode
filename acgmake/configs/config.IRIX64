@@ -1,0 +1,38 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+# choose default compiler
+COMP ?= mips
+
+
+#=============================================================================#
+
+
+QT_CFLAGS := -DQT_CLEAN_NAMESPACE  -DQT_THREAD_SUPPORT
+QT_INCDIR := $(QTDIR)/include
+QT_LIBDIR := $(QTDIR)/lib
+QT_LIBS   := qt-mt
+MOC       := $(QTDIR)/bin/moc
+UIC       := $(QTDIR)/bin/uic
+
+
+OPENGL_LIBS := GLU GL
+
+GLUT_LIBS := glut m X11
+
+INVENTOR_LIBS    := Inventor
+INVENTOR_XT_LIBS := InventorXt
+
+MATH_LIBS := m
+
+X11_LIBS := ICE Xext Xi Xmu X11
+
+
+#=============================================================================#
+

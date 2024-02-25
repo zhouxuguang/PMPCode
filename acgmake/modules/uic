@@ -1,0 +1,72 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+
+# default file extensions
+CXX_SRC_EXT  ?= .cc
+CXX_HDR_EXT  ?= .hh
+
+ifndef UIC
+  $(error UIC not configured)
+endif
+
+
+###  UIC TARGETS  #############################################################
+
+build-dir    := $(ARCH)_$(COMP)_$(CODE_LEVEL)
+
+uic-files    := $(wildcard *.ui)
+uic-images   := $(wildcard images/*)
+
+uic-targets  := $(uic-files:.ui=$(CXX_HDR_EXT))
+uic-targets  += $(uic-files:.ui=$(CXX_SRC_EXT))
+
+ifneq ($(uic-images),)
+uic-targets  += $(addprefix $(build-dir)/,uic-images$(CXX_SRC_EXT))
+uic-curdir   := $(subst $(top-dir)/,,$(cur-dir))
+uic-proj     := $(subst /,_,$(uic-curdir))
+endif
+
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+.PHONY: uic-clean uic-build
+
+
+uic-clean:
+ifneq ($(uic-targets),)
+	$(HIDE) rm -f $(uic-targets) $(uic-old-srcs)
+endif
+
+
+uic-build: $(uic-targets)
+
+
+ifneq ($(uic-images),)
+$(build-dir)/uic-images$(CXX_SRC_EXT) : $(uic-images)
+	@ echo ; echo "uic'ing  images ->  $@"
+	$(HIDE) $(UIC) -embed $(uic-proj) $(uic-images) -o $@
+endif
+
+
+###  IMPLICIT RULES  ##########################################################
+
+
+%$(CXX_HDR_EXT): %.ui
+	@ echo ; echo "uic'ing  $<  ->  $@"
+	$(HIDE) $(UIC) -o $@ $<
+
+%$(CXX_SRC_EXT): %.ui
+	@ echo ; echo "uic'ing  $<  ->  $@"
+	$(HIDE) $(UIC) -impl $(<:.ui=$(CXX_HDR_EXT)) -o $@ $<
+

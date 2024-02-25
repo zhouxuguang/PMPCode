@@ -1,0 +1,45 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+# choose default compiler
+COMP ?= gcc
+
+# C++ settings
+CXX_OBJ_EXT         ?= .o
+CXX_SHARED_LIB_EXT  ?= .so
+CXX_STATIC_LIB_EXT  ?= .a
+
+
+#=============================================================================#
+
+
+QT_CFLAGS := -DQT_CLEAN_NAMESPACE -DQT_NO_COMPAT
+QT_LIBS   := qt-mt
+QT_INCDIR := $(QTDIR)/include
+QT_LIBDIR := $(QTDIR)/lib
+MOC       := $(QTDIR)/bin/moc
+UIC       := $(QTDIR)/bin/uic
+
+
+OPENGL_LIBDIR := /usr/X11R6/lib
+OPENGL_LIBS   :=  glut GLU GL
+
+GLUT_LIBDIR   := /usr/X11R6/lib
+GLUT_LIBS     :=  glut 
+
+X11_INCDIR    := /usr/X11R6/include
+X11_LIBDIR    := /usr/X11R6/lib
+X11_LIBS      := SM ICE Xext Xi Xmu Xt Xft Xrender Xinerama freetype X11
+
+TAUCS_INCDIR  := $(top-dir)/../lib/taucs-linux/include
+TAUCS_LIBDIR  := $(top-dir)/../lib/taucs-linux/lib
+TAUCS_LIBS    := taucs lapack f77blas cblas atlas metis g2c m
+
+
+#=============================================================================#

@@ -1,0 +1,2529 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		793024110C60C5EB00754C2B /* deform.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7930240D0C60C5EB00754C2B /* deform.cc */; };
+		793024120C60C5EB00754C2B /* DeformationViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = 7930240E0C60C5EB00754C2B /* DeformationViewer.cc */; };
+		793024560C60C60900754C2B /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		793024570C60C60900754C2B /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		793024580C60C60900754C2B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		793024590C60C60900754C2B /* libtaucs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EB0AA9FB4100ED7834 /* libtaucs.a */; };
+		7930245A0C60C60900754C2B /* libmetis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EA0AA9FB4100ED7834 /* libmetis.a */; };
+		7930245B0C60C60900754C2B /* libf2c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5E90AA9FB4100ED7834 /* libf2c.a */; };
+		7930245C0C60C60900754C2B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDAE4830AA994FE00E0BAA3 /* Accelerate.framework */; };
+		7930245D0C60C62B00754C2B /* CurvatureViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711770AA97A9600608A95 /* CurvatureViewer.cc */; };
+		7930245E0C60C62B00754C2B /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		7930245F0C60C62B00754C2B /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		793024600C60C62B00754C2B /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		793024610C60C62B00754C2B /* SmoothingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */; };
+		793024620C60C62B00754C2B /* FairingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711850AA97A9600608A95 /* FairingViewer.cc */; };
+		793024630C60C62B00754C2B /* TaucsSolver.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711870AA97A9600608A95 /* TaucsSolver.cc */; };
+		AC67107B0AA976AE00608A95 /* BinaryHelper.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FB40AA976AE00608A95 /* BinaryHelper.cc */; };
+		AC6710820AA976AE00608A95 /* IOManager.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FBF0AA976AE00608A95 /* IOManager.cc */; };
+		AC6710860AA976AE00608A95 /* OMFormat.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FC30AA976AE00608A95 /* OMFormat.cc */; };
+		AC6710890AA976AE00608A95 /* BaseReader.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FC80AA976AE00608A95 /* BaseReader.cc */; };
+		AC67108B0AA976AE00608A95 /* OBJReader.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FCA0AA976AE00608A95 /* OBJReader.cc */; };
+		AC67108D0AA976AE00608A95 /* OFFReader.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FCC0AA976AE00608A95 /* OFFReader.cc */; };
+		AC67108F0AA976AE00608A95 /* OMReader.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FCE0AA976AE00608A95 /* OMReader.cc */; };
+		AC6710910AA976AE00608A95 /* STLReader.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FD00AA976AE00608A95 /* STLReader.cc */; };
+		AC6710990AA976AE00608A95 /* BaseWriter.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FDD0AA976AE00608A95 /* BaseWriter.cc */; };
+		AC67109B0AA976AE00608A95 /* OBJWriter.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FDF0AA976AE00608A95 /* OBJWriter.cc */; };
+		AC67109D0AA976AE00608A95 /* OFFWriter.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FE10AA976AE00608A95 /* OFFWriter.cc */; };
+		AC67109F0AA976AE00608A95 /* OMWriter.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FE30AA976AE00608A95 /* OMWriter.cc */; };
+		AC6710A10AA976AE00608A95 /* STLWriter.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FE50AA976AE00608A95 /* STLWriter.cc */; };
+		AC6710AD0AA976AE00608A95 /* BaseKernel.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC670FFC0AA976AE00608A95 /* BaseKernel.cc */; };
+		AC6710B10AA976AE00608A95 /* PolyMeshT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710000AA976AE00608A95 /* PolyMeshT.cc */; };
+		AC6710B50AA976AE00608A95 /* TriMeshT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710040AA976AE00608A95 /* TriMeshT.cc */; };
+		AC6710BC0AA976AE00608A95 /* omstream.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67100E0AA976AE00608A95 /* omstream.cc */; };
+		AC6710BF0AA976AE00608A95 /* BaseProperty.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710130AA976AE00608A95 /* BaseProperty.cc */; };
+		AC6710C10AA976AE00608A95 /* Endian.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710150AA976AE00608A95 /* Endian.cc */; };
+		AC6710C60AA976AE00608A95 /* SingletonT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67101A0AA976AE00608A95 /* SingletonT.cc */; };
+		AC6710CB0AA976AE00608A95 /* DecimaterT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710230AA976AE00608A95 /* DecimaterT.cc */; };
+		AC6710D00AA976AE00608A95 /* ModProgMeshT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710280AA976AE00608A95 /* ModProgMeshT.cc */; };
+		AC6710D20AA976AE00608A95 /* ModQuadricT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67102A0AA976AE00608A95 /* ModQuadricT.cc */; };
+		AC6710DF0AA976AE00608A95 /* JacobiLaplaceSmootherT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67103C0AA976AE00608A95 /* JacobiLaplaceSmootherT.cc */; };
+		AC6710E10AA976AE00608A95 /* LaplaceSmootherT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67103E0AA976AE00608A95 /* LaplaceSmootherT.cc */; };
+		AC6710E40AA976AE00608A95 /* SmootherT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710410AA976AE00608A95 /* SmootherT.cc */; };
+		AC6710E60AA976AE00608A95 /* CompositeT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710490AA976AE00608A95 /* CompositeT.cc */; };
+		AC6710EA0AA976AE00608A95 /* RulesT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67104D0AA976AE00608A95 /* RulesT.cc */; };
+		AC6710EC0AA976AE00608A95 /* CompositeT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710530AA976AE00608A95 /* CompositeT.cc */; };
+		AC6710F40AA976AE00608A95 /* getopt.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67105D0AA976AE00608A95 /* getopt.cc */; };
+		AC6710F80AA976AE00608A95 /* MeshCheckerT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710610AA976AE00608A95 /* MeshCheckerT.cc */; };
+		AC6710FA0AA976AE00608A95 /* Progress.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710630AA976AE00608A95 /* Progress.cc */; };
+		AC6710FC0AA976AE00608A95 /* StripifierT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710650AA976AE00608A95 /* StripifierT.cc */; };
+		AC6710FE0AA976AE00608A95 /* Timer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710670AA976AE00608A95 /* Timer.cc */; };
+		AC6711030AA976AE00608A95 /* VFront.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67106E0AA976AE00608A95 /* VFront.cc */; };
+		AC6711050AA976AE00608A95 /* VHierarchy.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710700AA976AE00608A95 /* VHierarchy.cc */; };
+		AC6711080AA976AE00608A95 /* VHierarchyNodeIndex.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710730AA976AE00608A95 /* VHierarchyNodeIndex.cc */; };
+		AC67110A0AA976AE00608A95 /* VHierarchyWindow.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710750AA976AE00608A95 /* VHierarchyWindow.cc */; };
+		AC67110C0AA976AE00608A95 /* ViewingParameters.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6710770AA976AE00608A95 /* ViewingParameters.cc */; };
+		AC6711490AA979DA00608A95 /* Edge2VertexMapT.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711300AA979DA00608A95 /* Edge2VertexMapT.hh */; };
+		AC67114A0AA979DA00608A95 /* ExtendedMarchingCubesT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711310AA979DA00608A95 /* ExtendedMarchingCubesT.cc */; };
+		AC67114B0AA979DA00608A95 /* ExtendedMarchingCubesT.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711320AA979DA00608A95 /* ExtendedMarchingCubesT.hh */; };
+		AC67114C0AA979DA00608A95 /* MarchingCubesT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711330AA979DA00608A95 /* MarchingCubesT.cc */; };
+		AC67114D0AA979DA00608A95 /* MarchingCubesT.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711340AA979DA00608A95 /* MarchingCubesT.hh */; };
+		AC67114E0AA979DA00608A95 /* MCTables.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711350AA979DA00608A95 /* MCTables.cc */; };
+		AC67114F0AA979DA00608A95 /* MCTables.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711360AA979DA00608A95 /* MCTables.hh */; };
+		AC6711500AA979DA00608A95 /* Grid.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711390AA979DA00608A95 /* Grid.hh */; };
+		AC6711510AA979DA00608A95 /* ImplicitGrid.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC67113A0AA979DA00608A95 /* ImplicitGrid.hh */; };
+		AC6711520AA979DA00608A95 /* RegularGrid.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67113B0AA979DA00608A95 /* RegularGrid.cc */; };
+		AC6711530AA979DA00608A95 /* RegularGrid.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC67113C0AA979DA00608A95 /* RegularGrid.hh */; };
+		AC6711540AA979DA00608A95 /* ScalarGridT.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67113D0AA979DA00608A95 /* ScalarGridT.cc */; };
+		AC6711550AA979DA00608A95 /* ScalarGridT.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC67113E0AA979DA00608A95 /* ScalarGridT.hh */; };
+		AC6711560AA979DA00608A95 /* CSG.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711410AA979DA00608A95 /* CSG.hh */; };
+		AC6711570AA979DA00608A95 /* Implicit.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711420AA979DA00608A95 /* Implicit.hh */; };
+		AC6711580AA979DA00608A95 /* ImplicitSphere.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711430AA979DA00608A95 /* ImplicitSphere.hh */; };
+		AC6711590AA979DA00608A95 /* MatrixT.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711460AA979DA00608A95 /* MatrixT.hh */; };
+		AC67115A0AA979DA00608A95 /* svd.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711470AA979DA00608A95 /* svd.cc */; };
+		AC67115B0AA979DA00608A95 /* svd.hh in Headers */ = {isa = PBXBuildFile; fileRef = AC6711480AA979DA00608A95 /* svd.hh */; };
+		ACDAE3B50AA9836800E0BAA3 /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		ACDAE3B60AA9836800E0BAA3 /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		ACDAE3B70AA9836800E0BAA3 /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		ACDAE3B80AA9836800E0BAA3 /* mview.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711740AA97A9600608A95 /* mview.cc */; };
+		ACDAE3EA0AA984AC00E0BAA3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		ACDAE3EB0AA984AC00E0BAA3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		ACDAE3F10AA984C500E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE41E0AA9870E00E0BAA3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		ACDAE41F0AA9870E00E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE4200AA9870E00E0BAA3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		ACDAE4250AA9873F00E0BAA3 /* CurvatureViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711770AA97A9600608A95 /* CurvatureViewer.cc */; };
+		ACDAE4260AA9873F00E0BAA3 /* curvview.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711790AA97A9600608A95 /* curvview.cc */; };
+		ACDAE4330AA9880100E0BAA3 /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		ACDAE4340AA9880100E0BAA3 /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		ACDAE4350AA9880100E0BAA3 /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		ACDAE4440AA9886B00E0BAA3 /* CurvatureViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711770AA97A9600608A95 /* CurvatureViewer.cc */; };
+		ACDAE4450AA9886B00E0BAA3 /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		ACDAE4460AA9886B00E0BAA3 /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		ACDAE4470AA9886B00E0BAA3 /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		ACDAE4480AA9888200E0BAA3 /* smoother.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67117E0AA97A9600608A95 /* smoother.cc */; };
+		ACDAE4490AA9888200E0BAA3 /* SmoothingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */; };
+		ACDAE44A0AA9889600E0BAA3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		ACDAE44B0AA9889600E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE44C0AA9889600E0BAA3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		ACDAE4640AA9930B00E0BAA3 /* CurvatureViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711770AA97A9600608A95 /* CurvatureViewer.cc */; };
+		ACDAE4650AA9930B00E0BAA3 /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		ACDAE4660AA9930B00E0BAA3 /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		ACDAE4670AA9930B00E0BAA3 /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		ACDAE4680AA9930B00E0BAA3 /* SmoothingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */; };
+		ACDAE4690AA9931200E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE46A0AA9931200E0BAA3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		ACDAE46B0AA9931200E0BAA3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		ACDAE4720AA993AD00E0BAA3 /* fairing.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711840AA97A9600608A95 /* fairing.cc */; };
+		ACDAE4730AA993AD00E0BAA3 /* FairingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711850AA97A9600608A95 /* FairingViewer.cc */; };
+		ACDAE4740AA993AD00E0BAA3 /* TaucsSolver.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711870AA97A9600608A95 /* TaucsSolver.cc */; };
+		ACDAE4840AA994FE00E0BAA3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDAE4830AA994FE00E0BAA3 /* Accelerate.framework */; };
+		ACDAE4B10AA9967700E0BAA3 /* param.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67118D0AA97A9600608A95 /* param.cc */; };
+		ACDAE4B20AA9967700E0BAA3 /* ParameterizationViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67118E0AA97A9600608A95 /* ParameterizationViewer.cc */; };
+		ACDAE4B60AA9968C00E0BAA3 /* CurvatureViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711770AA97A9600608A95 /* CurvatureViewer.cc */; };
+		ACDAE4B70AA9968C00E0BAA3 /* GlutExaminer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67116E0AA97A9600608A95 /* GlutExaminer.cc */; };
+		ACDAE4B80AA9968C00E0BAA3 /* GlutViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711700AA97A9600608A95 /* GlutViewer.cc */; };
+		ACDAE4B90AA9968C00E0BAA3 /* MeshViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711720AA97A9600608A95 /* MeshViewer.cc */; };
+		ACDAE4BA0AA9968C00E0BAA3 /* SmoothingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */; };
+		ACDAE4BB0AA9968C00E0BAA3 /* FairingViewer.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711850AA97A9600608A95 /* FairingViewer.cc */; };
+		ACDAE4BC0AA9968C00E0BAA3 /* TaucsSolver.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711870AA97A9600608A95 /* TaucsSolver.cc */; };
+		ACDAE4DE0AA9969600E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE4DF0AA9969600E0BAA3 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C60AA97AF800608A95 /* GLUT.framework */; };
+		ACDAE4E00AA9969600E0BAA3 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711C30AA97AE700608A95 /* OpenGL.framework */; };
+		ACDAE4E40AA9969600E0BAA3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACDAE4830AA994FE00E0BAA3 /* Accelerate.framework */; };
+		ACDAE4F50AA9990200E0BAA3 /* deci.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711920AA97A9600608A95 /* deci.cc */; };
+		ACDAE4F60AA9990B00E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE50A0AA99A5D00E0BAA3 /* cutandstitch.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711990AA97A9600608A95 /* cutandstitch.cc */; };
+		ACDAE50B0AA99A6400E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE53A0AA99B7700E0BAA3 /* holefill.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711A80AA97A9600608A95 /* holefill.cc */; };
+		ACDAE53B0AA99B7700E0BAA3 /* HoleFiller.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711AA0AA97A9600608A95 /* HoleFiller.cc */; };
+		ACDAE5410AA99B9800E0BAA3 /* DepthImage.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711B50AA97A9600608A95 /* DepthImage.cc */; };
+		ACDAE5420AA99B9800E0BAA3 /* Tree.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711BF0AA97A9600608A95 /* Tree.cc */; };
+		ACDAE5430AA99B9800E0BAA3 /* volrepair.cc in Sources */ = {isa = PBXBuildFile; fileRef = AC6711C10AA97A9600608A95 /* volrepair.cc */; };
+		ACDAE5440AA99BA100E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE5450AA99BA300E0BAA3 /* libOpenMesh.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC670E450AA975D200608A95 /* libOpenMesh.a */; };
+		ACDAE5490AA99C0300E0BAA3 /* libIsoEx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AC6711290AA979A400608A95 /* libIsoEx.a */; };
+		ACF5D5EC0AA9FB4200ED7834 /* libf2c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5E90AA9FB4100ED7834 /* libf2c.a */; };
+		ACF5D5ED0AA9FB4200ED7834 /* libmetis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EA0AA9FB4100ED7834 /* libmetis.a */; };
+		ACF5D5EE0AA9FB4200ED7834 /* libtaucs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EB0AA9FB4100ED7834 /* libtaucs.a */; };
+		ACF5D5EF0AA9FB4200ED7834 /* libf2c.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5E90AA9FB4100ED7834 /* libf2c.a */; };
+		ACF5D5F00AA9FB4200ED7834 /* libmetis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EA0AA9FB4100ED7834 /* libmetis.a */; };
+		ACF5D5F10AA9FB4200ED7834 /* libtaucs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF5D5EB0AA9FB4100ED7834 /* libtaucs.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		AC67110F0AA9775100608A95 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		AC67112A0AA979A800608A95 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE3BB0AA9837B00E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE41D0AA986EF00E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE4430AA9884000E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE4630AA992D700E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE4AC0AA9965300E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE4F40AA998DF00E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE5070AA99A4400E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE5280AA99B2600E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+		ACDAE5370AA99B5D00E0BAA3 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.gcc;
+			filePatterns = "*.cc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+			);
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		793023FD0C60C5A300754C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE3EC0AA984B200E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE41B0AA986D200E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE4410AA9883300E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE4610AA992D400E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE4AA0AA9964800E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE4F20AA998CE00E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE5050AA99A3C00E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE5290AA99B3300E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+		ACDAE52B0AA99B3300E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC6711280AA979A400608A95;
+			remoteInfo = IsoEx;
+		};
+		ACDAE5350AA99B5A00E0BAA3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC670E330AA9759500608A95 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC670E440AA975D200608A95;
+			remoteInfo = OpenMesh;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		793023F70C60C51A00754C2B /* Deformation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deformation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		793023F90C60C51A00754C2B /* Deformation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Deformation-Info.plist"; sourceTree = "<group>"; };
+		7930240D0C60C5EB00754C2B /* deform.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = deform.cc; sourceTree = "<group>"; };
+		7930240E0C60C5EB00754C2B /* DeformationViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = DeformationViewer.cc; sourceTree = "<group>"; };
+		7930240F0C60C5EB00754C2B /* DeformationViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = DeformationViewer.hh; sourceTree = "<group>"; };
+		AC670E450AA975D200608A95 /* libOpenMesh.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libOpenMesh.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC670FB00AA976AE00608A95 /* Attributes.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Attributes.hh; sourceTree = "<group>"; };
+		AC670FB10AA976AE00608A95 /* Status.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Status.hh; sourceTree = "<group>"; };
+		AC670FB40AA976AE00608A95 /* BinaryHelper.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = BinaryHelper.cc; sourceTree = "<group>"; };
+		AC670FB50AA976AE00608A95 /* BinaryHelper.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BinaryHelper.hh; sourceTree = "<group>"; };
+		AC670FB80AA976AE00608A95 /* BaseExporter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseExporter.hh; sourceTree = "<group>"; };
+		AC670FB90AA976AE00608A95 /* ExporterT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ExporterT.hh; sourceTree = "<group>"; };
+		AC670FBC0AA976AE00608A95 /* BaseImporter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseImporter.hh; sourceTree = "<group>"; };
+		AC670FBD0AA976AE00608A95 /* ImporterT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ImporterT.hh; sourceTree = "<group>"; };
+		AC670FBE0AA976AE00608A95 /* IOInstances.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = IOInstances.hh; sourceTree = "<group>"; };
+		AC670FBF0AA976AE00608A95 /* IOManager.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = IOManager.cc; sourceTree = "<group>"; };
+		AC670FC00AA976AE00608A95 /* IOManager.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = IOManager.hh; sourceTree = "<group>"; };
+		AC670FC10AA976AE00608A95 /* MeshIO.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MeshIO.hh; sourceTree = "<group>"; };
+		AC670FC20AA976AE00608A95 /* OFFFormat.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OFFFormat.hh; sourceTree = "<group>"; };
+		AC670FC30AA976AE00608A95 /* OMFormat.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OMFormat.cc; sourceTree = "<group>"; };
+		AC670FC40AA976AE00608A95 /* OMFormat.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OMFormat.hh; sourceTree = "<group>"; };
+		AC670FC50AA976AE00608A95 /* Options.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Options.hh; sourceTree = "<group>"; };
+		AC670FC80AA976AE00608A95 /* BaseReader.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = BaseReader.cc; sourceTree = "<group>"; };
+		AC670FC90AA976AE00608A95 /* BaseReader.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseReader.hh; sourceTree = "<group>"; };
+		AC670FCA0AA976AE00608A95 /* OBJReader.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OBJReader.cc; sourceTree = "<group>"; };
+		AC670FCB0AA976AE00608A95 /* OBJReader.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OBJReader.hh; sourceTree = "<group>"; };
+		AC670FCC0AA976AE00608A95 /* OFFReader.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OFFReader.cc; sourceTree = "<group>"; };
+		AC670FCD0AA976AE00608A95 /* OFFReader.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OFFReader.hh; sourceTree = "<group>"; };
+		AC670FCE0AA976AE00608A95 /* OMReader.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OMReader.cc; sourceTree = "<group>"; };
+		AC670FCF0AA976AE00608A95 /* OMReader.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OMReader.hh; sourceTree = "<group>"; };
+		AC670FD00AA976AE00608A95 /* STLReader.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = STLReader.cc; sourceTree = "<group>"; };
+		AC670FD10AA976AE00608A95 /* STLReader.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = STLReader.hh; sourceTree = "<group>"; };
+		AC670FD20AA976AE00608A95 /* SR_binary.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SR_binary.hh; sourceTree = "<group>"; };
+		AC670FD30AA976AE00608A95 /* SR_binary_spec.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SR_binary_spec.hh; sourceTree = "<group>"; };
+		AC670FD40AA976AE00608A95 /* SR_binary_vector_of_bool.inl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = SR_binary_vector_of_bool.inl; sourceTree = "<group>"; };
+		AC670FD50AA976AE00608A95 /* SR_binary_vector_of_fundamentals.inl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = SR_binary_vector_of_fundamentals.inl; sourceTree = "<group>"; };
+		AC670FD60AA976AE00608A95 /* SR_binary_vector_of_string.inl */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = SR_binary_vector_of_string.inl; sourceTree = "<group>"; };
+		AC670FD70AA976AE00608A95 /* SR_rbo.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SR_rbo.hh; sourceTree = "<group>"; };
+		AC670FD80AA976AE00608A95 /* SR_store.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SR_store.hh; sourceTree = "<group>"; };
+		AC670FD90AA976AE00608A95 /* SR_types.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SR_types.hh; sourceTree = "<group>"; };
+		AC670FDA0AA976AE00608A95 /* StoreRestore.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = StoreRestore.hh; sourceTree = "<group>"; };
+		AC670FDD0AA976AE00608A95 /* BaseWriter.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = BaseWriter.cc; sourceTree = "<group>"; };
+		AC670FDE0AA976AE00608A95 /* BaseWriter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseWriter.hh; sourceTree = "<group>"; };
+		AC670FDF0AA976AE00608A95 /* OBJWriter.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OBJWriter.cc; sourceTree = "<group>"; };
+		AC670FE00AA976AE00608A95 /* OBJWriter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OBJWriter.hh; sourceTree = "<group>"; };
+		AC670FE10AA976AE00608A95 /* OFFWriter.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OFFWriter.cc; sourceTree = "<group>"; };
+		AC670FE20AA976AE00608A95 /* OFFWriter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OFFWriter.hh; sourceTree = "<group>"; };
+		AC670FE30AA976AE00608A95 /* OMWriter.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = OMWriter.cc; sourceTree = "<group>"; };
+		AC670FE40AA976AE00608A95 /* OMWriter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OMWriter.hh; sourceTree = "<group>"; };
+		AC670FE50AA976AE00608A95 /* STLWriter.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = STLWriter.cc; sourceTree = "<group>"; };
+		AC670FE60AA976AE00608A95 /* STLWriter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = STLWriter.hh; sourceTree = "<group>"; };
+		AC670FE90AA976AE00608A95 /* LoopSchemeMaskT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = LoopSchemeMaskT.hh; sourceTree = "<group>"; };
+		AC670FEA0AA976AE00608A95 /* MathDefs.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MathDefs.hh; sourceTree = "<group>"; };
+		AC670FEB0AA976AE00608A95 /* VectorT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VectorT.hh; sourceTree = "<group>"; };
+		AC670FEC0AA976AE00608A95 /* VectorT_inc.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VectorT_inc.hh; sourceTree = "<group>"; };
+		AC670FEF0AA976AE00608A95 /* BaseMesh.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseMesh.hh; sourceTree = "<group>"; };
+		AC670FF20AA976AE00608A95 /* CirculatorsT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CirculatorsT.hh; sourceTree = "<group>"; };
+		AC670FF30AA976AE00608A95 /* IteratorsT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = IteratorsT.hh; sourceTree = "<group>"; };
+		AC670FF70AA976AE00608A95 /* ArrayItems.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ArrayItems.hh; sourceTree = "<group>"; };
+		AC670FF80AA976AE00608A95 /* ArrayKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ArrayKernelT.hh; sourceTree = "<group>"; };
+		AC670FFB0AA976AE00608A95 /* AttribKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = AttribKernelT.hh; sourceTree = "<group>"; };
+		AC670FFC0AA976AE00608A95 /* BaseKernel.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = BaseKernel.cc; sourceTree = "<group>"; };
+		AC670FFD0AA976AE00608A95 /* BaseKernel.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = BaseKernel.hh; sourceTree = "<group>"; };
+		AC670FFE0AA976AE00608A95 /* FinalMeshItemsT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = FinalMeshItemsT.hh; sourceTree = "<group>"; };
+		AC670FFF0AA976AE00608A95 /* Handles.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Handles.hh; sourceTree = "<group>"; };
+		AC6710000AA976AE00608A95 /* PolyMeshT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = PolyMeshT.cc; sourceTree = "<group>"; };
+		AC6710010AA976AE00608A95 /* PolyMeshT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = PolyMeshT.hh; sourceTree = "<group>"; };
+		AC6710020AA976AE00608A95 /* PolyMeshT_assign.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = PolyMeshT_assign.hh; sourceTree = "<group>"; };
+		AC6710030AA976AE00608A95 /* Traits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Traits.hh; sourceTree = "<group>"; };
+		AC6710040AA976AE00608A95 /* TriMeshT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = TriMeshT.cc; sourceTree = "<group>"; };
+		AC6710050AA976AE00608A95 /* TriMeshT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = TriMeshT.hh; sourceTree = "<group>"; };
+		AC6710070AA976AE00608A95 /* PolyMesh_ArrayKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = PolyMesh_ArrayKernelT.hh; sourceTree = "<group>"; };
+		AC6710080AA976AE00608A95 /* TriMesh_ArrayKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = TriMesh_ArrayKernelT.hh; sourceTree = "<group>"; };
+		AC67100B0AA976AE00608A95 /* compiler.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = compiler.hh; sourceTree = "<group>"; };
+		AC67100C0AA976AE00608A95 /* config.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = config.hh; sourceTree = "<group>"; };
+		AC67100D0AA976AE00608A95 /* mostream.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = mostream.hh; sourceTree = "<group>"; };
+		AC67100E0AA976AE00608A95 /* omstream.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = omstream.cc; sourceTree = "<group>"; };
+		AC67100F0AA976AE00608A95 /* omstream.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = omstream.hh; sourceTree = "<group>"; };
+		AC6710120AA976AE00608A95 /* AutoPropertyHandleT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = AutoPropertyHandleT.hh; sourceTree = "<group>"; };
+		AC6710130AA976AE00608A95 /* BaseProperty.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = BaseProperty.cc; sourceTree = "<group>"; };
+		AC6710140AA976AE00608A95 /* color_cast.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = color_cast.hh; sourceTree = "<group>"; };
+		AC6710150AA976AE00608A95 /* Endian.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Endian.cc; sourceTree = "<group>"; };
+		AC6710160AA976AE00608A95 /* Endian.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Endian.hh; sourceTree = "<group>"; };
+		AC6710170AA976AE00608A95 /* GenProg.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = GenProg.hh; sourceTree = "<group>"; };
+		AC6710180AA976AE00608A95 /* Noncopyable.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Noncopyable.hh; sourceTree = "<group>"; };
+		AC6710190AA976AE00608A95 /* Property.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Property.hh; sourceTree = "<group>"; };
+		AC67101A0AA976AE00608A95 /* SingletonT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = SingletonT.cc; sourceTree = "<group>"; };
+		AC67101B0AA976AE00608A95 /* SingletonT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SingletonT.hh; sourceTree = "<group>"; };
+		AC67101C0AA976AE00608A95 /* vector_cast.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = vector_cast.hh; sourceTree = "<group>"; };
+		AC67101D0AA976AE00608A95 /* vector_traits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = vector_traits.hh; sourceTree = "<group>"; };
+		AC6710220AA976AE00608A95 /* CollapseInfoT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CollapseInfoT.hh; sourceTree = "<group>"; };
+		AC6710230AA976AE00608A95 /* DecimaterT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = DecimaterT.cc; sourceTree = "<group>"; };
+		AC6710240AA976AE00608A95 /* DecimaterT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = DecimaterT.hh; sourceTree = "<group>"; };
+		AC6710250AA976AE00608A95 /* ModBaseT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModBaseT.hh; sourceTree = "<group>"; };
+		AC6710260AA976AE00608A95 /* ModIndependentSetsT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModIndependentSetsT.hh; sourceTree = "<group>"; };
+		AC6710270AA976AE00608A95 /* ModNormalFlippingT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModNormalFlippingT.hh; sourceTree = "<group>"; };
+		AC6710280AA976AE00608A95 /* ModProgMeshT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ModProgMeshT.cc; sourceTree = "<group>"; };
+		AC6710290AA976AE00608A95 /* ModProgMeshT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModProgMeshT.hh; sourceTree = "<group>"; };
+		AC67102A0AA976AE00608A95 /* ModQuadricT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ModQuadricT.cc; sourceTree = "<group>"; };
+		AC67102B0AA976AE00608A95 /* ModQuadricT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModQuadricT.hh; sourceTree = "<group>"; };
+		AC67102C0AA976AE00608A95 /* ModRoundnessT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ModRoundnessT.hh; sourceTree = "<group>"; };
+		AC67102F0AA976AE00608A95 /* QuadricT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = QuadricT.hh; sourceTree = "<group>"; };
+		AC6710320AA976AE00608A95 /* ArrayKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ArrayKernelT.hh; sourceTree = "<group>"; };
+		AC6710330AA976AE00608A95 /* AttribKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = AttribKernelT.hh; sourceTree = "<group>"; };
+		AC6710340AA976AE00608A95 /* bindT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = bindT.hh; sourceTree = "<group>"; };
+		AC6710350AA976AE00608A95 /* color_cast.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = color_cast.hh; sourceTree = "<group>"; };
+		AC6710360AA976AE00608A95 /* PropertyKernel.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = PropertyKernel.hh; sourceTree = "<group>"; };
+		AC6710370AA976AE00608A95 /* PropertyT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = PropertyT.hh; sourceTree = "<group>"; };
+		AC6710380AA976AE00608A95 /* Traits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Traits.hh; sourceTree = "<group>"; };
+		AC6710390AA976AE00608A95 /* TriMesh_OSGArrayKernelT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = TriMesh_OSGArrayKernelT.hh; sourceTree = "<group>"; };
+		AC67103A0AA976AE00608A95 /* VectorAdapter.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VectorAdapter.hh; sourceTree = "<group>"; };
+		AC67103C0AA976AE00608A95 /* JacobiLaplaceSmootherT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = JacobiLaplaceSmootherT.cc; sourceTree = "<group>"; };
+		AC67103D0AA976AE00608A95 /* JacobiLaplaceSmootherT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = JacobiLaplaceSmootherT.hh; sourceTree = "<group>"; };
+		AC67103E0AA976AE00608A95 /* LaplaceSmootherT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = LaplaceSmootherT.cc; sourceTree = "<group>"; };
+		AC67103F0AA976AE00608A95 /* LaplaceSmootherT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = LaplaceSmootherT.hh; sourceTree = "<group>"; };
+		AC6710400AA976AE00608A95 /* smooth_mesh.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = smooth_mesh.hh; sourceTree = "<group>"; };
+		AC6710410AA976AE00608A95 /* SmootherT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = SmootherT.cc; sourceTree = "<group>"; };
+		AC6710420AA976AE00608A95 /* SmootherT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SmootherT.hh; sourceTree = "<group>"; };
+		AC6710490AA976AE00608A95 /* CompositeT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = CompositeT.cc; sourceTree = "<group>"; };
+		AC67104A0AA976AE00608A95 /* CompositeT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeT.hh; sourceTree = "<group>"; };
+		AC67104B0AA976AE00608A95 /* CompositeTraits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeTraits.hh; sourceTree = "<group>"; };
+		AC67104C0AA976AE00608A95 /* RuleInterfaceT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = RuleInterfaceT.hh; sourceTree = "<group>"; };
+		AC67104D0AA976AE00608A95 /* RulesT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = RulesT.cc; sourceTree = "<group>"; };
+		AC67104E0AA976AE00608A95 /* RulesT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = RulesT.hh; sourceTree = "<group>"; };
+		AC6710530AA976AE00608A95 /* CompositeT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = CompositeT.cc; sourceTree = "<group>"; };
+		AC6710540AA976AE00608A95 /* CompositeT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeT.hh; sourceTree = "<group>"; };
+		AC6710550AA976AE00608A95 /* CompositeTraits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeTraits.hh; sourceTree = "<group>"; };
+		AC6710560AA976AE00608A95 /* CompositeLoopT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeLoopT.hh; sourceTree = "<group>"; };
+		AC6710570AA976AE00608A95 /* CompositeSqrt3T.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CompositeSqrt3T.hh; sourceTree = "<group>"; };
+		AC6710580AA976AE00608A95 /* LoopT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = LoopT.hh; sourceTree = "<group>"; };
+		AC6710590AA976AE00608A95 /* Sqrt3T.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Sqrt3T.hh; sourceTree = "<group>"; };
+		AC67105A0AA976AE00608A95 /* SubdividerT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SubdividerT.hh; sourceTree = "<group>"; };
+		AC67105D0AA976AE00608A95 /* getopt.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = getopt.cc; sourceTree = "<group>"; };
+		AC67105E0AA976AE00608A95 /* getopt.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = getopt.h; sourceTree = "<group>"; };
+		AC67105F0AA976AE00608A95 /* GLConstAsString.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = GLConstAsString.hh; sourceTree = "<group>"; };
+		AC6710600AA976AE00608A95 /* HeapT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = HeapT.hh; sourceTree = "<group>"; };
+		AC6710610AA976AE00608A95 /* MeshCheckerT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MeshCheckerT.cc; sourceTree = "<group>"; };
+		AC6710620AA976AE00608A95 /* MeshCheckerT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MeshCheckerT.hh; sourceTree = "<group>"; };
+		AC6710630AA976AE00608A95 /* Progress.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Progress.cc; sourceTree = "<group>"; };
+		AC6710640AA976AE00608A95 /* Progress.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Progress.hh; sourceTree = "<group>"; };
+		AC6710650AA976AE00608A95 /* StripifierT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = StripifierT.cc; sourceTree = "<group>"; };
+		AC6710660AA976AE00608A95 /* StripifierT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = StripifierT.hh; sourceTree = "<group>"; };
+		AC6710670AA976AE00608A95 /* Timer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Timer.cc; sourceTree = "<group>"; };
+		AC6710680AA976AE00608A95 /* Timer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Timer.hh; sourceTree = "<group>"; };
+		AC67106B0AA976AE00608A95 /* MeshTraits.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MeshTraits.hh; sourceTree = "<group>"; };
+		AC67106C0AA976AE00608A95 /* Plane3d.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Plane3d.hh; sourceTree = "<group>"; };
+		AC67106D0AA976AE00608A95 /* StreamingDef.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = StreamingDef.hh; sourceTree = "<group>"; };
+		AC67106E0AA976AE00608A95 /* VFront.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = VFront.cc; sourceTree = "<group>"; };
+		AC67106F0AA976AE00608A95 /* VFront.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VFront.hh; sourceTree = "<group>"; };
+		AC6710700AA976AE00608A95 /* VHierarchy.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = VHierarchy.cc; sourceTree = "<group>"; };
+		AC6710710AA976AE00608A95 /* VHierarchy.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VHierarchy.hh; sourceTree = "<group>"; };
+		AC6710720AA976AE00608A95 /* VHierarchyNode.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VHierarchyNode.hh; sourceTree = "<group>"; };
+		AC6710730AA976AE00608A95 /* VHierarchyNodeIndex.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = VHierarchyNodeIndex.cc; sourceTree = "<group>"; };
+		AC6710740AA976AE00608A95 /* VHierarchyNodeIndex.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VHierarchyNodeIndex.hh; sourceTree = "<group>"; };
+		AC6710750AA976AE00608A95 /* VHierarchyWindow.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = VHierarchyWindow.cc; sourceTree = "<group>"; };
+		AC6710760AA976AE00608A95 /* VHierarchyWindow.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = VHierarchyWindow.hh; sourceTree = "<group>"; };
+		AC6710770AA976AE00608A95 /* ViewingParameters.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ViewingParameters.cc; sourceTree = "<group>"; };
+		AC6710780AA976AE00608A95 /* ViewingParameters.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ViewingParameters.hh; sourceTree = "<group>"; };
+		AC6711290AA979A400608A95 /* libIsoEx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libIsoEx.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC6711300AA979DA00608A95 /* Edge2VertexMapT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Edge2VertexMapT.hh; sourceTree = "<group>"; };
+		AC6711310AA979DA00608A95 /* ExtendedMarchingCubesT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ExtendedMarchingCubesT.cc; sourceTree = "<group>"; };
+		AC6711320AA979DA00608A95 /* ExtendedMarchingCubesT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ExtendedMarchingCubesT.hh; sourceTree = "<group>"; };
+		AC6711330AA979DA00608A95 /* MarchingCubesT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MarchingCubesT.cc; sourceTree = "<group>"; };
+		AC6711340AA979DA00608A95 /* MarchingCubesT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MarchingCubesT.hh; sourceTree = "<group>"; };
+		AC6711350AA979DA00608A95 /* MCTables.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MCTables.cc; sourceTree = "<group>"; };
+		AC6711360AA979DA00608A95 /* MCTables.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MCTables.hh; sourceTree = "<group>"; };
+		AC6711390AA979DA00608A95 /* Grid.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Grid.hh; sourceTree = "<group>"; };
+		AC67113A0AA979DA00608A95 /* ImplicitGrid.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ImplicitGrid.hh; sourceTree = "<group>"; };
+		AC67113B0AA979DA00608A95 /* RegularGrid.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = RegularGrid.cc; sourceTree = "<group>"; };
+		AC67113C0AA979DA00608A95 /* RegularGrid.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = RegularGrid.hh; sourceTree = "<group>"; };
+		AC67113D0AA979DA00608A95 /* ScalarGridT.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ScalarGridT.cc; sourceTree = "<group>"; };
+		AC67113E0AA979DA00608A95 /* ScalarGridT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ScalarGridT.hh; sourceTree = "<group>"; };
+		AC6711410AA979DA00608A95 /* CSG.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CSG.hh; sourceTree = "<group>"; };
+		AC6711420AA979DA00608A95 /* Implicit.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Implicit.hh; sourceTree = "<group>"; };
+		AC6711430AA979DA00608A95 /* ImplicitSphere.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ImplicitSphere.hh; sourceTree = "<group>"; };
+		AC6711460AA979DA00608A95 /* MatrixT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MatrixT.hh; sourceTree = "<group>"; };
+		AC6711470AA979DA00608A95 /* svd.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = svd.cc; sourceTree = "<group>"; };
+		AC6711480AA979DA00608A95 /* svd.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = svd.hh; sourceTree = "<group>"; };
+		AC67116D0AA97A9600608A95 /* gl.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = gl.hh; sourceTree = "<group>"; };
+		AC67116E0AA97A9600608A95 /* GlutExaminer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = GlutExaminer.cc; sourceTree = "<group>"; };
+		AC67116F0AA97A9600608A95 /* GlutExaminer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = GlutExaminer.hh; sourceTree = "<group>"; };
+		AC6711700AA97A9600608A95 /* GlutViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = GlutViewer.cc; sourceTree = "<group>"; };
+		AC6711710AA97A9600608A95 /* GlutViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = GlutViewer.hh; sourceTree = "<group>"; };
+		AC6711720AA97A9600608A95 /* MeshViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = MeshViewer.cc; sourceTree = "<group>"; };
+		AC6711730AA97A9600608A95 /* MeshViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = MeshViewer.hh; sourceTree = "<group>"; };
+		AC6711740AA97A9600608A95 /* mview.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = mview.cc; sourceTree = "<group>"; };
+		AC6711770AA97A9600608A95 /* CurvatureViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = CurvatureViewer.cc; sourceTree = "<group>"; };
+		AC6711780AA97A9600608A95 /* CurvatureViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CurvatureViewer.hh; sourceTree = "<group>"; };
+		AC6711790AA97A9600608A95 /* curvview.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = curvview.cc; sourceTree = "<group>"; };
+		AC67117E0AA97A9600608A95 /* smoother.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = smoother.cc; sourceTree = "<group>"; };
+		AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = SmoothingViewer.cc; sourceTree = "<group>"; };
+		AC6711800AA97A9600608A95 /* SmoothingViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = SmoothingViewer.hh; sourceTree = "<group>"; };
+		AC6711840AA97A9600608A95 /* fairing.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = fairing.cc; sourceTree = "<group>"; };
+		AC6711850AA97A9600608A95 /* FairingViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = FairingViewer.cc; sourceTree = "<group>"; };
+		AC6711860AA97A9600608A95 /* FairingViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = FairingViewer.hh; sourceTree = "<group>"; };
+		AC6711870AA97A9600608A95 /* TaucsSolver.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = TaucsSolver.cc; sourceTree = "<group>"; };
+		AC6711880AA97A9600608A95 /* TaucsSolver.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = TaucsSolver.hh; sourceTree = "<group>"; };
+		AC67118D0AA97A9600608A95 /* param.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = param.cc; sourceTree = "<group>"; };
+		AC67118E0AA97A9600608A95 /* ParameterizationViewer.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = ParameterizationViewer.cc; sourceTree = "<group>"; };
+		AC67118F0AA97A9600608A95 /* ParameterizationViewer.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = ParameterizationViewer.hh; sourceTree = "<group>"; };
+		AC6711920AA97A9600608A95 /* deci.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = deci.cc; sourceTree = "<group>"; };
+		AC6711940AA97A9600608A95 /* QuadricT.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = QuadricT.hh; sourceTree = "<group>"; };
+		AC6711990AA97A9600608A95 /* cutandstitch.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = cutandstitch.cc; sourceTree = "<group>"; };
+		AC67119B0AA97A9600608A95 /* CutAndStitcher.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = CutAndStitcher.hh; sourceTree = "<group>"; };
+		AC6711A00AA97A9600608A95 /* OpenMeshUtils.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OpenMeshUtils.hh; sourceTree = "<group>"; };
+		AC6711A80AA97A9600608A95 /* holefill.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = holefill.cc; sourceTree = "<group>"; };
+		AC6711AA0AA97A9600608A95 /* HoleFiller.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = HoleFiller.cc; sourceTree = "<group>"; };
+		AC6711AB0AA97A9600608A95 /* HoleFiller.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = HoleFiller.hh; sourceTree = "<group>"; };
+		AC6711AC0AA97A9600608A95 /* OpenMeshUtils.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = OpenMeshUtils.hh; sourceTree = "<group>"; };
+		AC6711B50AA97A9600608A95 /* DepthImage.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = DepthImage.cc; sourceTree = "<group>"; };
+		AC6711B60AA97A9600608A95 /* DepthImage.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = DepthImage.hh; sourceTree = "<group>"; };
+		AC6711B80AA97A9600608A95 /* Geometry.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Geometry.hh; sourceTree = "<group>"; };
+		AC6711BF0AA97A9600608A95 /* Tree.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = Tree.cc; sourceTree = "<group>"; };
+		AC6711C00AA97A9600608A95 /* Tree.hh */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.h; path = Tree.hh; sourceTree = "<group>"; };
+		AC6711C10AA97A9600608A95 /* volrepair.cc */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; path = volrepair.cc; sourceTree = "<group>"; };
+		AC6711C30AA97AE700608A95 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		AC6711C60AA97AF800608A95 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = /System/Library/Frameworks/GLUT.framework; sourceTree = "<absolute>"; };
+		AC6712320AA980D000608A95 /* MeshViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "MeshViewer-Info.plist"; sourceTree = "<group>"; };
+		ACDAE3B30AA9835100E0BAA3 /* MeshViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeshViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE4150AA986CD00E0BAA3 /* CurvatureViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurvatureViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE4170AA986CD00E0BAA3 /* CurvatureViewer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CurvatureViewer-Info.plist"; sourceTree = "<group>"; };
+		ACDAE43B0AA9882F00E0BAA3 /* Smoothing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smoothing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE43D0AA9882F00E0BAA3 /* Smoothing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Smoothing-Info.plist"; sourceTree = "<group>"; };
+		ACDAE45B0AA992C400E0BAA3 /* Fairing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fairing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE45D0AA992C400E0BAA3 /* Fairing-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Fairing-Info.plist"; sourceTree = "<group>"; };
+		ACDAE4830AA994FE00E0BAA3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		ACDAE4A40AA9962400E0BAA3 /* Parameterization.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parameterization.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE4A60AA9962400E0BAA3 /* Parameterization-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Parameterization-Info.plist"; sourceTree = "<group>"; };
+		ACDAE4F00AA998C700E0BAA3 /* Decimation */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Decimation; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE5030AA99A3600E0BAA3 /* Repair-CutAndStitch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Repair-CutAndStitch"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE5260AA99B2200E0BAA3 /* Repair-VolRepair */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Repair-VolRepair"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE5330AA99B5400E0BAA3 /* Repair-HoleFill */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Repair-HoleFill"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACDAE54F0AA99E4B00E0BAA3 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		ACDAE5540AA99E7F00E0BAA3 /* README */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		ACF5D5E90AA9FB4100ED7834 /* libf2c.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libf2c.a; path = "../lib/taucs-darwin/lib/libf2c.a"; sourceTree = SOURCE_ROOT; };
+		ACF5D5EA0AA9FB4100ED7834 /* libmetis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libmetis.a; path = "../lib/taucs-darwin/lib/libmetis.a"; sourceTree = SOURCE_ROOT; };
+		ACF5D5EB0AA9FB4100ED7834 /* libtaucs.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libtaucs.a; path = "../lib/taucs-darwin/lib/libtaucs.a"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		793023F50C60C51A00754C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				793024560C60C60900754C2B /* libOpenMesh.a in Frameworks */,
+				793024570C60C60900754C2B /* GLUT.framework in Frameworks */,
+				793024580C60C60900754C2B /* OpenGL.framework in Frameworks */,
+				793024590C60C60900754C2B /* libtaucs.a in Frameworks */,
+				7930245A0C60C60900754C2B /* libmetis.a in Frameworks */,
+				7930245B0C60C60900754C2B /* libf2c.a in Frameworks */,
+				7930245C0C60C60900754C2B /* Accelerate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC670E430AA975D200608A95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC6711270AA979A400608A95 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE3B10AA9835100E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE3F10AA984C500E0BAA3 /* libOpenMesh.a in Frameworks */,
+				ACDAE3EA0AA984AC00E0BAA3 /* GLUT.framework in Frameworks */,
+				ACDAE3EB0AA984AC00E0BAA3 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4130AA986CD00E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE41F0AA9870E00E0BAA3 /* libOpenMesh.a in Frameworks */,
+				ACDAE41E0AA9870E00E0BAA3 /* GLUT.framework in Frameworks */,
+				ACDAE4200AA9870E00E0BAA3 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4390AA9882F00E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE44B0AA9889600E0BAA3 /* libOpenMesh.a in Frameworks */,
+				ACDAE44A0AA9889600E0BAA3 /* GLUT.framework in Frameworks */,
+				ACDAE44C0AA9889600E0BAA3 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4590AA992C400E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4690AA9931200E0BAA3 /* libOpenMesh.a in Frameworks */,
+				ACDAE46A0AA9931200E0BAA3 /* GLUT.framework in Frameworks */,
+				ACDAE46B0AA9931200E0BAA3 /* OpenGL.framework in Frameworks */,
+				ACF5D5EE0AA9FB4200ED7834 /* libtaucs.a in Frameworks */,
+				ACF5D5ED0AA9FB4200ED7834 /* libmetis.a in Frameworks */,
+				ACF5D5EC0AA9FB4200ED7834 /* libf2c.a in Frameworks */,
+				ACDAE4840AA994FE00E0BAA3 /* Accelerate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4A20AA9962400E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4DE0AA9969600E0BAA3 /* libOpenMesh.a in Frameworks */,
+				ACDAE4DF0AA9969600E0BAA3 /* GLUT.framework in Frameworks */,
+				ACDAE4E00AA9969600E0BAA3 /* OpenGL.framework in Frameworks */,
+				ACF5D5F10AA9FB4200ED7834 /* libtaucs.a in Frameworks */,
+				ACF5D5F00AA9FB4200ED7834 /* libmetis.a in Frameworks */,
+				ACF5D5EF0AA9FB4200ED7834 /* libf2c.a in Frameworks */,
+				ACDAE4E40AA9969600E0BAA3 /* Accelerate.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4EE0AA998C700E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4F60AA9990B00E0BAA3 /* libOpenMesh.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5010AA99A3600E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE50B0AA99A6400E0BAA3 /* libOpenMesh.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5240AA99B2200E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE5490AA99C0300E0BAA3 /* libIsoEx.a in Frameworks */,
+				ACDAE5450AA99BA300E0BAA3 /* libOpenMesh.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5310AA99B5400E0BAA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE5440AA99BA100E0BAA3 /* libOpenMesh.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7930240C0C60C5EB00754C2B /* 08-Deformation */ = {
+			isa = PBXGroup;
+			children = (
+				7930240D0C60C5EB00754C2B /* deform.cc */,
+				7930240E0C60C5EB00754C2B /* DeformationViewer.cc */,
+				7930240F0C60C5EB00754C2B /* DeformationViewer.hh */,
+			);
+			name = "08-Deformation";
+			path = "../src/CourseExamples/08-Deformation";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC670E310AA9759500608A95 = {
+			isa = PBXGroup;
+			children = (
+				ACDAE5B10AA9A25A00E0BAA3 /* Code */,
+				ACDAE5660AA9A1D200E0BAA3 /* Frameworks */,
+				ACDAE5B20AA9A27000E0BAA3 /* plist */,
+				AC670E460AA975D200608A95 /* Products */,
+				793023F90C60C51A00754C2B /* Deformation-Info.plist */,
+			);
+			sourceTree = "<group>";
+		};
+		AC670E460AA975D200608A95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC670E450AA975D200608A95 /* libOpenMesh.a */,
+				AC6711290AA979A400608A95 /* libIsoEx.a */,
+				ACDAE3B30AA9835100E0BAA3 /* MeshViewer.app */,
+				ACDAE4150AA986CD00E0BAA3 /* CurvatureViewer.app */,
+				ACDAE43B0AA9882F00E0BAA3 /* Smoothing.app */,
+				ACDAE45B0AA992C400E0BAA3 /* Fairing.app */,
+				ACDAE4A40AA9962400E0BAA3 /* Parameterization.app */,
+				ACDAE4F00AA998C700E0BAA3 /* Decimation */,
+				ACDAE5030AA99A3600E0BAA3 /* Repair-CutAndStitch */,
+				ACDAE5330AA99B5400E0BAA3 /* Repair-HoleFill */,
+				ACDAE5260AA99B2200E0BAA3 /* Repair-VolRepair */,
+				793023F70C60C51A00754C2B /* Deformation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC670FAB0AA9768900608A95 /* OpenMesh */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FAD0AA976AE00608A95 /* Core */,
+				AC67101E0AA976AE00608A95 /* Tools */,
+			);
+			name = OpenMesh;
+			sourceTree = "<group>";
+		};
+		AC670FAC0AA9769000608A95 /* IsoEx */ = {
+			isa = PBXGroup;
+			children = (
+				AC67112E0AA979DA00608A95 /* Extractors */,
+				AC6711370AA979DA00608A95 /* Grids */,
+				AC67113F0AA979DA00608A95 /* Implicits */,
+				AC6711440AA979DA00608A95 /* Math */,
+			);
+			name = IsoEx;
+			sourceTree = "<group>";
+		};
+		AC670FAD0AA976AE00608A95 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FAF0AA976AE00608A95 /* Attributes */,
+				AC670FB20AA976AE00608A95 /* IO */,
+				AC670FE70AA976AE00608A95 /* Math */,
+				AC670FED0AA976AE00608A95 /* Mesh */,
+				AC6710090AA976AE00608A95 /* System */,
+				AC6710100AA976AE00608A95 /* Utils */,
+			);
+			name = Core;
+			path = ../src/OpenMesh/Core;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC670FAF0AA976AE00608A95 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FB00AA976AE00608A95 /* Attributes.hh */,
+				AC670FB10AA976AE00608A95 /* Status.hh */,
+			);
+			path = Attributes;
+			sourceTree = "<group>";
+		};
+		AC670FB20AA976AE00608A95 /* IO */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FB40AA976AE00608A95 /* BinaryHelper.cc */,
+				AC670FB50AA976AE00608A95 /* BinaryHelper.hh */,
+				AC670FB60AA976AE00608A95 /* exporter */,
+				AC670FBA0AA976AE00608A95 /* importer */,
+				AC670FBE0AA976AE00608A95 /* IOInstances.hh */,
+				AC670FBF0AA976AE00608A95 /* IOManager.cc */,
+				AC670FC00AA976AE00608A95 /* IOManager.hh */,
+				AC670FC10AA976AE00608A95 /* MeshIO.hh */,
+				AC670FC20AA976AE00608A95 /* OFFFormat.hh */,
+				AC670FC30AA976AE00608A95 /* OMFormat.cc */,
+				AC670FC40AA976AE00608A95 /* OMFormat.hh */,
+				AC670FC50AA976AE00608A95 /* Options.hh */,
+				AC670FC60AA976AE00608A95 /* reader */,
+				AC670FD20AA976AE00608A95 /* SR_binary.hh */,
+				AC670FD30AA976AE00608A95 /* SR_binary_spec.hh */,
+				AC670FD40AA976AE00608A95 /* SR_binary_vector_of_bool.inl */,
+				AC670FD50AA976AE00608A95 /* SR_binary_vector_of_fundamentals.inl */,
+				AC670FD60AA976AE00608A95 /* SR_binary_vector_of_string.inl */,
+				AC670FD70AA976AE00608A95 /* SR_rbo.hh */,
+				AC670FD80AA976AE00608A95 /* SR_store.hh */,
+				AC670FD90AA976AE00608A95 /* SR_types.hh */,
+				AC670FDA0AA976AE00608A95 /* StoreRestore.hh */,
+				AC670FDB0AA976AE00608A95 /* writer */,
+			);
+			path = IO;
+			sourceTree = "<group>";
+		};
+		AC670FB60AA976AE00608A95 /* exporter */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FB80AA976AE00608A95 /* BaseExporter.hh */,
+				AC670FB90AA976AE00608A95 /* ExporterT.hh */,
+			);
+			path = exporter;
+			sourceTree = "<group>";
+		};
+		AC670FBA0AA976AE00608A95 /* importer */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FBC0AA976AE00608A95 /* BaseImporter.hh */,
+				AC670FBD0AA976AE00608A95 /* ImporterT.hh */,
+			);
+			path = importer;
+			sourceTree = "<group>";
+		};
+		AC670FC60AA976AE00608A95 /* reader */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FC80AA976AE00608A95 /* BaseReader.cc */,
+				AC670FC90AA976AE00608A95 /* BaseReader.hh */,
+				AC670FCA0AA976AE00608A95 /* OBJReader.cc */,
+				AC670FCB0AA976AE00608A95 /* OBJReader.hh */,
+				AC670FCC0AA976AE00608A95 /* OFFReader.cc */,
+				AC670FCD0AA976AE00608A95 /* OFFReader.hh */,
+				AC670FCE0AA976AE00608A95 /* OMReader.cc */,
+				AC670FCF0AA976AE00608A95 /* OMReader.hh */,
+				AC670FD00AA976AE00608A95 /* STLReader.cc */,
+				AC670FD10AA976AE00608A95 /* STLReader.hh */,
+			);
+			path = reader;
+			sourceTree = "<group>";
+		};
+		AC670FDB0AA976AE00608A95 /* writer */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FDD0AA976AE00608A95 /* BaseWriter.cc */,
+				AC670FDE0AA976AE00608A95 /* BaseWriter.hh */,
+				AC670FDF0AA976AE00608A95 /* OBJWriter.cc */,
+				AC670FE00AA976AE00608A95 /* OBJWriter.hh */,
+				AC670FE10AA976AE00608A95 /* OFFWriter.cc */,
+				AC670FE20AA976AE00608A95 /* OFFWriter.hh */,
+				AC670FE30AA976AE00608A95 /* OMWriter.cc */,
+				AC670FE40AA976AE00608A95 /* OMWriter.hh */,
+				AC670FE50AA976AE00608A95 /* STLWriter.cc */,
+				AC670FE60AA976AE00608A95 /* STLWriter.hh */,
+			);
+			path = writer;
+			sourceTree = "<group>";
+		};
+		AC670FE70AA976AE00608A95 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FE90AA976AE00608A95 /* LoopSchemeMaskT.hh */,
+				AC670FEA0AA976AE00608A95 /* MathDefs.hh */,
+				AC670FEB0AA976AE00608A95 /* VectorT.hh */,
+				AC670FEC0AA976AE00608A95 /* VectorT_inc.hh */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
+		AC670FED0AA976AE00608A95 /* Mesh */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FEF0AA976AE00608A95 /* BaseMesh.hh */,
+				AC670FF00AA976AE00608A95 /* Iterators */,
+				AC670FF40AA976AE00608A95 /* Kernels */,
+				AC6710000AA976AE00608A95 /* PolyMeshT.cc */,
+				AC6710010AA976AE00608A95 /* PolyMeshT.hh */,
+				AC6710020AA976AE00608A95 /* PolyMeshT_assign.hh */,
+				AC6710030AA976AE00608A95 /* Traits.hh */,
+				AC6710040AA976AE00608A95 /* TriMeshT.cc */,
+				AC6710050AA976AE00608A95 /* TriMeshT.hh */,
+				AC6710060AA976AE00608A95 /* Types */,
+			);
+			path = Mesh;
+			sourceTree = "<group>";
+		};
+		AC670FF00AA976AE00608A95 /* Iterators */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FF20AA976AE00608A95 /* CirculatorsT.hh */,
+				AC670FF30AA976AE00608A95 /* IteratorsT.hh */,
+			);
+			path = Iterators;
+			sourceTree = "<group>";
+		};
+		AC670FF40AA976AE00608A95 /* Kernels */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FF60AA976AE00608A95 /* ArrayKernel */,
+				AC670FF90AA976AE00608A95 /* Common */,
+			);
+			path = Kernels;
+			sourceTree = "<group>";
+		};
+		AC670FF60AA976AE00608A95 /* ArrayKernel */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FF70AA976AE00608A95 /* ArrayItems.hh */,
+				AC670FF80AA976AE00608A95 /* ArrayKernelT.hh */,
+			);
+			path = ArrayKernel;
+			sourceTree = "<group>";
+		};
+		AC670FF90AA976AE00608A95 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FFB0AA976AE00608A95 /* AttribKernelT.hh */,
+				AC670FFC0AA976AE00608A95 /* BaseKernel.cc */,
+				AC670FFD0AA976AE00608A95 /* BaseKernel.hh */,
+				AC670FFE0AA976AE00608A95 /* FinalMeshItemsT.hh */,
+				AC670FFF0AA976AE00608A95 /* Handles.hh */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		AC6710060AA976AE00608A95 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710070AA976AE00608A95 /* PolyMesh_ArrayKernelT.hh */,
+				AC6710080AA976AE00608A95 /* TriMesh_ArrayKernelT.hh */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		AC6710090AA976AE00608A95 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				AC67100B0AA976AE00608A95 /* compiler.hh */,
+				AC67100C0AA976AE00608A95 /* config.hh */,
+				AC67100D0AA976AE00608A95 /* mostream.hh */,
+				AC67100E0AA976AE00608A95 /* omstream.cc */,
+				AC67100F0AA976AE00608A95 /* omstream.hh */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		AC6710100AA976AE00608A95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710120AA976AE00608A95 /* AutoPropertyHandleT.hh */,
+				AC6710130AA976AE00608A95 /* BaseProperty.cc */,
+				AC6710140AA976AE00608A95 /* color_cast.hh */,
+				AC6710150AA976AE00608A95 /* Endian.cc */,
+				AC6710160AA976AE00608A95 /* Endian.hh */,
+				AC6710170AA976AE00608A95 /* GenProg.hh */,
+				AC6710180AA976AE00608A95 /* Noncopyable.hh */,
+				AC6710190AA976AE00608A95 /* Property.hh */,
+				AC67101A0AA976AE00608A95 /* SingletonT.cc */,
+				AC67101B0AA976AE00608A95 /* SingletonT.hh */,
+				AC67101C0AA976AE00608A95 /* vector_cast.hh */,
+				AC67101D0AA976AE00608A95 /* vector_traits.hh */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AC67101E0AA976AE00608A95 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710200AA976AE00608A95 /* Decimater */,
+				AC67102D0AA976AE00608A95 /* Geometry */,
+				AC6710300AA976AE00608A95 /* Kernel_OSG */,
+				AC67103B0AA976AE00608A95 /* Smoother */,
+				AC6710430AA976AE00608A95 /* Subdivider */,
+				AC67105B0AA976AE00608A95 /* Utils */,
+				AC6710690AA976AE00608A95 /* VDPM */,
+			);
+			name = Tools;
+			path = ../src/OpenMesh/Tools;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6710200AA976AE00608A95 /* Decimater */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710220AA976AE00608A95 /* CollapseInfoT.hh */,
+				AC6710230AA976AE00608A95 /* DecimaterT.cc */,
+				AC6710240AA976AE00608A95 /* DecimaterT.hh */,
+				AC6710250AA976AE00608A95 /* ModBaseT.hh */,
+				AC6710260AA976AE00608A95 /* ModIndependentSetsT.hh */,
+				AC6710270AA976AE00608A95 /* ModNormalFlippingT.hh */,
+				AC6710280AA976AE00608A95 /* ModProgMeshT.cc */,
+				AC6710290AA976AE00608A95 /* ModProgMeshT.hh */,
+				AC67102A0AA976AE00608A95 /* ModQuadricT.cc */,
+				AC67102B0AA976AE00608A95 /* ModQuadricT.hh */,
+				AC67102C0AA976AE00608A95 /* ModRoundnessT.hh */,
+			);
+			path = Decimater;
+			sourceTree = "<group>";
+		};
+		AC67102D0AA976AE00608A95 /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				AC67102F0AA976AE00608A95 /* QuadricT.hh */,
+			);
+			path = Geometry;
+			sourceTree = "<group>";
+		};
+		AC6710300AA976AE00608A95 /* Kernel_OSG */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710320AA976AE00608A95 /* ArrayKernelT.hh */,
+				AC6710330AA976AE00608A95 /* AttribKernelT.hh */,
+				AC6710340AA976AE00608A95 /* bindT.hh */,
+				AC6710350AA976AE00608A95 /* color_cast.hh */,
+				AC6710360AA976AE00608A95 /* PropertyKernel.hh */,
+				AC6710370AA976AE00608A95 /* PropertyT.hh */,
+				AC6710380AA976AE00608A95 /* Traits.hh */,
+				AC6710390AA976AE00608A95 /* TriMesh_OSGArrayKernelT.hh */,
+				AC67103A0AA976AE00608A95 /* VectorAdapter.hh */,
+			);
+			path = Kernel_OSG;
+			sourceTree = "<group>";
+		};
+		AC67103B0AA976AE00608A95 /* Smoother */ = {
+			isa = PBXGroup;
+			children = (
+				AC67103C0AA976AE00608A95 /* JacobiLaplaceSmootherT.cc */,
+				AC67103D0AA976AE00608A95 /* JacobiLaplaceSmootherT.hh */,
+				AC67103E0AA976AE00608A95 /* LaplaceSmootherT.cc */,
+				AC67103F0AA976AE00608A95 /* LaplaceSmootherT.hh */,
+				AC6710400AA976AE00608A95 /* smooth_mesh.hh */,
+				AC6710410AA976AE00608A95 /* SmootherT.cc */,
+				AC6710420AA976AE00608A95 /* SmootherT.hh */,
+			);
+			path = Smoother;
+			sourceTree = "<group>";
+		};
+		AC6710430AA976AE00608A95 /* Subdivider */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710450AA976AE00608A95 /* Adaptive */,
+				AC67104F0AA976AE00608A95 /* Uniform */,
+			);
+			path = Subdivider;
+			sourceTree = "<group>";
+		};
+		AC6710450AA976AE00608A95 /* Adaptive */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710470AA976AE00608A95 /* Composite */,
+			);
+			path = Adaptive;
+			sourceTree = "<group>";
+		};
+		AC6710470AA976AE00608A95 /* Composite */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710490AA976AE00608A95 /* CompositeT.cc */,
+				AC67104A0AA976AE00608A95 /* CompositeT.hh */,
+				AC67104B0AA976AE00608A95 /* CompositeTraits.hh */,
+				AC67104C0AA976AE00608A95 /* RuleInterfaceT.hh */,
+				AC67104D0AA976AE00608A95 /* RulesT.cc */,
+				AC67104E0AA976AE00608A95 /* RulesT.hh */,
+			);
+			path = Composite;
+			sourceTree = "<group>";
+		};
+		AC67104F0AA976AE00608A95 /* Uniform */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710510AA976AE00608A95 /* Composite */,
+				AC6710560AA976AE00608A95 /* CompositeLoopT.hh */,
+				AC6710570AA976AE00608A95 /* CompositeSqrt3T.hh */,
+				AC6710580AA976AE00608A95 /* LoopT.hh */,
+				AC6710590AA976AE00608A95 /* Sqrt3T.hh */,
+				AC67105A0AA976AE00608A95 /* SubdividerT.hh */,
+			);
+			path = Uniform;
+			sourceTree = "<group>";
+		};
+		AC6710510AA976AE00608A95 /* Composite */ = {
+			isa = PBXGroup;
+			children = (
+				AC6710530AA976AE00608A95 /* CompositeT.cc */,
+				AC6710540AA976AE00608A95 /* CompositeT.hh */,
+				AC6710550AA976AE00608A95 /* CompositeTraits.hh */,
+			);
+			path = Composite;
+			sourceTree = "<group>";
+		};
+		AC67105B0AA976AE00608A95 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AC67105D0AA976AE00608A95 /* getopt.cc */,
+				AC67105E0AA976AE00608A95 /* getopt.h */,
+				AC67105F0AA976AE00608A95 /* GLConstAsString.hh */,
+				AC6710600AA976AE00608A95 /* HeapT.hh */,
+				AC6710610AA976AE00608A95 /* MeshCheckerT.cc */,
+				AC6710620AA976AE00608A95 /* MeshCheckerT.hh */,
+				AC6710630AA976AE00608A95 /* Progress.cc */,
+				AC6710640AA976AE00608A95 /* Progress.hh */,
+				AC6710650AA976AE00608A95 /* StripifierT.cc */,
+				AC6710660AA976AE00608A95 /* StripifierT.hh */,
+				AC6710670AA976AE00608A95 /* Timer.cc */,
+				AC6710680AA976AE00608A95 /* Timer.hh */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AC6710690AA976AE00608A95 /* VDPM */ = {
+			isa = PBXGroup;
+			children = (
+				AC67106B0AA976AE00608A95 /* MeshTraits.hh */,
+				AC67106C0AA976AE00608A95 /* Plane3d.hh */,
+				AC67106D0AA976AE00608A95 /* StreamingDef.hh */,
+				AC67106E0AA976AE00608A95 /* VFront.cc */,
+				AC67106F0AA976AE00608A95 /* VFront.hh */,
+				AC6710700AA976AE00608A95 /* VHierarchy.cc */,
+				AC6710710AA976AE00608A95 /* VHierarchy.hh */,
+				AC6710720AA976AE00608A95 /* VHierarchyNode.hh */,
+				AC6710730AA976AE00608A95 /* VHierarchyNodeIndex.cc */,
+				AC6710740AA976AE00608A95 /* VHierarchyNodeIndex.hh */,
+				AC6710750AA976AE00608A95 /* VHierarchyWindow.cc */,
+				AC6710760AA976AE00608A95 /* VHierarchyWindow.hh */,
+				AC6710770AA976AE00608A95 /* ViewingParameters.cc */,
+				AC6710780AA976AE00608A95 /* ViewingParameters.hh */,
+			);
+			path = VDPM;
+			sourceTree = "<group>";
+		};
+		AC67112E0AA979DA00608A95 /* Extractors */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711300AA979DA00608A95 /* Edge2VertexMapT.hh */,
+				AC6711310AA979DA00608A95 /* ExtendedMarchingCubesT.cc */,
+				AC6711320AA979DA00608A95 /* ExtendedMarchingCubesT.hh */,
+				AC6711330AA979DA00608A95 /* MarchingCubesT.cc */,
+				AC6711340AA979DA00608A95 /* MarchingCubesT.hh */,
+				AC6711350AA979DA00608A95 /* MCTables.cc */,
+				AC6711360AA979DA00608A95 /* MCTables.hh */,
+			);
+			name = Extractors;
+			path = ../src/IsoEx/Extractors;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711370AA979DA00608A95 /* Grids */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711390AA979DA00608A95 /* Grid.hh */,
+				AC67113A0AA979DA00608A95 /* ImplicitGrid.hh */,
+				AC67113B0AA979DA00608A95 /* RegularGrid.cc */,
+				AC67113C0AA979DA00608A95 /* RegularGrid.hh */,
+				AC67113D0AA979DA00608A95 /* ScalarGridT.cc */,
+				AC67113E0AA979DA00608A95 /* ScalarGridT.hh */,
+			);
+			name = Grids;
+			path = ../src/IsoEx/Grids;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC67113F0AA979DA00608A95 /* Implicits */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711410AA979DA00608A95 /* CSG.hh */,
+				AC6711420AA979DA00608A95 /* Implicit.hh */,
+				AC6711430AA979DA00608A95 /* ImplicitSphere.hh */,
+			);
+			name = Implicits;
+			path = ../src/IsoEx/Implicits;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711440AA979DA00608A95 /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711460AA979DA00608A95 /* MatrixT.hh */,
+				AC6711470AA979DA00608A95 /* svd.cc */,
+				AC6711480AA979DA00608A95 /* svd.hh */,
+			);
+			name = Math;
+			path = ../src/IsoEx/Math;
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711660AA97A7300608A95 /* CourseExamples */ = {
+			isa = PBXGroup;
+			children = (
+				AC67116A0AA97A9600608A95 /* 01-MeshViewer */,
+				AC6711750AA97A9600608A95 /* 02-CurvatureViewer */,
+				AC67117B0AA97A9600608A95 /* 03-Smoothing */,
+				AC6711810AA97A9600608A95 /* 04-Fairing */,
+				AC6711890AA97A9600608A95 /* 05-Parameterization */,
+				AC6711900AA97A9600608A95 /* 06-Decimation */,
+				AC6711950AA97A9600608A95 /* 07-ModelRepair */,
+				7930240C0C60C5EB00754C2B /* 08-Deformation */,
+			);
+			name = CourseExamples;
+			sourceTree = "<group>";
+		};
+		AC67116A0AA97A9600608A95 /* 01-MeshViewer */ = {
+			isa = PBXGroup;
+			children = (
+				AC67116D0AA97A9600608A95 /* gl.hh */,
+				AC67116E0AA97A9600608A95 /* GlutExaminer.cc */,
+				AC67116F0AA97A9600608A95 /* GlutExaminer.hh */,
+				AC6711700AA97A9600608A95 /* GlutViewer.cc */,
+				AC6711710AA97A9600608A95 /* GlutViewer.hh */,
+				AC6711720AA97A9600608A95 /* MeshViewer.cc */,
+				AC6711730AA97A9600608A95 /* MeshViewer.hh */,
+				AC6711740AA97A9600608A95 /* mview.cc */,
+			);
+			name = "01-MeshViewer";
+			path = "../src/CourseExamples/01-MeshViewer";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711750AA97A9600608A95 /* 02-CurvatureViewer */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711770AA97A9600608A95 /* CurvatureViewer.cc */,
+				AC6711780AA97A9600608A95 /* CurvatureViewer.hh */,
+				AC6711790AA97A9600608A95 /* curvview.cc */,
+			);
+			name = "02-CurvatureViewer";
+			path = "../src/CourseExamples/02-CurvatureViewer";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC67117B0AA97A9600608A95 /* 03-Smoothing */ = {
+			isa = PBXGroup;
+			children = (
+				AC67117E0AA97A9600608A95 /* smoother.cc */,
+				AC67117F0AA97A9600608A95 /* SmoothingViewer.cc */,
+				AC6711800AA97A9600608A95 /* SmoothingViewer.hh */,
+			);
+			name = "03-Smoothing";
+			path = "../src/CourseExamples/03-Smoothing";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711810AA97A9600608A95 /* 04-Fairing */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711840AA97A9600608A95 /* fairing.cc */,
+				AC6711850AA97A9600608A95 /* FairingViewer.cc */,
+				AC6711860AA97A9600608A95 /* FairingViewer.hh */,
+				AC6711870AA97A9600608A95 /* TaucsSolver.cc */,
+				AC6711880AA97A9600608A95 /* TaucsSolver.hh */,
+			);
+			name = "04-Fairing";
+			path = "../src/CourseExamples/04-Fairing";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711890AA97A9600608A95 /* 05-Parameterization */ = {
+			isa = PBXGroup;
+			children = (
+				AC67118D0AA97A9600608A95 /* param.cc */,
+				AC67118E0AA97A9600608A95 /* ParameterizationViewer.cc */,
+				AC67118F0AA97A9600608A95 /* ParameterizationViewer.hh */,
+			);
+			name = "05-Parameterization";
+			path = "../src/CourseExamples/05-Parameterization";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711900AA97A9600608A95 /* 06-Decimation */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711920AA97A9600608A95 /* deci.cc */,
+				AC6711940AA97A9600608A95 /* QuadricT.hh */,
+			);
+			name = "06-Decimation";
+			path = "../src/CourseExamples/06-Decimation";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711950AA97A9600608A95 /* 07-ModelRepair */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711970AA97A9600608A95 /* CutAndStitch */,
+				AC6711A30AA97A9600608A95 /* HoleFill */,
+				AC6711B00AA97A9600608A95 /* VolRepair */,
+			);
+			name = "07-ModelRepair";
+			path = "../src/CourseExamples/07-ModelRepair";
+			sourceTree = SOURCE_ROOT;
+		};
+		AC6711970AA97A9600608A95 /* CutAndStitch */ = {
+			isa = PBXGroup;
+			children = (
+				AC6711990AA97A9600608A95 /* cutandstitch.cc */,
+				AC67119B0AA97A9600608A95 /* CutAndStitcher.hh */,
+				AC6711A00AA97A9600608A95 /* OpenMeshUtils.hh */,
+			);
+			path = CutAndStitch;
+			sourceTree = "<group>";
+		};
+		AC6711A30AA97A9600608A95 /* HoleFill */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAE5540AA99E7F00E0BAA3 /* README */,
+				AC6711A80AA97A9600608A95 /* holefill.cc */,
+				AC6711AA0AA97A9600608A95 /* HoleFiller.cc */,
+				AC6711AB0AA97A9600608A95 /* HoleFiller.hh */,
+				AC6711AC0AA97A9600608A95 /* OpenMeshUtils.hh */,
+			);
+			path = HoleFill;
+			sourceTree = "<group>";
+		};
+		AC6711B00AA97A9600608A95 /* VolRepair */ = {
+			isa = PBXGroup;
+			children = (
+				ACDAE54F0AA99E4B00E0BAA3 /* README */,
+				AC6711B50AA97A9600608A95 /* DepthImage.cc */,
+				AC6711B60AA97A9600608A95 /* DepthImage.hh */,
+				AC6711B80AA97A9600608A95 /* Geometry.hh */,
+				AC6711BF0AA97A9600608A95 /* Tree.cc */,
+				AC6711C00AA97A9600608A95 /* Tree.hh */,
+				AC6711C10AA97A9600608A95 /* volrepair.cc */,
+			);
+			path = VolRepair;
+			sourceTree = "<group>";
+		};
+		ACDAE5660AA9A1D200E0BAA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACF5D5E90AA9FB4100ED7834 /* libf2c.a */,
+				ACF5D5EA0AA9FB4100ED7834 /* libmetis.a */,
+				ACF5D5EB0AA9FB4100ED7834 /* libtaucs.a */,
+				AC6711C60AA97AF800608A95 /* GLUT.framework */,
+				AC6711C30AA97AE700608A95 /* OpenGL.framework */,
+				ACDAE4830AA994FE00E0BAA3 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ACDAE5B10AA9A25A00E0BAA3 /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				AC670FAB0AA9768900608A95 /* OpenMesh */,
+				AC670FAC0AA9769000608A95 /* IsoEx */,
+				AC6711660AA97A7300608A95 /* CourseExamples */,
+			);
+			name = Code;
+			sourceTree = "<group>";
+		};
+		ACDAE5B20AA9A27000E0BAA3 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				AC6712320AA980D000608A95 /* MeshViewer-Info.plist */,
+				ACDAE4170AA986CD00E0BAA3 /* CurvatureViewer-Info.plist */,
+				ACDAE43D0AA9882F00E0BAA3 /* Smoothing-Info.plist */,
+				ACDAE45D0AA992C400E0BAA3 /* Fairing-Info.plist */,
+				ACDAE4A60AA9962400E0BAA3 /* Parameterization-Info.plist */,
+			);
+			name = plist;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		AC6711250AA979A400608A95 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC6711490AA979DA00608A95 /* Edge2VertexMapT.hh in Headers */,
+				AC67114B0AA979DA00608A95 /* ExtendedMarchingCubesT.hh in Headers */,
+				AC67114D0AA979DA00608A95 /* MarchingCubesT.hh in Headers */,
+				AC67114F0AA979DA00608A95 /* MCTables.hh in Headers */,
+				AC6711500AA979DA00608A95 /* Grid.hh in Headers */,
+				AC6711510AA979DA00608A95 /* ImplicitGrid.hh in Headers */,
+				AC6711530AA979DA00608A95 /* RegularGrid.hh in Headers */,
+				AC6711550AA979DA00608A95 /* ScalarGridT.hh in Headers */,
+				AC6711560AA979DA00608A95 /* CSG.hh in Headers */,
+				AC6711570AA979DA00608A95 /* Implicit.hh in Headers */,
+				AC6711580AA979DA00608A95 /* ImplicitSphere.hh in Headers */,
+				AC6711590AA979DA00608A95 /* MatrixT.hh in Headers */,
+				AC67115B0AA979DA00608A95 /* svd.hh in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		793023F60C60C51A00754C2B /* Deformation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 793023FA0C60C51B00754C2B /* Build configuration list for PBXNativeTarget "Deformation" */;
+			buildPhases = (
+				793023F30C60C51A00754C2B /* Resources */,
+				793023F40C60C51A00754C2B /* Sources */,
+				793023F50C60C51A00754C2B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				793023FE0C60C5A300754C2B /* PBXTargetDependency */,
+			);
+			name = Deformation;
+			productName = Deformation;
+			productReference = 793023F70C60C51A00754C2B /* Deformation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AC670E440AA975D200608A95 /* OpenMesh */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC670E470AA975D300608A95 /* Build configuration list for PBXNativeTarget "OpenMesh" */;
+			buildPhases = (
+				AC670E420AA975D200608A95 /* Sources */,
+				AC670E430AA975D200608A95 /* Frameworks */,
+			);
+			buildRules = (
+				AC67110F0AA9775100608A95 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = OpenMesh;
+			productName = OpenMesh;
+			productReference = AC670E450AA975D200608A95 /* libOpenMesh.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		AC6711280AA979A400608A95 /* IsoEx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC67112B0AA979D700608A95 /* Build configuration list for PBXNativeTarget "IsoEx" */;
+			buildPhases = (
+				AC6711250AA979A400608A95 /* Headers */,
+				AC6711260AA979A400608A95 /* Sources */,
+				AC6711270AA979A400608A95 /* Frameworks */,
+			);
+			buildRules = (
+				AC67112A0AA979A800608A95 /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = IsoEx;
+			productName = IsoEx;
+			productReference = AC6711290AA979A400608A95 /* libIsoEx.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		ACDAE3B20AA9835100E0BAA3 /* MeshViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE3BE0AA983B500E0BAA3 /* Build configuration list for PBXNativeTarget "MeshViewer" */;
+			buildPhases = (
+				ACDAE3AF0AA9835100E0BAA3 /* Resources */,
+				ACDAE3B00AA9835100E0BAA3 /* Sources */,
+				ACDAE3B10AA9835100E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE3BB0AA9837B00E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE3ED0AA984B200E0BAA3 /* PBXTargetDependency */,
+			);
+			name = MeshViewer;
+			productName = MeshViewer;
+			productReference = ACDAE3B30AA9835100E0BAA3 /* MeshViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACDAE4140AA986CD00E0BAA3 /* CurvatureViewer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE4180AA986CE00E0BAA3 /* Build configuration list for PBXNativeTarget "CurvatureViewer" */;
+			buildPhases = (
+				ACDAE4110AA986CD00E0BAA3 /* Resources */,
+				ACDAE4120AA986CD00E0BAA3 /* Sources */,
+				ACDAE4130AA986CD00E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE41D0AA986EF00E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE41C0AA986D200E0BAA3 /* PBXTargetDependency */,
+			);
+			name = CurvatureViewer;
+			productName = CurvatureViewer;
+			productReference = ACDAE4150AA986CD00E0BAA3 /* CurvatureViewer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACDAE43A0AA9882F00E0BAA3 /* Smoothing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE43E0AA9883000E0BAA3 /* Build configuration list for PBXNativeTarget "Smoothing" */;
+			buildPhases = (
+				ACDAE4370AA9882F00E0BAA3 /* Resources */,
+				ACDAE4380AA9882F00E0BAA3 /* Sources */,
+				ACDAE4390AA9882F00E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE4430AA9884000E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE4420AA9883300E0BAA3 /* PBXTargetDependency */,
+			);
+			name = Smoothing;
+			productName = Smoothing;
+			productReference = ACDAE43B0AA9882F00E0BAA3 /* Smoothing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACDAE45A0AA992C400E0BAA3 /* Fairing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE45E0AA992C500E0BAA3 /* Build configuration list for PBXNativeTarget "Fairing" */;
+			buildPhases = (
+				ACDAE4570AA992C400E0BAA3 /* Resources */,
+				ACDAE4580AA992C400E0BAA3 /* Sources */,
+				ACDAE4590AA992C400E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE4630AA992D700E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE4620AA992D400E0BAA3 /* PBXTargetDependency */,
+			);
+			name = Fairing;
+			productName = Fairing;
+			productReference = ACDAE45B0AA992C400E0BAA3 /* Fairing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACDAE4A30AA9962400E0BAA3 /* Parameterization */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE4A70AA9962500E0BAA3 /* Build configuration list for PBXNativeTarget "Parameterization" */;
+			buildPhases = (
+				ACDAE4A00AA9962400E0BAA3 /* Resources */,
+				ACDAE4A10AA9962400E0BAA3 /* Sources */,
+				ACDAE4A20AA9962400E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE4AC0AA9965300E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE4AB0AA9964800E0BAA3 /* PBXTargetDependency */,
+			);
+			name = Parameterization;
+			productName = Parameterization;
+			productReference = ACDAE4A40AA9962400E0BAA3 /* Parameterization.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACDAE4EF0AA998C700E0BAA3 /* Decimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE4FB0AA9992D00E0BAA3 /* Build configuration list for PBXNativeTarget "Decimation" */;
+			buildPhases = (
+				ACDAE4ED0AA998C700E0BAA3 /* Sources */,
+				ACDAE4EE0AA998C700E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE4F40AA998DF00E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE4F30AA998CE00E0BAA3 /* PBXTargetDependency */,
+			);
+			name = Decimation;
+			productName = Decimation;
+			productReference = ACDAE4F00AA998C700E0BAA3 /* Decimation */;
+			productType = "com.apple.product-type.tool";
+		};
+		ACDAE5020AA99A3600E0BAA3 /* Repair-CutAndStitch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE51D0AA99B0400E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-CutAndStitch" */;
+			buildPhases = (
+				ACDAE5000AA99A3600E0BAA3 /* Sources */,
+				ACDAE5010AA99A3600E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE5070AA99A4400E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE5060AA99A3C00E0BAA3 /* PBXTargetDependency */,
+			);
+			name = "Repair-CutAndStitch";
+			productName = "Repair-CutAndStitch";
+			productReference = ACDAE5030AA99A3600E0BAA3 /* Repair-CutAndStitch */;
+			productType = "com.apple.product-type.tool";
+		};
+		ACDAE5250AA99B2200E0BAA3 /* Repair-VolRepair */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE52D0AA99B4000E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-VolRepair" */;
+			buildPhases = (
+				ACDAE5230AA99B2200E0BAA3 /* Sources */,
+				ACDAE5240AA99B2200E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE5280AA99B2600E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE52A0AA99B3300E0BAA3 /* PBXTargetDependency */,
+				ACDAE52C0AA99B3300E0BAA3 /* PBXTargetDependency */,
+			);
+			name = "Repair-VolRepair";
+			productName = "Repair-VolRepair";
+			productReference = ACDAE5260AA99B2200E0BAA3 /* Repair-VolRepair */;
+			productType = "com.apple.product-type.tool";
+		};
+		ACDAE5320AA99B5400E0BAA3 /* Repair-HoleFill */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACDAE53E0AA99B9500E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-HoleFill" */;
+			buildPhases = (
+				ACDAE5300AA99B5400E0BAA3 /* Sources */,
+				ACDAE5310AA99B5400E0BAA3 /* Frameworks */,
+			);
+			buildRules = (
+				ACDAE5370AA99B5D00E0BAA3 /* PBXBuildRule */,
+			);
+			dependencies = (
+				ACDAE5360AA99B5A00E0BAA3 /* PBXTargetDependency */,
+			);
+			name = "Repair-HoleFill";
+			productName = "Repair-HoleFill";
+			productReference = ACDAE5330AA99B5400E0BAA3 /* Repair-HoleFill */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC670E330AA9759500608A95 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = AC670E340AA9759500608A95 /* Build configuration list for PBXProject "CourseExamples" */;
+			compatibilityVersion = "Xcode 2.4";
+			hasScannedForEncodings = 0;
+			mainGroup = AC670E310AA9759500608A95;
+			productRefGroup = AC670E460AA975D200608A95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC670E440AA975D200608A95 /* OpenMesh */,
+				AC6711280AA979A400608A95 /* IsoEx */,
+				ACDAE3B20AA9835100E0BAA3 /* MeshViewer */,
+				ACDAE4140AA986CD00E0BAA3 /* CurvatureViewer */,
+				ACDAE43A0AA9882F00E0BAA3 /* Smoothing */,
+				ACDAE45A0AA992C400E0BAA3 /* Fairing */,
+				ACDAE4A30AA9962400E0BAA3 /* Parameterization */,
+				ACDAE4EF0AA998C700E0BAA3 /* Decimation */,
+				ACDAE5020AA99A3600E0BAA3 /* Repair-CutAndStitch */,
+				ACDAE5320AA99B5400E0BAA3 /* Repair-HoleFill */,
+				ACDAE5250AA99B2200E0BAA3 /* Repair-VolRepair */,
+				793023F60C60C51A00754C2B /* Deformation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		793023F30C60C51A00754C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE3AF0AA9835100E0BAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4110AA986CD00E0BAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4370AA9882F00E0BAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4570AA992C400E0BAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4A00AA9962400E0BAA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		793023F40C60C51A00754C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7930245F0C60C62B00754C2B /* GlutViewer.cc in Sources */,
+				7930245E0C60C62B00754C2B /* GlutExaminer.cc in Sources */,
+				7930245D0C60C62B00754C2B /* CurvatureViewer.cc in Sources */,
+				793024600C60C62B00754C2B /* MeshViewer.cc in Sources */,
+				793024610C60C62B00754C2B /* SmoothingViewer.cc in Sources */,
+				793024620C60C62B00754C2B /* FairingViewer.cc in Sources */,
+				793024630C60C62B00754C2B /* TaucsSolver.cc in Sources */,
+				793024120C60C5EB00754C2B /* DeformationViewer.cc in Sources */,
+				793024110C60C5EB00754C2B /* deform.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC670E420AA975D200608A95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC67107B0AA976AE00608A95 /* BinaryHelper.cc in Sources */,
+				AC6710820AA976AE00608A95 /* IOManager.cc in Sources */,
+				AC6710860AA976AE00608A95 /* OMFormat.cc in Sources */,
+				AC6710890AA976AE00608A95 /* BaseReader.cc in Sources */,
+				AC67108B0AA976AE00608A95 /* OBJReader.cc in Sources */,
+				AC67108D0AA976AE00608A95 /* OFFReader.cc in Sources */,
+				AC67108F0AA976AE00608A95 /* OMReader.cc in Sources */,
+				AC6710910AA976AE00608A95 /* STLReader.cc in Sources */,
+				AC6710990AA976AE00608A95 /* BaseWriter.cc in Sources */,
+				AC67109B0AA976AE00608A95 /* OBJWriter.cc in Sources */,
+				AC67109D0AA976AE00608A95 /* OFFWriter.cc in Sources */,
+				AC67109F0AA976AE00608A95 /* OMWriter.cc in Sources */,
+				AC6710A10AA976AE00608A95 /* STLWriter.cc in Sources */,
+				AC6710AD0AA976AE00608A95 /* BaseKernel.cc in Sources */,
+				AC6710B10AA976AE00608A95 /* PolyMeshT.cc in Sources */,
+				AC6710B50AA976AE00608A95 /* TriMeshT.cc in Sources */,
+				AC6710BC0AA976AE00608A95 /* omstream.cc in Sources */,
+				AC6710BF0AA976AE00608A95 /* BaseProperty.cc in Sources */,
+				AC6710C10AA976AE00608A95 /* Endian.cc in Sources */,
+				AC6710C60AA976AE00608A95 /* SingletonT.cc in Sources */,
+				AC6710CB0AA976AE00608A95 /* DecimaterT.cc in Sources */,
+				AC6710D00AA976AE00608A95 /* ModProgMeshT.cc in Sources */,
+				AC6710D20AA976AE00608A95 /* ModQuadricT.cc in Sources */,
+				AC6710DF0AA976AE00608A95 /* JacobiLaplaceSmootherT.cc in Sources */,
+				AC6710E10AA976AE00608A95 /* LaplaceSmootherT.cc in Sources */,
+				AC6710E40AA976AE00608A95 /* SmootherT.cc in Sources */,
+				AC6710E60AA976AE00608A95 /* CompositeT.cc in Sources */,
+				AC6710EA0AA976AE00608A95 /* RulesT.cc in Sources */,
+				AC6710EC0AA976AE00608A95 /* CompositeT.cc in Sources */,
+				AC6710F40AA976AE00608A95 /* getopt.cc in Sources */,
+				AC6710F80AA976AE00608A95 /* MeshCheckerT.cc in Sources */,
+				AC6710FA0AA976AE00608A95 /* Progress.cc in Sources */,
+				AC6710FC0AA976AE00608A95 /* StripifierT.cc in Sources */,
+				AC6710FE0AA976AE00608A95 /* Timer.cc in Sources */,
+				AC6711030AA976AE00608A95 /* VFront.cc in Sources */,
+				AC6711050AA976AE00608A95 /* VHierarchy.cc in Sources */,
+				AC6711080AA976AE00608A95 /* VHierarchyNodeIndex.cc in Sources */,
+				AC67110A0AA976AE00608A95 /* VHierarchyWindow.cc in Sources */,
+				AC67110C0AA976AE00608A95 /* ViewingParameters.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC6711260AA979A400608A95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC67114A0AA979DA00608A95 /* ExtendedMarchingCubesT.cc in Sources */,
+				AC67114C0AA979DA00608A95 /* MarchingCubesT.cc in Sources */,
+				AC67114E0AA979DA00608A95 /* MCTables.cc in Sources */,
+				AC6711520AA979DA00608A95 /* RegularGrid.cc in Sources */,
+				AC6711540AA979DA00608A95 /* ScalarGridT.cc in Sources */,
+				AC67115A0AA979DA00608A95 /* svd.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE3B00AA9835100E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE3B50AA9836800E0BAA3 /* GlutExaminer.cc in Sources */,
+				ACDAE3B60AA9836800E0BAA3 /* GlutViewer.cc in Sources */,
+				ACDAE3B70AA9836800E0BAA3 /* MeshViewer.cc in Sources */,
+				ACDAE3B80AA9836800E0BAA3 /* mview.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4120AA986CD00E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4330AA9880100E0BAA3 /* GlutExaminer.cc in Sources */,
+				ACDAE4340AA9880100E0BAA3 /* GlutViewer.cc in Sources */,
+				ACDAE4350AA9880100E0BAA3 /* MeshViewer.cc in Sources */,
+				ACDAE4250AA9873F00E0BAA3 /* CurvatureViewer.cc in Sources */,
+				ACDAE4260AA9873F00E0BAA3 /* curvview.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4380AA9882F00E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4440AA9886B00E0BAA3 /* CurvatureViewer.cc in Sources */,
+				ACDAE4450AA9886B00E0BAA3 /* GlutExaminer.cc in Sources */,
+				ACDAE4460AA9886B00E0BAA3 /* GlutViewer.cc in Sources */,
+				ACDAE4470AA9886B00E0BAA3 /* MeshViewer.cc in Sources */,
+				ACDAE4490AA9888200E0BAA3 /* SmoothingViewer.cc in Sources */,
+				ACDAE4480AA9888200E0BAA3 /* smoother.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4580AA992C400E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4640AA9930B00E0BAA3 /* CurvatureViewer.cc in Sources */,
+				ACDAE4650AA9930B00E0BAA3 /* GlutExaminer.cc in Sources */,
+				ACDAE4660AA9930B00E0BAA3 /* GlutViewer.cc in Sources */,
+				ACDAE4670AA9930B00E0BAA3 /* MeshViewer.cc in Sources */,
+				ACDAE4680AA9930B00E0BAA3 /* SmoothingViewer.cc in Sources */,
+				ACDAE4730AA993AD00E0BAA3 /* FairingViewer.cc in Sources */,
+				ACDAE4740AA993AD00E0BAA3 /* TaucsSolver.cc in Sources */,
+				ACDAE4720AA993AD00E0BAA3 /* fairing.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4A10AA9962400E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4B60AA9968C00E0BAA3 /* CurvatureViewer.cc in Sources */,
+				ACDAE4B70AA9968C00E0BAA3 /* GlutExaminer.cc in Sources */,
+				ACDAE4B80AA9968C00E0BAA3 /* GlutViewer.cc in Sources */,
+				ACDAE4B90AA9968C00E0BAA3 /* MeshViewer.cc in Sources */,
+				ACDAE4BA0AA9968C00E0BAA3 /* SmoothingViewer.cc in Sources */,
+				ACDAE4BB0AA9968C00E0BAA3 /* FairingViewer.cc in Sources */,
+				ACDAE4BC0AA9968C00E0BAA3 /* TaucsSolver.cc in Sources */,
+				ACDAE4B20AA9967700E0BAA3 /* ParameterizationViewer.cc in Sources */,
+				ACDAE4B10AA9967700E0BAA3 /* param.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE4ED0AA998C700E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE4F50AA9990200E0BAA3 /* deci.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5000AA99A3600E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE50A0AA99A5D00E0BAA3 /* cutandstitch.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5230AA99B2200E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE5410AA99B9800E0BAA3 /* DepthImage.cc in Sources */,
+				ACDAE5420AA99B9800E0BAA3 /* Tree.cc in Sources */,
+				ACDAE5430AA99B9800E0BAA3 /* volrepair.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACDAE5300AA99B5400E0BAA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACDAE53A0AA99B7700E0BAA3 /* holefill.cc in Sources */,
+				ACDAE53B0AA99B7700E0BAA3 /* HoleFiller.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		793023FE0C60C5A300754C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = 793023FD0C60C5A300754C2B /* PBXContainerItemProxy */;
+		};
+		ACDAE3ED0AA984B200E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE3EC0AA984B200E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE41C0AA986D200E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE41B0AA986D200E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE4420AA9883300E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE4410AA9883300E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE4620AA992D400E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE4610AA992D400E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE4AB0AA9964800E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE4AA0AA9964800E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE4F30AA998CE00E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE4F20AA998CE00E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE5060AA99A3C00E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE5050AA99A3C00E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE52A0AA99B3300E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE5290AA99B3300E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE52C0AA99B3300E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC6711280AA979A400608A95 /* IsoEx */;
+			targetProxy = ACDAE52B0AA99B3300E0BAA3 /* PBXContainerItemProxy */;
+		};
+		ACDAE5360AA99B5A00E0BAA3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC670E440AA975D200608A95 /* OpenMesh */;
+			targetProxy = ACDAE5350AA99B5A00E0BAA3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		793023FB0C60C51B00754C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Deformation-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../lib/taucs-darwin/lib\"";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Deformation;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		793023FC0C60C51B00754C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Deformation-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../lib/taucs-darwin/lib\"";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Deformation;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		AC670E350AA9759500608A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ARCH_DARWIN,
+					INCLUDE_TEMPLATES,
+					DEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../src/",
+					"$(PROJECT_DIR)/../lib/taucs-darwin/include",
+				);
+			};
+			name = Debug;
+		};
+		AC670E360AA9759500608A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					ARCH_DARWIN,
+					INCLUDE_TEMPLATES,
+					NDEBUG,
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_UNROLL_LOOPS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../src/",
+					"$(PROJECT_DIR)/../lib/taucs-darwin/include",
+				);
+			};
+			name = Release;
+		};
+		AC670E480AA975D300608A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenMesh;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		AC670E490AA975D300608A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = OpenMesh;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		AC67112C0AA979D700608A95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = IsoEx;
+				ZERO_LINK = YES;
+			};
+			name = Debug;
+		};
+		AC67112D0AA979D700608A95 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				INSTALL_PATH = /usr/local/lib;
+				PREBINDING = NO;
+				PRODUCT_NAME = IsoEx;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE3BF0AA983B500E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "MeshViewer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = MeshViewer;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE3C00AA983B500E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "MeshViewer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = MeshViewer;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE4190AA986CE00E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "CurvatureViewer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = CurvatureViewer;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE41A0AA986CE00E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "CurvatureViewer-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = CurvatureViewer;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE43F0AA9883000E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Smoothing-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Smoothing;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE4400AA9883000E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Smoothing-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Smoothing;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE45F0AA992C500E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Fairing-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/../lib/taucs-darwin/lib",
+				);
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Fairing;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE4600AA992C500E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Fairing-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/../lib/taucs-darwin/lib",
+				);
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Fairing;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE4A80AA9962500E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Parameterization-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/../lib/taucs-darwin/lib",
+				);
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Parameterization;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE4A90AA9962500E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "Parameterization-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(LIBRARY_SEARCH_PATHS)",
+					"$(SRCROOT)/../lib/taucs-darwin/lib",
+				);
+				OTHER_LDFLAGS = "";
+				PREBINDING = NO;
+				PRODUCT_NAME = Parameterization;
+				WRAPPER_EXTENSION = app;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE4FC0AA9992D00E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = Decimation;
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE4FD0AA9992D00E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = Decimation;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE51E0AA99B0400E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-CutAndStitch";
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE51F0AA99B0400E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-CutAndStitch";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE52E0AA99B4000E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-VolRepair";
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE52F0AA99B4000E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-VolRepair";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		ACDAE53F0AA99B9500E0BAA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-HoleFill";
+				ZERO_LINK = NO;
+			};
+			name = Debug;
+		};
+		ACDAE5400AA99B9500E0BAA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G5;
+				INSTALL_PATH = "$(HOME)/bin";
+				PREBINDING = NO;
+				PRODUCT_NAME = "Repair-HoleFill";
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		793023FA0C60C51B00754C2B /* Build configuration list for PBXNativeTarget "Deformation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				793023FB0C60C51B00754C2B /* Debug */,
+				793023FC0C60C51B00754C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC670E340AA9759500608A95 /* Build configuration list for PBXProject "CourseExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC670E350AA9759500608A95 /* Debug */,
+				AC670E360AA9759500608A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC670E470AA975D300608A95 /* Build configuration list for PBXNativeTarget "OpenMesh" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC670E480AA975D300608A95 /* Debug */,
+				AC670E490AA975D300608A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC67112B0AA979D700608A95 /* Build configuration list for PBXNativeTarget "IsoEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC67112C0AA979D700608A95 /* Debug */,
+				AC67112D0AA979D700608A95 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE3BE0AA983B500E0BAA3 /* Build configuration list for PBXNativeTarget "MeshViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE3BF0AA983B500E0BAA3 /* Debug */,
+				ACDAE3C00AA983B500E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE4180AA986CE00E0BAA3 /* Build configuration list for PBXNativeTarget "CurvatureViewer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE4190AA986CE00E0BAA3 /* Debug */,
+				ACDAE41A0AA986CE00E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE43E0AA9883000E0BAA3 /* Build configuration list for PBXNativeTarget "Smoothing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE43F0AA9883000E0BAA3 /* Debug */,
+				ACDAE4400AA9883000E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE45E0AA992C500E0BAA3 /* Build configuration list for PBXNativeTarget "Fairing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE45F0AA992C500E0BAA3 /* Debug */,
+				ACDAE4600AA992C500E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE4A70AA9962500E0BAA3 /* Build configuration list for PBXNativeTarget "Parameterization" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE4A80AA9962500E0BAA3 /* Debug */,
+				ACDAE4A90AA9962500E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE4FB0AA9992D00E0BAA3 /* Build configuration list for PBXNativeTarget "Decimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE4FC0AA9992D00E0BAA3 /* Debug */,
+				ACDAE4FD0AA9992D00E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE51D0AA99B0400E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-CutAndStitch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE51E0AA99B0400E0BAA3 /* Debug */,
+				ACDAE51F0AA99B0400E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE52D0AA99B4000E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-VolRepair" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE52E0AA99B4000E0BAA3 /* Debug */,
+				ACDAE52F0AA99B4000E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACDAE53E0AA99B9500E0BAA3 /* Build configuration list for PBXNativeTarget "Repair-HoleFill" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACDAE53F0AA99B9500E0BAA3 /* Debug */,
+				ACDAE5400AA99B9500E0BAA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC670E330AA9759500608A95 /* Project object */;
+}

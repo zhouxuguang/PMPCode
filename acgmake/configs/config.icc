@@ -1,0 +1,68 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+## SETTINGS ###################################################################
+
+
+CXX_COMP        := icc
+
+CXX_SYSLIBS     := -lpthread
+CXX_DEFS        += -DINCLUDE_TEMPLATES
+#CXX_CFLAGS      := 
+
+CXX_DEFS_DBG    := -DDEBUG
+CXX_CFLAGS_DBG  := -O0 -g
+CXX_LDFLAGS_DBG := 
+
+CXX_DEFS_PRF    := -DNDEBUG
+CXX_CFLAGS_PRF  := -pg
+CXX_LDFLAGS_PRF := -pg
+
+CXX_DEFS_OPT    := -DNDEBUG
+CXX_CFLAGS_OPT  := -O1
+CXX_LDFLAGS_OPT := 
+
+CXX_DEFS_MAX    := -DNDEBUG
+CXX_CFLAGS_MAX  := -O3 -tpp7 -ip 
+CXX_LDFLAGS_MAX := 
+
+ifeq ($(LIB_TYPE),static)
+  CXX_CFLAGS  += -DACGMAKE_STATIC_BUILD
+endif
+
+
+## FUNCTIONS ##################################################################
+
+
+define cxx-compile
+$(HIDE) $(CXX_COMP) -MD $(CXX_CFLAGS) -o $(2) -c $(cur-dir)/$(1)
+endef
+
+
+define cxx-compile-exe
+$(HIDE) $(CXX_COMP) $(1) $(CXX_LDFLAGS) -o $(2)
+endef
+
+
+define cxx-shared-lib
+$(HIDE) $(CXX_COMP) -shared $(CXX_LDFLAGS_LIB) -o $(2) $(1)
+endef
+
+
+define cxx-static-lib
+$(HIDE) ar rf $(2) $(1)
+endef
+
+
+CXX_RPATH    := -Qoption,ld,-rpath,
+
+cxx-add-ipath += $(addprefix -I,$(1))
+cxx-add-lpath += $(addprefix -L,$(1))
+cxx-add-rpath += $(addprefix $(CXX_RPATH),$(1))
+cxx-add-libs  += $(addprefix -l,$(1))

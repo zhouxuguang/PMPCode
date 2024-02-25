@@ -1,0 +1,58 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+
+TEX_LATEX       ?= pdflatex
+TEX_BIBTEX      ?= bibtex
+
+
+###  TARGETS  #################################################################
+
+
+tex-src-files  := $(wildcard *.tex)
+tex-sty-files  := $(wildcard *.sty)
+tex-main-files := $(shell grep -l "\documentclass" *.tex 2> /dev/null)
+tex-pdf-files  := $(patsubst %.tex,%.pdf,$(tex-main-files))
+tex-bib-files  := $(wildcard *.bib)
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+.PHONY: pdf
+
+pdflatex-clean: 
+	rm -f $(tex-dvi-files) $(tex-ps-files) $(tex-pdf-files)
+	rm -f *.aux *.lbl *.bbl *.blg *.brf *.log *.out *.toc \
+              *.idx *.ilg *.ind head.tmp body.tmp
+
+pdflatex-build: pdf
+
+pdf: $(tex-pdf-files)
+
+$(tex-pdf-files): $(tex-src-files) $(tex-bib-files) $(tex-sty-files)
+
+
+###  IMPLICIT RULES  ##########################################################
+
+
+%.pdf: %.tex
+	$(TEX_LATEX) $< 
+	if [ -e ${<:.tex=.aux} ] ; then \
+	   $(TEX_BIBTEX) ${<:.tex=} ; \
+	   $(TEX_LATEX) $< ; \
+	fi
+	$(TEX_LATEX) $< 
+
+
+#	$(HIDE) if [ `grep -c "Rerun to get cross-references" ${<:.tex=.log}` != "0" ] ; then \
+#	   $(TEX_LATEX) $< ; \
+#	fi

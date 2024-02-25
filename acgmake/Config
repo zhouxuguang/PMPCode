@@ -1,0 +1,92 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+
+#==  Functions  ===============================================================
+
+
+# find subdirs (containing Makefiles)
+find-subdirs = $(shell $(ACGMAKE)/bin/listdirs.sh)
+
+# build abs dir name, e.g. dir-name(/a/b/c/, ../../b) = /a/b)
+dir-name = $(shell cd "$(1)"; cd "$(2)"; pwd)
+
+# convert to uppercase
+uppercase = $(shell echo $(1) | tr '[:lower:]' '[:upper:]')
+
+# convert to lowercase
+lowercase = $(shell echo $(1) | tr '[:upper:]' '[:lower:]')
+
+
+
+
+#==  Macro Definitions  =======================================================
+
+
+cur-dir          := $(shell $(ACGMAKE)/bin/current-dir.sh)
+
+proj-dir         := $(shell $(ACGMAKE)/bin/find-proj-dir.sh)
+
+ifndef proj-dir
+   proj-dir      := $(cur-dir)
+endif
+
+top-dir          := $(call dir-name,$(proj-dir),"..")
+
+
+
+
+#==  Config Files  ============================================================
+
+
+
+# global settings
+config_files += $(ACGMAKE)/configs/config.$(OS)
+include  $(ACGMAKE)/configs/config.$(OS)
+
+config_files += $(ACGMAKE)/configs/config.$(DOMAIN)
+-include $(ACGMAKE)/configs/config.$(DOMAIN)
+
+config_files += $(ACGMAKE)/configs/config.$(HOST)
+-include $(ACGMAKE)/configs/config.$(HOST)
+
+
+# user settings
+config_files += $(HOME)/.acgmake/config.$(OS)
+-include $(HOME)/.acgmake/config.$(OS)
+
+config_files += $(HOME)/.acgmake/config.$(DOMAIN)
+-include $(HOME)/.acgmake/config.$(DOMAIN)
+
+config_files += $(HOME)/.acgmake/config.$(HOST)
+-include $(HOME)/.acgmake/config.$(HOST)
+
+
+# load compiler specific settings
+config_files += $(ACGMAKE)/configs/config.$(COMP)
+include  $(ACGMAKE)/configs/config.$(COMP)
+
+config_files += $(HOME)/.acgmake/config.$(COMP)
+-include $(HOME)/.acgmake/config.$(COMP)
+
+
+# load package specifications
+config_files += $(ACGMAKE)/configs/config.packages
+include  $(ACGMAKE)/configs/config.packages
+
+config_files += $(HOME)/.acgmake/config.packages
+-include $(HOME)/.acgmake/config.packages
+
+
+#==  Project Specific Config Files  ===========================================
+
+
+-include $(proj-dir)/ACGMakefile.proj
+-include $(proj-dir)/ACGMakefile.priv
+

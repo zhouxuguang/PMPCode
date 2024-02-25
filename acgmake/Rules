@@ -1,0 +1,106 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+#==  Clear Implicit Rules  ====================================================
+
+
+.SUFFIXES:
+
+
+#==  Build Rule  ==============================================================
+
+
+.PHONY: build subdir-build local-build
+
+build: subdir-build local-build
+
+subdir-build:
+ifneq ($(SUBDIRS),)
+	@for dir in $(SUBDIRS); do \
+           if [ -f $$dir/ACGMakefile ] ; then \
+              $(MAKE) -C $$dir -f ACGMakefile build || exit 1; \
+           fi; \
+        done
+endif
+
+local-build:
+ifneq ($(MODULES),)
+	@test -d $(build-dir) || mkdir -p $(build-dir)
+	@$(addprefix $(MAKE) $(JOBS) -f ACGMakefile --no-print-directory , \
+                     $(addsuffix -build&&,$(MODULES))) \
+	   echo
+	@rmdir $(build-dir) 2> /dev/null || true
+endif
+
+
+
+#==  Clean Rule  ==============================================================
+
+
+.PHONY: clean subdir-clean local-clean
+
+clean: subdir-clean local-clean
+
+subdir-clean:
+
+ifneq ($(SUBDIRS),)
+	@for dir in $(SUBDIRS); do \
+           if [ -f $$dir/ACGMakefile ] ; then \
+              $(MAKE) -C $$dir -f ACGMakefile clean || exit 1; \
+           fi; \
+        done
+endif
+
+local-clean: $(addsuffix -clean, $(MODULES))
+	@ echo ; echo "Removing $(build-dir)"
+	$(HIDE) rm -rf $(build-dir)
+
+allclean:
+	$(HIDE) rm -rf `find . -type d -name "*_dbg" -o -name "*_prf" -o -name "*_opt" -o -name "*_max"`
+
+
+#==  Sysinfo Ruls =============================================================
+
+
+.PHONY: sysinfo
+
+sysinfo:
+	@echo
+	@echo "--------------------------------------------------------------"
+	@echo "  acgmake version" `cat $(ACGMAKE)/VERSION`
+	@echo "  (C)opyright 2001-2003 Computer Graphics Group, RWTH Aachen  "
+	@echo "--------------------------------------------------------------"
+	@echo
+	@echo "System information: "
+	@echo "Operating system (OS)   =  $(OS)"
+	@echo "Host name (HOST)        =  $(HOST)"
+	@echo "Domain name (DOMAIN)    =  $(DOMAIN)"
+	@echo "Architecture (ARCH)     =  $(ARCH)"
+	@echo "Lib linking (LIB_TYPE)  =  $(LIB_TYPE)"
+	@echo "Compiler (COMP)         =  $(COMP)"
+	@echo
+	@echo "Config files: "
+	@for cf in $(config_files); do   \
+	    if [ -e $$cf ] ; then        \
+               echo -n "  (+) ";         \
+            else                         \
+               echo -n "  (-) ";         \
+            fi;                          \
+	    echo $$cf;                   \
+	done
+	@echo
+
+
+
+#==  Module Rules  ============================================================
+
+
+ifneq ($(MODULES),)
+  include  $(addprefix $(ACGMAKE)/modules/,$(MODULES))
+endif

@@ -1,0 +1,830 @@
+//-----------------------------------------------------------------------------
+
+
+/** \mainpage The compile tool \c acgmake
+
+The tool \c acgmake provides an easy way to compile large projects
+consisting of several source code trees and using additional 3rd
+party libraries by just \b one \c acgmake command.
+
+\li \ref features
+\li \ref installation
+\li \ref usage
+\li \ref modules
+\li \ref acknowledgements
+\li \ref history
+
+\c acgmake was developed at the 
+<A HREF="http://www.rwth-graphics.de">Computer Graphics Group</A>
+of the RWTH Aachen, for contact mail to botsch@cs.rwth-aachen.de.
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page features Features
+
+The \c acgmake tool provides the following features:
+
+<ul>
+
+<li> Recursively compile a whole source code tree with one command. For each
+     directory a shared library is generated. You can easily
+     share code/libs of several directories of your project.
+</li>
+
+<li> Different functionality is provided by different modules: 
+     <ul>
+     <li> C++ compilation, 
+     <li> Full Qt support: designer tool \c uic and signal/slot preprocessor 
+          \c moc.
+     <li> Latex support: automatically deals with latex, bibtex, dvips, ps2pdf.
+     <li> Doxygen support (of course, see this document).
+     </ul>
+</li>
+
+
+<li> You do not have to specify source or target files or which files contain 
+     a \c main() function and will therefore lead to an executable. This
+     information is found automatically.
+</li>
+
+<li> You do not have to care about include paths, linking paths or library
+     names. Just tell acgmake: "I wan't to use Qt and OpenGL".
+</li>
+
+<li> Switch compilation modes (like debug, optimized, profile version) or
+     linking modes (shared or static) by command line parameters. 
+</li>
+
+<li> Switch tools/compilers by one command line parameter. 
+</li>
+
+<li> All resulting object files and executables are packed in so-called
+     build-directories depending on operating system and compilation modes. 
+     Hence you can compile your projects on different operating systems 
+     simultaneously or keep debug and release version at the same time.
+</li>
+
+<li> No fancy system requirements: based on GNU \c make and \c bash only.
+</li>
+
+<li> Since \c acgmake is based on GNU \c make the makefile syntax stays
+     the same. Users familiar with GNU make will not have to learn a new
+     syntax.
+</li>
+
+<li> Highly customizable: new functionality can be added by providing
+     additional packages and modules.
+</li>
+
+</ul>
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page installation Installation
+
+\section sec_requirements Requirements
+
+The \c acgmake tools has rather mild system requirements. All you 
+need is:
+
+\li a reasonable up-to-date version of GNU \c make,
+\li a \c bash shell.
+
+On all current Linux systems these requirements are automatically
+fulfilled. On some other Unixes (like e.g. IRIX) you may have to
+install GNU \c make since by default another \c make is installed.
+
+
+<br><br>
+
+
+\section sec_installation Installation
+
+Just unpack the archive, and include the directory \c ./acgmake/bin to
+your \c PATH variable, or place a link to \c ./acgmake/bin/acgmake in
+a directory listed in the \c PATH variable. \c acgmake sets it's
+necessary parameters (it's location, location of configuration files)
+on it's own.  It will set the variable \c ACGMAKE, which points to the
+directory where acgmake has been installed, e.g. \c $ACGMAKE/bin/
+holds the script \c acgmake.
+
+\c acgmake will look for configuration files in the default configuration
+directory \c $(ACGMAKE)/configs, and for user defined configurations in
+\c ~/.acgmake/.
+
+
+<br><br>
+
+
+\section sec_configuration Configuration
+
+Whenever you invoke \c acgmake it determines operating system (\c OS),
+host name (\c HOST), domain name (\c DOMAIN), and compiler (\c COMP)
+and reads the following configuration files (in this order):
+
+\li \c $(ACGMAKE)/configs/config.$(OS)
+\li \c $(ACGMAKE)/configs/config.$(DOMAIN)
+\li \c $(ACGMAKE)/configs/config.$(HOST)
+\li \c ~/.acgmake/config.$(OS)
+\li \c ~/.acgmake/config.$(DOMAIN)
+\li \c ~/.acgmake/config.$(HOST)
+\li \c $(ACGMAKE)/configs/config.$(COMP)
+\li \c ~/.acgmake//config.$(COMP)
+\li \c $(ACGMAKE)/configs/config.packages
+\li \c ~/.acgmake//config.packages
+
+<br>
+
+Here only the files \c config.$(OS) and \c config.$(COMP) must exists,
+the other files are optional. If they are provided the domain
+configuration overrides the \c OS settings, the \c HOST settings in
+turn override the \c DOMAIN settings and so on. In which of these
+files you provide what kind of settings is up to you, but there are
+useful default settings that you can base your configuration files on.
+
+You can see a list of configuration files that acgmake tries to read
+by typing <tt> acgmake sysinfo </tt>. The \c + and \c - signs indicate
+whether a configuration file has been found or not.
+
+There are two prinicipal components of configuration: \em module and
+\em package configuration. The configuration of the different modules
+will be described in the section on modules (see section \ref
+modules). The package configuration will be explained in the rest of
+this section.
+
+Packages are nothing more than 3rd party libraries that are to be used
+for your compilation. When using such a lib you have to 
+\li add the directory containing its header files to the \em include \em path,
+\li add the directory containing its libraries to the \em lib \em path,
+\li use the \em libraries at linking time.
+
+In order to enable \c acgmake to automatically add these options to
+the compiler and linker calls, you have to specify these three options
+for each package you want to use. The syntax is quite simple: to
+configure a package that the users will refer to by the name \c MyPckg
+you have to specify the following variables (note the "uppercasified"
+package name).
+
+\code
+# config for package MyPckg
+
+MYPCKG_CFLAGS := -Dsomething
+MYPCKG_INCDIR := /opt/my_pckg/include
+MYPCKG_LIBDIR := /opt/my_pckg/lib
+MYPCKG_LIBS   := mypckg mypckg_util
+\endcode
+
+When using \c MyPckg for compilation \c acgmake will add 
+
+\li <tt> -Dsomething            </tt>
+\li <tt> -I/opt/my_pckg/include </tt>
+\li <tt> -L/opt/my_pckg/lib     </tt>
+\li <tt> -lmypckg -lmypckg_util </tt>
+
+to the compiler or linker calls, respectively.
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page usage Usage
+
+When invoked, \c acgmake recursively traverses a whole subtree of
+dirctories, starting at the current one. Each directory containing an
+\c ACGMakefile will be processed.
+
+\c acgmake assumes that the current directory is part of a larger
+source code tree and tries to find the top-level directory of that
+project by going up the hierarchy until a file \c ACGMakefile.proj is
+found. If this file is found it will be included, so you can place
+additional project-specific configuration there. Additionally the
+include and library paths is extended by the parent directory of the
+project directory. E.g. if you have a directory structure like this
+
+\code
+projects/
+|-- proj_1
+|   |-- ACGMakefile
+|   |-- ACGMakefile.proj
+|   |-- code
+....
+|-- proj_2
+|   |-- ACGMakefile
+|   |-- ACGMakefile.proj
+|   |-- code
+...
+\endcode
+
+and you call \c acgmake from the \c projects/proj_1/code/ directory, 
+\c acgmake will find \c projects/proj_1/ as the project top-level
+directory and add \c projects/ to your include and lib paths. This means
+you can include files like
+
+\code
+#include <proj_1/some_dir/some_file.hh>
+#include <proj_2/some_other_dir/some_other_file.hh>
+\endcode
+
+and use code/libs from other directories like explained below.
+
+\attention This nice functionality requires that you place a (possibly
+empty) file named \c ACGMakefile.proj in the top-level directory of
+your projects.
+
+The make-files named \c ACGMakefile control what to do for these
+directories (e.g. what modules to apply, see \ref modules), the
+command line options tell \c acgmake how to do it. E.g., the module \c
+cxx used for \c C++ code generation will build a library from all the
+\c *.cc files for each directory, files containing a \c main()
+function will be detected, compiled, and linked to applications.
+
+
+<br><br>
+
+
+\subsection subsec_command_line Command Line Options
+
+Usually you call \c acgmake with a list of \em options and a list of
+\em targets. The options controll the code compilation process as well
+as the linking behaviour. The targets tell \c acgmake what to do, the 
+options tell how to do it.
+
+The options controlling the \c C / \c C++ code compilation are:
+\li \c -dbg: Compile w/o optimization and generate debug information (default).
+\li \c -prf: Compile w/o optimization and generate profiling information.
+\li \c -opt: Turn off debugging, turn on optimization.
+\li \c -max: Use maximum available optimization.
+\li \c -comp=<compiler>: Use a specific compiler. Causes the file 
+    \c $(ACGMAKE)/configs/config.$(COMP) to be included. You can
+    specify compiler specific settings there.
+
+The type of library/executable generation can be set by:
+\li \c -shared: Build and use a \em shared library for each processed 
+                directory (default).
+\li \c -static: Build and use a \em static library for each processed 
+                directory. The system libs will still be linked shared.
+\li \c -allstatic: Like \c -static, but now system libs are also linked 
+                   statically, i.e. a completely static bindary is build.
+
+Output options:
+\li \c -debug: Since version 1.1, acgmake hides the command lines it triggers.
+               You can show these lines using the \c debug option.
+
+Other options:
+\li \c -j: This will cause make to run several compilation jobs at once.
+\li \c -j<n>:  This will cause make to run <n> compilation jobs at once.
+\li \c -dist:  Distributed compiling using distcc, implies \c -j.
+\li \c -relink: Forces the relinking of executables, even if dependencies will
+                not require it. This is usefull when linking static libraries,
+                since they are not dealt with by dependencies.
+
+Supported targets are:
+\li \c build: Recursively do the work for all directories containing an 
+              \c ACGMakefile.
+\li \c local-build: Same as \c build, but only for the current directory.
+\li \c clean: Recursively clean up everything created by \c acgmake.
+\li \c local-clean: Same as above, only for the current directory.
+\li \c sysinfo: Print some system information.
+
+
+<br><br>
+
+
+\subsection subsec_makefile_syntax Makefile Syntax
+
+In each directory tp be processed \c acgmake will look for a file
+named \c ACGMakefile. The syntax will be plain GNU make syntax. A
+typical makefile looks like this.
+
+\code
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Config
+#==============================================================================
+
+
+SUBDIRS = $(call find-subdirs)
+
+PACKAGES := qt glut opengl x11 math
+
+PROJ_LIBS = OpenMesh ACG/Scenegraph
+
+MODULES := uic moc cxx
+
+
+#==  SYSTEM PART -- DON'T TOUCH  ==============================================
+include $(ACGMAKE)/Rules
+#==============================================================================
+\endcode
+
+
+As you see you have to specify only four parameters:
+
+\li \c SUBDIRS specifies in what sub-directories to proceed. May be a
+       space-separated list of directories or (the default) value
+       <tt>$(call find-subdirs)</tt>. This function call returns all
+       sub-directories containing a \c Makefile.
+
+\li \c PACKAGES tells \c acgmake what 3rd party libraries you want to use
+       for compiling the current directory. In the above example we need
+       OpenGL, the GL utility library \c glut, Trolltech's Qt and some
+       functions from the math library.
+      
+\li \c PROJ_LIBS: As \c acgmake recursively traverses your source tree it
+       creates a (shared or static) library for each directory. You can
+       use these libraries in the current directory by naming the corresponding
+       directories (relative to the top-level directory). In the example we
+       want to use the \c OpenMesh library and the \c Scenegraph library of 
+       the ACG project.
+
+\li \c MODULES: This space-separated list specifies what modules to use 
+       for the actual compilation. These modules will be applied in
+       the order they are given. In the example the Qt tool \c uic generates
+       C++ header and implementation files from Qt designer files first,
+       the Qt preprocessor \c moc is applied in the second step. After that
+       the \c cxx modules does the C++ compilation.
+
+
+\attention For the variables PACKAGES, PROJ_LIBS and MODULES the order
+is important. While the order in wich modules are to apply is quite
+obvious, a wring order of packages and libraries can lead to undefined
+symbols during linking. If one package/library depends on one another, the
+other should be given later in the string, like "glut opengl" instead of
+"opengl glut". This may only lead to errors when you compile static libs 
+using the \c -static command line option.
+
+In addition any internal (module specific) variables can be
+overridden. For example if you have specific options for a certain
+compiler or operating system, you could do something like this:
+
+\code
+
+ifeq ($(CXX_COMP),g++)
+  CXX_DEFS += -ftemplate-depth-100
+endif 
+
+ifeq ($(OS),Linux)
+  Some Linux specific stuff
+endif
+
+\endcode
+
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page modules List of Modules
+
+This section lists all available modules and explains their usage as well as
+their configuration options. The corresponding configuration variables can
+be set in one of the config files explained in \ref sec_configuration.
+
+All of these settings can be specified/overridden in your projects
+ACGMakefiles. This is usefull for the modules doxygen and latex, where
+the corresponding settings depend more on your project than on your 
+local installation.
+
+
+<br><br>
+
+\section sec_cxx cxx
+
+The module \c cxx is used to compile a directory containing C++
+source. It examines all C++ source files and filters out the files
+containing a \c main() function. All other files are linked together
+to a library that can later be reused from other directories sharing
+code with the current one. All the \c main() files are compiled to
+executables having the same name, but w/o the extension.
+
+The cxx module has become somewhat non-trivial. it heavily depends on
+the configuration files of the different compilers. Therefore you
+should just use the configuration file provided for the supported
+compliers and modify them to meet your needs.
+
+Some variables that you might have to change are:
+<table>
+<tr><td> \c CXX_SRC_EXT  </td><td> Extension of source files (*.cc) </td></tr>
+<tr><td> \c CXX_HDR_EXT  </td><td> Extension of header files (*.hh) </td></tr>
+<tr><td> \c CXX_COMP     </td><td> The C++ compiler </td></tr>
+</table>
+
+See the config files for their default settings.
+
+
+<br><br>
+\section sec_cxxlib cxxlib
+
+The modules \c cxxlib is almost the same as module \c cxx.  The only
+difference is that is generates a shared/static library for the whole
+project. In order to use this feature use module \c cxxlib instead of
+\c cxx for \b all directories in your source code tree. This module uses
+the same settings/variables as the module \c cxx.
+
+For versions 1.1.4 and later you can define the variable \c CXXLIB_BUILD_DIR
+in the \c ACGMakefile of a specific directory to force the module cxxlib to 
+build a library for the directory subtree starting at this point.
+
+<br><br>
+\section sec_ui uic
+
+The module \c uic processes all Qt designer files (\c *.ui) and
+generates the corresponding header (\c *.hh or CXX_HDR_EXT) and 
+implementation (\c *.cc or CXX_SRC_EXT) files. 
+
+This module provides the following configuration variables:
+<table>
+<tr><td> \c UIC </td><td> The \c uic command </td></tr>
+</table>
+
+
+
+<br><br>
+\section sec_moc moc
+
+This module automatically finds all C++ header files (determined by
+CXX_HDR_EXT extension) defining Qt widgets that use the Qt signal/slot
+mechanism and runs the Qt proprocessor \c moc on them. This will
+generate a file \c xzy.moc.cc from the header \c xyz.hh (or again,
+the extension defined by CXX_SRC_EXT and CXX_HDR_EXT).
+
+This module provides the following configuration variables:
+<table>
+<tr><td> \c MOC </td><td> The \c moc command </td></tr>
+</table>
+
+
+
+<br><br>
+\section sec_latex latex
+
+The \c latex module can be used to generate \c dvi, \c ps, and \c pdf
+output from a set of \c tex documents. The \em main tex files are
+automatically detected by grepping the string "\documentclass" in your
+\c *.tex files (so you can savely split your document to different tex
+files). Additionally \c latex is run twice in order to take ensure
+correct references and citations. By setting the \c TEX_USE_BIBTEX
+variable you can also invoke \c bibtex.
+
+This module provides three new targets you can create:
+\li <tt> acgmake dvi </tt> generates a \c dvi files for each main tex file.
+\li <tt> acgmake ps </tt> generates the corresponding postscript files by
+    calling \c dvips.
+\li <tt> acgmake pdf </tt> converts the postscript files to \c pdf files using
+    \c ps2pdf.
+
+This module provides the following configuration variables:
+
+<table>
+<tr>
+    <td> \c TEX_LATEX </td>
+    <td> The \c latex command </td>
+</tr>
+<tr>
+    <td> \c TEX_BIBTEX </td>
+    <td> The \c bibtex command </td>
+</tr>
+<tr>
+    <td> \c TEX_DVIPS </td>
+    <td> The \c dvips command </td>
+</tr>
+<tr>
+    <td> \c TEX_PS2PDF </td>
+    <td> The \c ps2pdf command </td>
+</tr>
+<tr>
+    <td> \c TEX_USE_BIBTEX </td>
+    <td> If this variable is defined, \c bibtex is used </td>
+</tr>
+<tr>
+    <td> \c TEX_PAPER_TYPE </td>
+    <td> Can be used to set the paper size/type and may be 
+         one of <tt>letter, legal, ledger, a4, a3</tt> </td>
+</tr>
+</table>
+
+<br><br>
+\section sec_doxygen doxygen
+
+Doxygen is a \em very nice tool for generating online or printed
+documentation for large software projects quite easily. E.g. this
+document has been generated using doxygen. This module is a wrapper
+that creates the doxygen config file and runs doxygen on the whole
+project directory. Most settings are just the correspoding doxygen
+settings, so refer to the doxygen documentation for a more detailed
+description.
+
+This module provides the following configuration variables:
+
+<table>
+<tr><td> \c DOXYGEN </td><td> The \c doxygen command </td></tr>
+<tr><td> \c DOXY_FILE_PATTERNS </td><td> Files to consider (e.g. *.cc) </td></tr>
+<tr><td> \c DOXY_EXCLUDE_DIRS </td><td> Directories to ignore </td></tr>
+<tr><td> \c DOXY_EXCLUDE_PATTERNS </td><td> Files/dirs to ignore </td></tr>
+<tr><td> \c DOXY_EXAMPLE_PATH </td><td> Directories containing examples</td></tr>
+<tr><td> \c DOXY_EXAMPLE_PATTERNS </td><td>Pattern for these exampeles </td></tr>
+<tr><td> \c DOXY_GENERATE_HTML </td><td> YES/NO </td></tr>
+<tr><td> \c DOXY_GENERATE_LATEX </td><td> YES/NO  </td></tr>
+<tr><td> \c DOXY_GENERATE_RTF </td><td> YES/NO </td></tr>
+<tr><td> \c DOXY_GENERATE_MAN </td><td> YES/NO </td></tr>
+
+<tr><td> \c DOXY_SETTINGS </td><td> Further settings that will be
+appended to the doxyfile </td></tr>
+
+</table>
+
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page acknowledgements Acknowledgements
+
+\c acgmake was heavily inspired by the \c tmk tool of Hartmut
+Schirmacher, Max-Planck-Institute for Computer Science in
+Saarbruecken. tmk's main feature (and problem) is that it is based
+completely on TCL. Therefore the makefile syntax as well as the syntax
+of the configuration and module files is based on TCL, too. This can
+be a problem for people that do not know TCL (like me).
+
+Since everybody developing on Unix systems should have seen a GNU Makefile
+before I based \c acgmake on GNU \c make and \c bash only.
+
+**/
+
+
+//-----------------------------------------------------------------------------
+
+
+/** \page history Version History
+
+<table>
+
+<tr><td><b> 1.2 </b></td><td><ul>
+
+<li> 
+  Added support for cxx plugins.
+</li>
+
+<li> 
+  Added support for MacOS X aka Darwin.
+</li>
+
+<li> 
+  Added support for MS Visual C++ under Cygwin.
+</li>
+
+<li> 
+  Added support for MPI package.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.8</b></td><td><ul>
+
+<li> 
+  Added Debian support.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.7</b></td><td><ul>
+
+<li> 
+  When generating shared libs, these are also linked against specified libs.
+</li>
+
+<li> 
+  Added distributed compiling using \c distcc.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.6</b></td><td><ul>
+
+<li> 
+  Module \c latex has improved bibtex support and added index support.
+</li>
+
+<li> 
+  The modules \cg compiles program written in nVidia's Cg.
+</li>
+
+<li> 
+  Shared libs are linked against other shared libs they depend on.  
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.5</b></td><td><ul>
+
+<li> 
+  Compilation now uses full absolute instead of relative path of source
+  file. This enables kdevelop to trace errors in the compilation.
+</li>
+
+<li> 
+  Parallel compilation now optionally accepts a number of processes to start.
+</li>
+
+<li> 
+  Module \c uic now compiles/embeds images used in the Qt-designer.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.4</b></td><td><ul>
+
+<li> 
+  Module \c cxxlib can now be forced to recursively build a library in
+  a specific directory by defining the variable \c CXXLIB_BUILD_LIB in
+  the corresponding \c ACGMakefile. The default behaviour is to build
+  the library just in the topmost directory.
+</li>
+
+<li> 
+  Added command line options \c -allstatic and \c -relink.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.3</b></td><td><ul>
+
+<li> 
+  Bug fixed: dependencies did not work correctly for gcc when not 
+  using \c *.cc as source file extension.
+</li>
+
+<li> 
+  Changed name of static libs from \c libxyz.a to \c libxyz_static.a. Now 
+  static libraries can be used (-static) even when the dynamic version exists.
+  Up to now the linker has chosen the dynamic one in case both version
+  existed.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.2</b></td><td><ul>
+
+<li> 
+  Added \c -j switch to do several jobs in parallel.
+</li>
+
+<li> 
+  Added \c allclean target for deleting builds of all platforms.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1.1 </b></td><td><ul>
+
+<li> 
+  Bug fix: changed function \c find-subdirs to work on SuSE8.1 as well.
+</li>
+
+<li> 
+  Bug fix: changed module \c moc to work with GNU make 3.80.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.1 </b></td><td><ul>
+
+<li> 
+  Changed directory \c config to \c configs in order to avoid case 
+  insensitivity problems under Windows and cygwin.
+</li>
+
+<li> 
+  Dropped support for module c, i.e. C instead of C++ compilation.
+  If someone really needs it, mail me and I will include it again.
+</li>
+
+<li> 
+  Included \c ACGMAKE_STATIC_BUILD flag when \c -static is given on
+  command line.  
+</li>
+
+<li> 
+  Fixed a bug regarding dependency files and the cxxlib module.
+</li>
+
+</ul></td></tr>
+
+
+
+<tr><td><b> 1.0.5 </b></td><td><ul>
+
+<li> 
+Script acgmake did not export ACGMAKE env var and did not pass 
+define ACGMAKE to gmake explicitly. On some systems, e.g. Cygwin, 
+SuSE 7.3 the script did not find it's configuration files.
+</li>
+
+<li>
+Cygwin support added. Using cygwin requires the user to rename the 
+configuration directory config to config_cygwin!
+</li>
+
+</ul></td></tr>
+
+
+
+<tr><td><b> 1.0.4 </b></td><td><ul>
+
+<li> 
+ACGMAKE env var has not to be set. Will be found automatically.
+Patterns for C++ sources and headers can be given.
+</li>
+
+</ul></td></tr>
+
+
+
+<tr><td><b> 1.0.3 </b></td><td><ul>
+
+<li> 
+Fixed dependency bug. Local files have been re-built if modification
+date of the build-directory was more recent.
+</li>
+
+<li>
+Changed module \c uic's \c clean to avoid empty 'rm -f' calls.
+</li>
+
+</ul></td></tr>
+
+
+
+<tr><td><b> 1.0.2 </b></td><td><ul>
+
+<li> 
+Module moc: *.moc.cc files are placed in build directory.
+</li>
+
+<li> 
+Module cxx, cxxlib: looking for *.cc files also in build directory.
+</li>
+
+<li> 
+Read config files also from $HOME/.acgmake/
+</li>
+
+<li> 
+Local build-directory is only created if necessary
+</li>
+
+<li> 
+The cxxlib module generates object files named *.lib.o, that
+avoids conflicts with the cxx module.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.0.1 </b></td><td><ul>
+
+<li> 
+Added CFLAGS for 3rd party libs.
+</li>
+
+</ul></td></tr>
+
+
+<tr><td><b> 1.0 </b></td><td><ul>
+
+<li> 
+Initial release.
+</li>
+
+</ul></td></tr>
+
+
+</table>
+
+**/
+
+
+//-----------------------------------------------------------------------------

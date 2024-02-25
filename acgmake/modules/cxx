@@ -1,0 +1,61 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+cxx-target := CXX
+include  $(ACGMAKE)/modules/cxx_include
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+cxx-clean: 
+
+cxx-build: $(cxx-lib) $(cxx-exes)
+
+
+### build the library
+
+ifdef cxx-lib
+$(cxx-lib): $(cxx-lib-objs)
+	@ echo ; echo "Build library  $@"
+ifeq ($(LIB_TYPE),shared)
+	$(call cxx-shared-lib,$(cxx-lib-objs),$@)
+else
+	$(call cxx-static-lib,$(cxx-lib-objs),$@)
+endif
+endif
+
+
+### build the executables
+
+
+ifneq ($(cxx-exes),)
+
+# if relink is forced by command line option, do it...
+ifdef RELINK_EXES
+.PHONY: $(cxx-exes)
+endif
+
+$(cxx-exes): $(cxx-lib) $(cxx-exe-objs)
+	@ echo ; echo "Build executable  $<  ->  $@"
+	$(call cxx-compile-exe,$(addsuffix $(CXX_OBJ_EXT),$@),$@)
+ifeq ($(CODE_LEVEL),max)
+	$(HIDE) strip $@
+endif
+ifeq ($(OS),Darwin)
+	@ echo "Create application $@.app"
+	$(HIDE) test -d $(build-dir)/`basename $@`.app/Contents/MacOS/ || \
+          mkdir -p $(build-dir)/`basename $@`.app/Contents/MacOS/
+	$(HIDE) mv $@ $(build-dir)/`basename $@`.app/Contents/MacOS/
+	$(HIDE) touch $@
+endif
+
+endif

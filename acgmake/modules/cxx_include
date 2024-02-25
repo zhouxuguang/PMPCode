@@ -1,0 +1,215 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+ifndef cxx-target
+  $(error cxx-target not configured)
+endif
+
+# default file extensions
+CXX_SRC_EXT         ?= .cc
+CXX_HDR_EXT         ?= .hh
+CXX_OBJ_EXT         ?= .o
+CXX_SHARED_LIB_EXT  ?= .so
+CXX_STATIC_LIB_EXT  ?= .a
+CXX_LIB_PREFIX      ?= lib
+
+ifeq ($(cxx-target),CXX_LIB)
+  CXX_OBJ_EXT := .lib$(CXX_OBJ_EXT)
+endif
+
+build-dir := $(ARCH)_$(COMP)_$(CODE_LEVEL)
+
+
+###  FUNCTIONS  ###############################################################
+
+
+# proj-lib: build name from path
+ifeq ($(LIB_TYPE),shared)
+  cxx-proj-lib-name = $(subst /,_,$(1))
+else
+  cxx-proj-lib-name = $(subst /,_,$(1))_static
+endif
+
+
+# find all source files containing main()
+cxx-exe-pattern := "\<main *("
+cxx-find-execs = $(patsubst %$(CXX_SRC_EXT),%,\
+                   $(shell grep -l $(cxx-exe-pattern) *$(CXX_SRC_EXT) \
+                     2> /dev/null))
+
+
+
+###  TARGETS  #################################################################
+
+
+# src files containing main()
+cxx-exes        := $(addprefix $(build-dir)/,$(call cxx-find-execs))
+cxx-exe-objs    := $(addsuffix $(CXX_OBJ_EXT),$(cxx-exes))
+
+
+# current dir's lib
+cxx-lib-objs    := $(addprefix $(build-dir)/,$(wildcard *$(CXX_SRC_EXT)))
+cxx-lib-objs    += $(wildcard $(build-dir)/*$(CXX_SRC_EXT))
+cxx-lib-objs    := $(patsubst %$(CXX_SRC_EXT),%$(CXX_OBJ_EXT),$(cxx-lib-objs))
+cxx-lib-objs    := $(filter-out $(cxx-exe-objs),$(cxx-lib-objs))
+
+
+# CXX: get name for curdir's lib
+ifeq ($(cxx-target),CXX)
+  ifneq ($(cxx-lib-objs),)
+    cxx-cur-dir-rel := $(subst $(top-dir)/,,$(cur-dir))
+    cxx-cur-lib     := $(call cxx-proj-lib-name,$(cxx-cur-dir-rel))
+    ifeq ($(LIB_TYPE),shared)
+      cxx-lib := $(build-dir)/$(CXX_LIB_PREFIX)$(cxx-cur-lib)$(CXX_SHARED_LIB_EXT)
+    else
+      cxx-lib := $(build-dir)/$(CXX_LIB_PREFIX)$(cxx-cur-lib)$(CXX_STATIC_LIB_EXT)
+    endif
+  endif
+endif
+
+
+# CXX_LIB: get name of plugin
+ifeq ($(cxx-target),CXX_LIB)
+
+  ifeq ($(cur-dir),$(proj-dir))
+    CXXLIB_BUILD_LIB := yes
+  endif
+
+  ifdef CXXLIB_BUILD_LIB
+    cxxlib-objs := $(shell find . -name "*$(CXX_OBJ_EXT)" | grep "/$(build-dir)/")
+    ifneq ($(cxxlib-objs),)
+      cxx-cur-dir-rel := $(subst $(top-dir)/,,$(cur-dir))
+      cxx-lib := $(call cxx-proj-lib-name,$(cxx-cur-dir-rel))
+
+      ifeq ($(LIB_TYPE),shared)
+        cxx-lib := $(build-dir)/$(CXX_LIB_PREFIX)$(cxx-lib)$(CXX_SHARED_LIB_EXT)
+      else
+        cxx-lib := $(build-dir)/$(CXX_LIB_PREFIX)$(cxx-lib)$(CXX_STATIC_LIB_EXT)
+      endif
+    endif
+  endif
+
+endif
+
+
+# CXX_PLUGIN: get name of plugin
+ifeq ($(cxx-target),CXX_PLUGIN)
+  ifneq ($(cxx-lib-objs),)
+    CXX_PLUGIN_NAME ?= $(notdir $(cur-dir))
+    cxx-lib := $(build-dir)/$(CXX_PLUGIN_NAME)$(CXX_SHARED_LIB_EXT)
+  endif
+endif
+
+
+
+###  BUILD INC AND LIBPATH  ###################################################
+
+
+cxx-cflags  :=
+cxx-incpath := 
+cxx-libpath := 
+cxx-rpath   :=
+cxx-ldflags :=
+cxx-libs    :=
+
+
+# top level dir
+cxx-incpath += $(call cxx-add-ipath, $(top-dir))
+
+
+# proj libs
+ifneq ($(PROJ_LIBS),)
+  cxx-libpath += $(foreach lib, $(PROJ_LIBS),\
+                   $(call cxx-add-lpath,$(top-dir)/$(lib)/$(build-dir)))
+  cxx-rpath   += $(foreach lib, $(PROJ_LIBS),\
+                   $(call cxx-add-rpath,$(top-dir)/$(lib)/$(build-dir)))
+  cxx-libs    += $(foreach lib, $(PROJ_LIBS),\
+                   $(call cxx-add-libs,$(call cxx-proj-lib-name,$(lib))))
+endif
+
+
+# packages
+ifneq ($(PACKAGES),)
+  cxx-cflags  += $(foreach pckg, $(PACKAGES),\
+	           $($(call uppercase,$(pckg))_CFLAGS))
+  cxx-incpath += $(foreach pckg, $(PACKAGES),\
+	           $(call cxx-add-ipath,$($(call uppercase,$(pckg))_INCDIR)))
+  cxx-libpath += $(foreach pckg, $(PACKAGES),\
+	           $(call cxx-add-lpath,$($(call uppercase,$(pckg))_LIBDIR)))
+  cxx-rpath   += $(foreach pckg, $(PACKAGES),\
+	           $(call cxx-add-rpath,$($(call uppercase,$(pckg))_LIBDIR)))
+  cxx-ldflags += $(foreach pckg, $(PACKAGES),\
+	           $($(call uppercase,$(pckg))_LDFLAGS))
+  cxx-libs    += $(foreach pckg, $(PACKAGES),\
+	           $(call cxx-add-libs,$($(call uppercase,$(pckg))_LIBS)))
+endif
+
+
+CXX_DEFS    += $(CXX_DEFS_$(call uppercase,$(CODE_LEVEL)))
+CXX_CFLAGS  += $(CXX_CFLAGS_$(call uppercase,$(CODE_LEVEL)))
+CXX_LDFLAGS += $(CXX_LDFLAGS_$(call uppercase,$(CODE_LEVEL)))
+CXX_CFLAGS  += $(CXX_DEFS)
+CXX_CFLAGS  += $(cxx-cflags)
+CXX_CFLAGS  += $(cxx-incpath)
+
+ifeq ($(LIB_TYPE),allstatic)
+  cxx-rpath :=
+endif
+
+CXX_LDFLAGS_LIB := $(CXX_LDFLAGS)
+CXX_LDFLAGS_LIB += $(cxx-libpath)
+CXX_LDFLAGS_LIB += $(cxx-rpath)
+CXX_LDFLAGS_LIB += $(cxx-libs)
+CXX_LDFLAGS_LIB += $(cxx-ldflags)
+CXX_LDFLAGS_LIB += $(CXX_SYSLIBS)
+
+
+# current dir's lib
+ifdef cxx-cur-lib
+  cxx-libpath := $(call cxx-add-lpath,$(cur-dir)/$(build-dir)) $(cxx-libpath) 
+  cxx-rpath   := $(call cxx-add-rpath,$(cur-dir)/$(build-dir)) $(cxx-rpath)   
+  cxx-libs    := $(call cxx-add-libs,$(cxx-cur-lib))           $(cxx-libs)
+endif
+
+ifeq ($(LIB_TYPE),allstatic)
+  cxx-rpath :=
+endif
+
+CXX_LDFLAGS += $(cxx-libpath)
+CXX_LDFLAGS += $(cxx-rpath)
+CXX_LDFLAGS += $(cxx-libs)
+CXX_LDFLAGS += $(cxx-ldflags)
+CXX_LDFLAGS += $(CXX_SYSLIBS)
+
+
+
+###  IMPLICIT RULES  ##########################################################
+
+
+# search for source file also in build-dir
+vpath %$(CXX_SRC_EXT) $(build-dir)
+
+$(build-dir)/%$(CXX_OBJ_EXT) : %$(CXX_SRC_EXT)
+	@ echo ; echo "Compile  $<  ->  $@"
+	$(call cxx-compile,$<,$@)
+
+
+
+###  DEPENDENCIES  ############################################################
+
+
+ifneq ($(cxx-exe-objs),)
+  -include $(cxx-exe-objs:$(CXX_OBJ_EXT)=.d)
+endif
+
+ifneq ($(cxx-lib-objs),)
+  -include $(cxx-lib-objs:$(CXX_OBJ_EXT)=.d)
+endif

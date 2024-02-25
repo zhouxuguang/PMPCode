@@ -1,0 +1,45 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+COMP ?= mscc8
+
+CXX_OBJ_EXT         := .obj
+CXX_SHARED_LIB_EXT  := .dll
+CXX_STATIC_LIB_EXT  := .lib
+CXX_LIB_PREFIX      :=
+
+
+#=============================================================================#
+
+
+CYGWIN_QTDIR     := C:/Qt/3.2.1NonCommercial
+CYGWIN_GLDIR     := C:/ACG/OpenGL
+CYGWIN_DRIVEROOT := C:/cygwin
+
+QT_CFLAGS := -DQT_CLEAN_NAMESPACE
+QT_INCDIR := $(CYGWIN_QTDIR)/include
+QT_LIBDIR := $(CYGWIN_QTDIR)/lib
+QT_LIBS   := qt-mtnc321 qtmain qui
+MOC       := $(CYGWIN_QTDIR)/bin/moc
+UIC       := $(CYGWIN_QTDIR)/bin/uic
+
+OPENGL_INCDIR := $(CYGWIN_GLDIR)/include
+OPENGL_LIBDIR := $(CYGWIN_GLDIR)/lib
+OPENGL_LIBS   := GlU32 OpenGL32
+
+GLUT_INCDIR := $(CYGWIN_GLDIR)/include
+GLUT_LIBDIR := $(CYGWIN_GLDIR)/lib
+GLUT_LIBS   := glut32
+
+GLEW_INCDIR := $(CYGWIN_GLDIR)/include
+GLEW_LIBDIR := $(CYGWIN_GLDIR)/lib
+GLEW_LIBS   := glew32
+
+
+#=============================================================================#

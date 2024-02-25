@@ -1,0 +1,35 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+cxx-target := CXX_LIB
+include  $(ACGMAKE)/modules/cxx_include
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+.PHONY: cxxlib-clean cxxlib-build
+
+cxxlib-clean: 
+
+cxxlib-build: cxx-lib-objs $(cxx-lib)
+
+cxx-lib-objs: $(cxx-lib-objs)
+
+ifdef cxx-lib
+$(cxx-lib): $(cxxlib-objs)
+	@echo ; echo "Building global library  ->  $@" ; echo
+ifeq ($(LIB_TYPE),shared)
+	$(call cxx-shared-lib,$(cxxlib-objs),$@)
+else
+	$(call cxx-static-lib,$(cxxlib-objs),$@)
+endif
+endif

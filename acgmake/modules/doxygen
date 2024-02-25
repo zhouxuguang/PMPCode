@@ -1,0 +1,103 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+
+DOXYGEN ?= doxygen
+
+build-dir := $(ARCH)
+
+
+###  DOXY SETTINGS  ###########################################################
+
+
+doxyfile  :=  $(build-dir)/doxyfile
+
+DOXY_FILE_PATTERNS    ?=  *.docu *$(CXX_SRC_EXT) *$(CXX_HDR_EXT)
+
+DOXY_EXCLUDE_DIRS     ?= 
+DOXY_EXCLUDE_PATTERNS ?= CVS $(build-dir)
+
+DOXY_EXAMPLE_PATH     ?= 
+DOXY_EXAMPLE_PATTERNS ?= *$(CXX_SRC_EXT) *$(CXX_HDR_EXT)
+
+DOXY_GENERATE_HTML    ?=  YES
+DOXY_GENERATE_LATEX   ?=  NO
+DOXY_GENERATE_RTF     ?=  NO
+DOXY_GENERATE_MAN     ?=  NO
+
+DOXY_ACG_STYLE        ?=  NO
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+.PHONY: doxygen-clean doxygen-build doxy-config
+
+doxygen-clean:
+	rm -rf html man rtf latex
+
+doxygen-build: doxy-config
+	$(HIDE) echo "Building documentation"
+	$(HIDE) $(DOXYGEN) $(doxyfile)
+ifeq ($(DOXY_ACG_STYLE),YES)
+	$(HIDE) test -d html && cp $(ACGMAKE)/data/acg_icon.gif html/
+endif
+
+trgt := >> $(doxyfile)
+
+doxy-config:
+	$(HIDE) echo "Building config file $(doxyfile)"
+
+	$(HIDE) $(DOXYGEN) -g $(doxyfile) > /dev/null ; \
+          [ -s $(doxigen-config) ] || exit 1
+
+	$(HIDE) echo -e "\n\n###  ACGmake configured part\n\n" $(trgt)
+
+	$(HIDE) echo "INPUT = $(proj-dir)" $(trgt)
+	$(HIDE) echo "STRIP_FROM_PATH = $(proj-dir)" $(trgt)
+	$(HIDE) echo "RECURSIVE = YES" $(trgt)
+
+	$(HIDE) echo "QUIET = YES" $(trgt)
+
+	$(HIDE) echo "PROJECT_NAME = $(DOXY_PROJECT_NAME)" $(trgt)
+
+	$(HIDE) echo "MACRO_EXPANSION = YES" $(trgt)
+	$(HIDE) echo "EXPAND_ONLY_PREDEF = NO" $(trgt)
+	$(HIDE) echo "PREDEFINED = DOXYGEN $(DOXY_MACROS)" $(trgt)
+
+	$(HIDE) echo "HIDE_UNDOC_MEMBERS   = YES" $(trgt)
+	$(HIDE) echo "HIDE_UNDOC_CLASSES   = YES" $(trgt)
+	$(HIDE) echo "DISTRIBUTE_GROUP_DOC = YES" $(trgt)
+	$(HIDE) echo "JAVADOC_AUTOBRIEF    = YES" $(trgt)
+	$(HIDE) echo "INTERNAL_DOCS        = YES" $(trgt)
+
+	$(HIDE) echo "FILE_PATTERNS  = $(DOXY_FILE_PATTERNS)" $(trgt)
+	$(HIDE) echo "EXCLUDE = $(DOXY_EXCLUDE_DIRS)" $(trgt)
+	$(HIDE) echo "EXCLUDE_PATTERNS = $(DOXY_EXCLUDE_PATTERNS)" $(trgt)
+	$(HIDE) echo "EXAMPLE_PATH = $(DOXY_EXAMPLE_PATH)" $(trgt)
+	$(HIDE) echo "EXAMPLE_PATTERNS = $(DOXY_EXAMPLE_PATTERNS)" $(trgt)
+
+	$(HIDE) test ! -e $(cur-dir)/images || \
+           echo "IMAGE_PATH = $(cur-dir)/images" $(trgt)
+
+	$(HIDE) echo "GENERATE_HTML  = $(DOXY_GENERATE_HTML)"  $(trgt)
+	$(HIDE) echo "GENERATE_LATEX = $(DOXY_GENERATE_LATEX)" $(trgt)
+	$(HIDE) echo "GENERATE_RTF   = $(DOXY_GENERATE_RTF)"   $(trgt)
+	$(HIDE) echo "GENERATE_MAN   = $(DOXY_GENERATE_MAN)"   $(trgt)
+	
+ifneq ($(DOXY_SETTINGS),)
+	$(HIDE) for I in $(DOXY_SETTINGS) ; do echo $$I $(trgt) ; done
+endif
+ifeq ($(DOXY_ACG_STYLE),YES)
+	$(HIDE) echo "HTML_STYLESHEET = $(ACGMAKE)/data/acg_style.css" $(trgt)
+	$(HIDE) echo "HTML_FOOTER   = $(ACGMAKE)/data/acg_footer.html" $(trgt)
+endif
+

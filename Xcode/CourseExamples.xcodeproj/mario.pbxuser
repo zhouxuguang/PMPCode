@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	AC670E330AA9759500608A95 /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeBuildStyle = ACDAE38F0AA982A600E0BAA3 /* Development */;
+		activeExecutable = ACDAE4F10AA998C700E0BAA3 /* Decimation */;
+		activeTarget = ACDAE4EF0AA998C700E0BAA3 /* Decimation */;
+		addToTargets = (
+			ACDAE45A0AA992C400E0BAA3 /* Fairing */,
+			ACDAE4A30AA9962400E0BAA3 /* Parameterization */,
+		);
+		codeSenseManager = AC670E380AA9759500608A95 /* Code sense */;
+		executables = (
+			ACDAE3B40AA9835100E0BAA3 /* MeshViewer */,
+			ACDAE4160AA986CD00E0BAA3 /* CurvatureViewer */,
+			ACDAE43C0AA9882F00E0BAA3 /* Smoothing */,
+			ACDAE45C0AA992C400E0BAA3 /* Fairing */,
+			ACDAE4A50AA9962400E0BAA3 /* Parameterization */,
+			ACDAE4F10AA998C700E0BAA3 /* Decimation */,
+			ACDAE5040AA99A3600E0BAA3 /* Repair-CutAndStitch */,
+			ACDAE5270AA99B2200E0BAA3 /* Repair-VolRepair */,
+			ACDAE5340AA99B5400E0BAA3 /* Repair-HoleFill */,
+		);
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXErrorsWarningsDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXErrorsWarningsDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					300,
+					173,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXErrorsWarningsDataSource_TypeID,
+					PBXErrorsWarningsDataSource_MessageID,
+					PBXErrorsWarningsDataSource_LocationID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXExecutablesDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXExecutablesDataSource_NameID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					22,
+					300,
+					139,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXExecutablesDataSource_ActiveFlagID,
+					PBXExecutablesDataSource_NameID,
+					PBXExecutablesDataSource_CommentsID,
+				);
+			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					283,
+					20,
+					48,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXConfiguration.PBXTargetDataSource.PBXTargetDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					200,
+					71,
+					20,
+					48,
+					43,
+					43,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXTargetDataSource_PrimaryAttribute,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 178912007;
+			PBXWorkspaceStateSaveDate = 178912007;
+		};
+		sourceControlManager = AC670E370AA9759500608A95 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	AC670E370AA9759500608A95 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+		};
+		scmType = "";
+	};
+	AC670E380AA9759500608A95 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	AC670E440AA975D200608A95 /* OpenMesh */ = {
+		activeExec = 0;
+	};
+	AC670FC00AA976AE00608A95 /* IOManager.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3600}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 2811}, {690, 789}}";
+			sepNavWindowFrame = "{{124, 42}, {735, 918}}";
+		};
+	};
+	AC670FC10AA976AE00608A95 /* MeshIO.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 2160}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{147, 21}, {735, 918}}";
+		};
+	};
+	AC670FCE0AA976AE00608A95 /* OMReader.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 10112}}";
+			sepNavSelRange = "{15068, 0}";
+			sepNavVisRect = "{{0, 9262}, {690, 789}}";
+			sepNavWindowFrame = "{{55, 105}, {735, 918}}";
+		};
+	};
+	AC670FDE0AA976AE00608A95 /* BaseWriter.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 1792}}";
+			sepNavSelRange = "{3609, 52}";
+			sepNavVisRect = "{{0, 783}, {690, 789}}";
+			sepNavWindowFrame = "{{101, 63}, {735, 918}}";
+		};
+	};
+	AC670FF80AA976AE00608A95 /* ArrayKernelT.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 11952}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 11163}, {690, 789}}";
+			sepNavWindowFrame = "{{101, 63}, {735, 918}}";
+		};
+	};
+	AC6710010AA976AE00608A95 /* PolyMeshT.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {902, 13856}}";
+			sepNavSelRange = "{1610, 42}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{147, 21}, {735, 918}}";
+		};
+	};
+	AC67100B0AA976AE00608A95 /* compiler.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 2560}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 1771}, {690, 789}}";
+			sepNavWindowFrame = "{{55, 105}, {735, 918}}";
+		};
+	};
+	AC67100C0AA976AE00608A95 /* config.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 976}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 179}, {690, 789}}";
+			sepNavWindowFrame = "{{170, 0}, {735, 918}}";
+		};
+	};
+	AC6711280AA979A400608A95 /* IsoEx */ = {
+		activeExec = 0;
+	};
+	AC67116D0AA97A9600608A95 /* gl.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3552}}";
+			sepNavSelRange = "{766, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{514, 71}, {735, 918}}";
+		};
+	};
+	AC67116E0AA97A9600608A95 /* GlutExaminer.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 7424}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+		};
+	};
+	AC67116F0AA97A9600608A95 /* GlutExaminer.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 1552}}";
+			sepNavSelRange = "{543, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{776, 36}, {735, 918}}";
+		};
+	};
+	AC6711720AA97A9600608A95 /* MeshViewer.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3184}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{64, 70}, {735, 918}}";
+		};
+	};
+	AC6711740AA97A9600608A95 /* mview.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 789}}";
+			sepNavSelRange = "{179, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{101, 63}, {735, 918}}";
+		};
+	};
+	AC6711870AA97A9600608A95 /* TaucsSolver.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3840}}";
+			sepNavSelRange = "{205, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{55, 105}, {735, 918}}";
+		};
+	};
+	AC6711880AA97A9600608A95 /* TaucsSolver.hh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 1104}}";
+			sepNavSelRange = "{466, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{55, 105}, {735, 918}}";
+		};
+	};
+	AC67118E0AA97A9600608A95 /* ParameterizationViewer.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3552}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{170, 0}, {735, 918}}";
+		};
+	};
+	AC6711AA0AA97A9600608A95 /* HoleFiller.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 9424}}";
+			sepNavSelRange = "{7743, 31}";
+			sepNavVisRect = "{{0, 625}, {690, 789}}";
+			sepNavWindowFrame = "{{55, 105}, {735, 918}}";
+		};
+	};
+	AC6711B50AA97A9600608A95 /* DepthImage.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 3168}}";
+			sepNavSelRange = "{1816, 18}";
+			sepNavVisRect = "{{0, 973}, {690, 789}}";
+			sepNavWindowFrame = "{{124, 42}, {735, 918}}";
+		};
+	};
+	AC6711C10AA97A9600608A95 /* volrepair.cc */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 5888}}";
+			sepNavSelRange = "{893, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{147, 21}, {735, 918}}";
+		};
+	};
+	ACDAE3B20AA9835100E0BAA3 /* MeshViewer */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE3B40AA9835100E0BAA3 /* MeshViewer */,
+		);
+	};
+	ACDAE3B40AA9835100E0BAA3 /* MeshViewer */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"../src/CourseExamples/01-MeshViewer/bunny.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = MeshViewer;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE4140AA986CD00E0BAA3 /* CurvatureViewer */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE4160AA986CD00E0BAA3 /* CurvatureViewer */,
+		);
+	};
+	ACDAE4160AA986CD00E0BAA3 /* CurvatureViewer */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"../src/CourseExamples/02-CurvatureViewer/tetra_thing.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = CurvatureViewer;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE43A0AA9882F00E0BAA3 /* Smoothing */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE43C0AA9882F00E0BAA3 /* Smoothing */,
+		);
+	};
+	ACDAE43C0AA9882F00E0BAA3 /* Smoothing */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"../src/CourseExamples/03-Smoothing/scanned_face.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Smoothing;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE45A0AA992C400E0BAA3 /* Fairing */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE45C0AA992C400E0BAA3 /* Fairing */,
+		);
+	};
+	ACDAE45C0AA992C400E0BAA3 /* Fairing */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"../src/CourseExamples/04-Fairing/example.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Fairing;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE4A30AA9962400E0BAA3 /* Parameterization */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE4A50AA9962400E0BAA3 /* Parameterization */,
+		);
+	};
+	ACDAE4A50AA9962400E0BAA3 /* Parameterization */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"../src/CourseExamples/05-Parameterization/max.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Parameterization;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE4EF0AA998C700E0BAA3 /* Decimation */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE4F10AA998C700E0BAA3 /* Decimation */,
+		);
+	};
+	ACDAE4F10AA998C700E0BAA3 /* Decimation */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 0;
+		activeArgIndices = (
+			YES,
+		);
+		argumentStrings = (
+			"0.1 ../src/CourseExamples/06-Decimation/fan.off ../src/CourseExamples/06-Decimation/fan-deci.off",
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+			"PBXLSLaunchAction-0" = {
+				PBXLSLaunchAction = 0;
+				PBXLSLaunchStartAction = 1;
+				PBXLSLaunchStdioStyle = 2;
+				PBXLSLaunchStyle = 0;
+				class = PBXLSRunLaunchConfig;
+				displayName = "Executable Runner";
+				identifier = com.apple.Xcode.launch.runConfig;
+				remoteHostInfo = "";
+				startActionInfo = "";
+			};
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = Decimation;
+		sourceDirectories = (
+		);
+		startupPath = "<<ProjectDirectory>>";
+	};
+	ACDAE5020AA99A3600E0BAA3 /* Repair-CutAndStitch */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE5040AA99A3600E0BAA3 /* Repair-CutAndStitch */,
+		);
+	};
+	ACDAE5040AA99A3600E0BAA3 /* Repair-CutAndStitch */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Repair-CutAndStitch";
+		sourceDirectories = (
+		);
+	};
+	ACDAE5250AA99B2200E0BAA3 /* Repair-VolRepair */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE5270AA99B2200E0BAA3 /* Repair-VolRepair */,
+		);
+	};
+	ACDAE5270AA99B2200E0BAA3 /* Repair-VolRepair */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Repair-VolRepair";
+		sourceDirectories = (
+		);
+	};
+	ACDAE5320AA99B5400E0BAA3 /* Repair-HoleFill */ = {
+		activeExec = 0;
+		executables = (
+			ACDAE5340AA99B5400E0BAA3 /* Repair-HoleFill */,
+		);
+	};
+	ACDAE5340AA99B5400E0BAA3 /* Repair-HoleFill */ = {
+		isa = PBXExecutable;
+		activeArgIndex = 2147483647;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = "Repair-HoleFill";
+		sourceDirectories = (
+		);
+	};
+	ACDAE54F0AA99E4B00E0BAA3 /* README */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 789}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{78, 84}, {735, 918}}";
+		};
+	};
+	ACDAE5540AA99E7F00E0BAA3 /* README */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {690, 789}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRect = "{{0, 0}, {690, 789}}";
+			sepNavWindowFrame = "{{101, 63}, {735, 918}}";
+		};
+	};
+}

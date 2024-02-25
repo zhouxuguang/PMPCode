@@ -1,0 +1,53 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+
+# default file extensions
+CXX_SRC_EXT  ?= .cc
+CXX_HDR_EXT  ?= .hh
+
+ifndef MOC
+  $(error MOC not configured)
+endif
+
+build-dir := $(ARCH)_$(COMP)_$(CODE_LEVEL)
+
+
+###  TARGETS  #################################################################
+
+
+# cur-dir
+moc-files   := $(sort $(shell grep -l "Q_OBJECT" *$(CXX_HDR_EXT) 2> /dev/null))
+moc-targets := $(moc-files:$(CXX_HDR_EXT)=.moc$(CXX_SRC_EXT))
+moc-targets := $(addprefix $(build-dir)/,$(moc-targets))
+
+
+# build-dir (uic)
+moc-files := $(sort $(shell \
+                grep -l "Q_OBJECT" $(build-dir)/*$(CXX_HDR_EXT) 2> /dev/null))
+moc-targets += $(moc-files:$(CXX_HDR_EXT)=.moc$(CXX_SRC_EXT))
+
+
+###  EXPLICIT RULES  ##########################################################
+
+.PHONY: moc-clean moc-build
+
+moc-clean: 
+
+moc-build: $(moc-targets)
+
+
+###  IMPLICIT RULES  ##########################################################
+
+
+$(build-dir)/%.moc$(CXX_SRC_EXT): %$(CXX_HDR_EXT)
+	@ echo ; echo "moc'ing  $<  ->  $@"
+	$(HIDE) $(MOC) -o $@ $<

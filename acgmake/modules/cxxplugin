@@ -1,0 +1,29 @@
+#=============================================================================#
+#                                                                             #
+#                                 acgmake                                     #
+#      Copyright (C) 2001-2003 by Computer Graphics Group, RWTH Aachen        #
+#                          www.rwth-graphics.de                               #
+#                                                                             #
+#=============================================================================#
+
+
+###  CHECK CONFIG  ############################################################
+
+CXX_DEFS   := -DCXX_PLUGIN
+
+cxx-target := CXX_PLUGIN
+include  $(ACGMAKE)/modules/cxx_include
+
+
+###  EXPLICIT RULES  ##########################################################
+
+
+cxxplugin-clean: 
+
+cxxplugin-build: $(cxx-lib)
+
+ifdef cxx-lib
+$(cxx-lib): $(cxx-lib-objs)
+	@ echo ; echo "Build plugin $@"
+	$(call cxx-shared-lib,$(cxx-lib-objs),$@)
+endif

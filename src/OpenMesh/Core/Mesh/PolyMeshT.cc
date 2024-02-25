@@ -126,7 +126,7 @@ adjust_outgoing_halfedge(VertexHandle _vh)
   {
     if (is_boundary(vh_it.handle()))
     {
-      set_halfedge_handle(_vh, vh_it.handle());
+      this->set_halfedge_handle(_vh, vh_it.handle());
       break;
     }
   }
@@ -208,20 +208,20 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
       inner_prev = halfedge_handles[i];
       inner_next = halfedge_handles[ii];
 
-      if (next_halfedge_handle(inner_prev) != inner_next)
+      if (this->next_halfedge_handle(inner_prev) != inner_next)
       {
         // here comes the ugly part... we have to relink a whole patch
 
         // search a free gap
         // free gap will be between boundary_prev and boundary_next
-        outer_prev = opposite_halfedge_handle(inner_next);
-        outer_next = opposite_halfedge_handle(inner_prev);
+        outer_prev = this->opposite_halfedge_handle(inner_next);
+        outer_next = this->opposite_halfedge_handle(inner_prev);
         boundary_prev = outer_prev;
         do
           boundary_prev =
-            opposite_halfedge_handle(next_halfedge_handle(boundary_prev));
+            this->opposite_halfedge_handle(this->next_halfedge_handle(boundary_prev));
         while (!is_boundary(boundary_prev) || boundary_prev==inner_prev);
-        boundary_next = next_halfedge_handle(boundary_prev);
+        boundary_next = this->next_halfedge_handle(boundary_prev);
         assert(is_boundary(boundary_prev));
         assert(is_boundary(boundary_next));
 
@@ -234,8 +234,8 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
         }
 
         // other halfedges' handles
-        patch_start = next_halfedge_handle(inner_prev);
-        patch_end   = prev_halfedge_handle(inner_next);
+        patch_start = this->next_halfedge_handle(inner_prev);
+        patch_end   = this->prev_halfedge_handle(inner_next);
 
         // relink
         next_cache.push_back(NextCacheEntry(boundary_prev, patch_start));
@@ -250,13 +250,13 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
   // create missing edges
   for (i=0, ii=1; i<n; ++i, ++ii, ii%=n)
     if (is_new[i])
-      halfedge_handles[i] = new_edge(_vertex_handles[i], _vertex_handles[ii]);
+      halfedge_handles[i] = this->new_edge(_vertex_handles[i], _vertex_handles[ii]);
 
 
 
   // create the face
   FaceHandle fh(This::new_face());
-  set_halfedge_handle(fh, halfedge_handles[n-1]);
+  this->set_halfedge_handle(fh, halfedge_handles[n-1]);
 
 
 
@@ -273,34 +273,34 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
 
     if (id)
     {
-      outer_prev = opposite_halfedge_handle(inner_next);
-      outer_next = opposite_halfedge_handle(inner_prev);
+      outer_prev = this->opposite_halfedge_handle(inner_next);
+      outer_next = this->opposite_halfedge_handle(inner_prev);
 
       // set outer links
       switch (id)
       {
         case 1: // prev is new, next is old
-          boundary_prev = prev_halfedge_handle(inner_next);
+          boundary_prev = this->prev_halfedge_handle(inner_next);
           next_cache.push_back(NextCacheEntry(boundary_prev, outer_next));
-          set_halfedge_handle(vh, outer_next);
+          this->set_halfedge_handle(vh, outer_next);
           break;
 
         case 2: // next is new, prev is old
-          boundary_next = next_halfedge_handle(inner_prev);
+          boundary_next = this->next_halfedge_handle(inner_prev);
           next_cache.push_back(NextCacheEntry(outer_prev, boundary_next));
-          set_halfedge_handle(vh, boundary_next);
+          this->set_halfedge_handle(vh, boundary_next);
           break;
 
         case 3: // both are new
-          if (!halfedge_handle(vh).is_valid())
+          if (!this->halfedge_handle(vh).is_valid())
           {
-            set_halfedge_handle(vh, outer_next);
+            this->set_halfedge_handle(vh, outer_next);
             next_cache.push_back(NextCacheEntry(outer_prev, outer_next));
           }
           else
           {
-            boundary_next = halfedge_handle(vh);
-            boundary_prev = prev_halfedge_handle(boundary_next);
+            boundary_next = this->halfedge_handle(vh);
+            boundary_prev = this->prev_halfedge_handle(boundary_next);
             next_cache.push_back(NextCacheEntry(boundary_prev, outer_next));
             next_cache.push_back(NextCacheEntry(outer_prev, boundary_next));
           }
@@ -310,11 +310,11 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
       // set inner link
       next_cache.push_back(NextCacheEntry(inner_prev, inner_next));
     }
-    else needs_adjust[ii] = (halfedge_handle(vh) == inner_next);
+    else needs_adjust[ii] = (this->halfedge_handle(vh) == inner_next);
 
 
     // set face handle
-    set_face_handle(halfedge_handles[i], fh);
+    this->set_face_handle(halfedge_handles[i], fh);
   }
 
 
@@ -323,8 +323,9 @@ add_face(const std::vector<VertexHandle>& _vertex_handles)
   typename NextCache::const_iterator
     ncIt(next_cache.begin()), ncEnd(next_cache.end());
   for (; ncIt != ncEnd; ++ncIt)
-    set_next_halfedge_handle(ncIt->first, ncIt->second);
-
+  {
+      this->set_next_halfedge_handle(ncIt->first, ncIt->second);
+  }
 
 
   // adjust vertices' halfedge handle
@@ -359,12 +360,12 @@ typename PolyMeshT<Kernel>::Normal
 PolyMeshT<Kernel>::
 calc_face_normal(FaceHandle _fh) const
 {
-  assert(halfedge_handle(_fh).is_valid());
+  assert(this->halfedge_handle(_fh).is_valid());
   ConstFaceVertexIter fv_it(cfv_iter(_fh));
 
-  const Point& p0(point(fv_it));  ++fv_it;
-  const Point& p1(point(fv_it));  ++fv_it;
-  const Point& p2(point(fv_it));
+  const Point& p0(this->point(fv_it));  ++fv_it;
+  const Point& p1(this->point(fv_it));  ++fv_it;
+  const Point& p2(this->point(fv_it));
 
   return calc_face_normal(p0, p1, p2);
 }
@@ -430,7 +431,9 @@ update_face_normals()
   FaceIter f_it(faces_begin()), f_end(faces_end());
 
   for (; f_it != f_end; ++f_it)
-    set_normal(f_it.handle(), calc_face_normal(f_it.handle()));
+  {
+      this->set_normal(f_it.handle(), calc_face_normal(f_it.handle()));
+  }
 }
 
 
@@ -457,7 +460,7 @@ calc_vertex_normal_fast(VertexHandle _vh, Normal& _n) const
 {
   _n[0]=_n[1]=_n[2]=Scalar(0.0);
   for (ConstVertexFaceIter vf_it=cvf_iter(_vh); vf_it; ++vf_it)
-    _n += normal(vf_it.handle());
+    _n += this->normal(vf_it.handle());
   Scalar norm = _n.length();
   if (norm != 0.0f) _n *= (1.0f/norm);
 }
@@ -484,7 +487,7 @@ calc_vertex_normal_correct(VertexHandle _vh, Normal& _n) const
     {
       continue;
     }
-    HalfedgeHandle out_heh(next_halfedge_handle(cvih_it));
+    HalfedgeHandle out_heh(this->next_halfedge_handle(cvih_it));
     Normal out_he_vec;
     calc_edge_vector(out_heh, out_he_vec);
     _n += cross(in_he_vec, out_he_vec);//sector area is taken into account
@@ -509,9 +512,9 @@ calc_vertex_normal_loop(VertexHandle _vh, Normal& _n) const
   unsigned int i = 0;
   for (ConstVertexOHalfedgeIter cvoh_it = cvoh_iter(_vh); cvoh_it; ++cvoh_it, ++i)
   {
-    VertexHandle r1_v(to_vertex_handle(cvoh_it));
-    t_v += (Normal)(point(r1_v) * loop_scheme_mask__.tang0_weight(vh_val, i));
-    t_w += (Normal)(point(r1_v) * loop_scheme_mask__.tang1_weight(vh_val, i));
+    VertexHandle r1_v(this->to_vertex_handle(cvoh_it));
+    t_v += (Normal)(this->point(r1_v) * loop_scheme_mask__.tang0_weight(vh_val, i));
+    t_w += (Normal)(this->point(r1_v) * loop_scheme_mask__.tang1_weight(vh_val, i));
   }
   _n = cross(t_w, t_v);//hack: should be cross(t_v, t_w), but then the normals are reversed?
 }
@@ -531,7 +534,7 @@ calc_vertex_normal_angle_weighted(VertexHandle _vh, Normal& _n) const
   if (v2_it)
   {
     ConstVertexVertexIter  v1_it(v2_it); ++v1_it;
-    const Point&           p0 = point(_vh);
+    const Point&           p0 = this->point(_vh);
     Normal                 d1, d2;
     Normal                 n;
     Scalar                 cosine, angle, norm;
@@ -540,10 +543,10 @@ calc_vertex_normal_angle_weighted(VertexHandle _vh, Normal& _n) const
 
     for (; v2_it; ++v2_it, ++v1_it)
     {
-      if ((fh=face_handle(v1_it.current_halfedge_handle())).is_valid())
+      if ((fh=this->face_handle(v1_it.current_halfedge_handle())).is_valid())
       {
-	const Point& p1 = point(v1_it);
-	const Point& p2 = point(v2_it);
+	const Point& p1 = this->point(v1_it);
+	const Point& p2 = this->point(v2_it);
 
 	// this casts suck, but OpenSG compatibility requires it
 	(d1 = (Normal)p1) -= (Normal)p0;
@@ -557,7 +560,7 @@ calc_vertex_normal_angle_weighted(VertexHandle _vh, Normal& _n) const
 	else if (cosine >  one) cosine =  one;
 	angle = acos(cosine);
 
-	n = normal(fh);
+	n = this->normal(fh);
 	n *= angle;
 	_n += n;
       }
@@ -584,22 +587,22 @@ update_vertex_normals(VertexNormalMode _mode)
   {
     case FAST:
       for (; v_it!=v_end; ++v_it)
-      {	calc_vertex_normal_fast(v_it, n); set_normal(v_it.handle(), n); }
+      {	calc_vertex_normal_fast(v_it, n); this->set_normal(v_it.handle(), n); }
       break;
 
     case CORRECT:
       for (; v_it!=v_end; ++v_it)
-      {	calc_vertex_normal_correct(v_it, n); set_normal(v_it.handle(), n); }
+      {	calc_vertex_normal_correct(v_it, n); this->set_normal(v_it.handle(), n); }
       break;
 
     case LOOP:
       for (; v_it!=v_end; ++v_it)
-      {	calc_vertex_normal_loop(v_it, n); set_normal(v_it.handle(), n); }
+      {	calc_vertex_normal_loop(v_it, n); this->set_normal(v_it.handle(), n); }
       break;
 
     case ANGLE_WEIGHTED:
       for (; v_it!=v_end; ++v_it)
-      {	calc_vertex_normal_angle_weighted(v_it, n); set_normal(v_it.handle(), n); }
+      {	calc_vertex_normal_angle_weighted(v_it, n); this->set_normal(v_it.handle(), n); }
       break;
   }
 }
@@ -656,10 +659,10 @@ void
 PolyMeshT<Kernel>::
 delete_face(FaceHandle _fh, bool _delete_isolated_vertices)
 {
-  assert(_fh.is_valid() && !status(_fh).deleted());
+  assert(_fh.is_valid() && !this->status(_fh).deleted());
 
   // mark face deleted
-  status(_fh).set_deleted(true);
+  this->status(_fh).set_deleted(true);
 
 
   // this vector will hold all boundary edges of face _fh
@@ -683,12 +686,12 @@ delete_face(FaceHandle _fh, bool _delete_isolated_vertices)
   {
     hh = fh_it.handle();
 
-    set_boundary(hh);//set_face_handle(hh, InvalidFaceHandle);
+    this->set_boundary(hh);//set_face_handle(hh, InvalidFaceHandle);
 
-    if (is_boundary(opposite_halfedge_handle(hh)))
-        deleted_edges.push_back(edge_handle(hh));
+    if (this->is_boundary(this->opposite_halfedge_handle(hh)))
+        deleted_edges.push_back(this->edge_handle(hh));
 
-    vhandles.push_back(to_vertex_handle(hh));
+    vhandles.push_back(this->to_vertex_handle(hh));
   }
 
 
@@ -705,47 +708,47 @@ delete_face(FaceHandle _fh, bool _delete_isolated_vertices)
 
     for (; del_it!=del_end; ++del_it)
     {
-      h0    = halfedge_handle(*del_it, 0);
-      v0    = to_vertex_handle(h0);
-      next0 = next_halfedge_handle(h0);
-      prev0 = prev_halfedge_handle(h0);
+      h0    = this->halfedge_handle(*del_it, 0);
+      v0    = this->to_vertex_handle(h0);
+      next0 = this->next_halfedge_handle(h0);
+      prev0 = this->prev_halfedge_handle(h0);
 
-      h1    = halfedge_handle(*del_it, 1);
-      v1    = to_vertex_handle(h1);
-      next1 = next_halfedge_handle(h1);
-      prev1 = prev_halfedge_handle(h1);
+      h1    = this->halfedge_handle(*del_it, 1);
+      v1    = this->to_vertex_handle(h1);
+      next1 = this->next_halfedge_handle(h1);
+      prev1 = this->prev_halfedge_handle(h1);
 
       // adjust next and prev handles
-      set_next_halfedge_handle(prev0, next1);
-      set_next_halfedge_handle(prev1, next0);
+      this->set_next_halfedge_handle(prev0, next1);
+      this->set_next_halfedge_handle(prev1, next0);
 
       // mark edge deleted
-      status(*del_it).set_deleted(true);
+      this->status(*del_it).set_deleted(true);
 
       // update v0
-      if (halfedge_handle(v0) == h1)
+      if (this->halfedge_handle(v0) == h1)
       {
         // isolated ?
         if (next0 == h1)
         {
           if (_delete_isolated_vertices)
-            status(v0).set_deleted(true);
-          set_isolated(v0);
+              this->status(v0).set_deleted(true);
+          this->set_isolated(v0);
         }
-        else set_halfedge_handle(v0, next0);
+        else this->set_halfedge_handle(v0, next0);
       }
 
       // update v1
-      if (halfedge_handle(v1) == h0)
+      if (this->halfedge_handle(v1) == h0)
       {
         // isolated ?
         if (next1 == h0)
         {
           if (_delete_isolated_vertices)
-            status(v1).set_deleted(true);
-          set_isolated(v1);
+              this->status(v1).set_deleted(true);
+          this->set_isolated(v1);
         }
-        else  set_halfedge_handle(v1, next1);
+        else  this->set_halfedge_handle(v1, next1);
       }
     }
   }
@@ -847,44 +850,44 @@ PolyMeshT<Kernel>::split(FaceHandle fh, VertexHandle vh)
       point to the old halfeges
   */
 
-  HalfedgeHandle hend = halfedge_handle(fh);
-  HalfedgeHandle hh   = next_halfedge_handle(hend);
+  HalfedgeHandle hend = this->halfedge_handle(fh);
+  HalfedgeHandle hh   = this->next_halfedge_handle(hend);
 
-  HalfedgeHandle hold = new_edge(to_vertex_handle(hend), vh);
+  HalfedgeHandle hold = this->new_edge(this->to_vertex_handle(hend), vh);
 
-  set_next_halfedge_handle(hend, hold);
-  set_face_handle(hold, fh);
+  this->set_next_halfedge_handle(hend, hold);
+  this->set_face_handle(hold, fh);
 
-  hold = opposite_halfedge_handle(hold);
+  hold = this->opposite_halfedge_handle(hold);
 
   while (hh != hend) {
 
-    HalfedgeHandle hnext = next_halfedge_handle(hh);
+    HalfedgeHandle hnext = this->next_halfedge_handle(hh);
 
     FaceHandle fnew = This::new_face();
-    set_halfedge_handle(fnew, hh);
+    this->set_halfedge_handle(fnew, hh);
 
-    HalfedgeHandle hnew = new_edge(to_vertex_handle(hh), vh);
+    HalfedgeHandle hnew = this->new_edge(this->to_vertex_handle(hh), vh);
 
-    set_next_halfedge_handle(hnew, hold);
-    set_next_halfedge_handle(hold, hh);
-    set_next_halfedge_handle(hh, hnew);
+    this->set_next_halfedge_handle(hnew, hold);
+    this->set_next_halfedge_handle(hold, hh);
+    this->set_next_halfedge_handle(hh, hnew);
 
-    set_face_handle(hnew, fnew);
-    set_face_handle(hold, fnew);
-    set_face_handle(hh,   fnew);
+    this->set_face_handle(hnew, fnew);
+    this->set_face_handle(hold, fnew);
+    this->set_face_handle(hh,   fnew);
 
-    hold = opposite_halfedge_handle(hnew);
+    hold = this->opposite_halfedge_handle(hnew);
 
     hh = hnext;
   }
 
-  set_next_halfedge_handle(hold, hend);
-  set_next_halfedge_handle(next_halfedge_handle(hend), hold);
+  this->set_next_halfedge_handle(hold, hend);
+  this->set_next_halfedge_handle(this->next_halfedge_handle(hend), hold);
 
-  set_face_handle(hold, fh);
+  this->set_face_handle(hold, fh);
 
-  set_halfedge_handle(vh, hold);
+  this->set_halfedge_handle(vh, hold);
 }
 
 

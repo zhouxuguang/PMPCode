@@ -275,7 +275,7 @@ public:
 
   /// Add a new vertex with coordinate \c _p
   VertexHandle add_vertex(const Point& _p) {
-    return new_vertex(_p);
+    return this->new_vertex(_p);
   }
 
   /// Add and connect a new face
@@ -529,13 +529,13 @@ public:
   /** Is the edge _eh a boundary edge, i.e. is one of its halfedges
       a boundary halfege ? */
   bool is_boundary(EdgeHandle _eh) const {
-    return (is_boundary(halfedge_handle(_eh, 0)) ||
-            is_boundary(halfedge_handle(_eh, 1)));
+    return (is_boundary(this->halfedge_handle(_eh, 0)) ||
+            is_boundary(this->halfedge_handle(_eh, 1)));
   }
   /// Is vertex _vh a boundary vertex ?
   bool is_boundary(VertexHandle _vh) const {
-    HalfedgeHandle heh(halfedge_handle(_vh));
-    return (!(heh.is_valid() && face_handle(heh).is_valid()));
+    HalfedgeHandle heh(this->halfedge_handle(_vh));
+    return (!(heh.is_valid() && this->face_handle(heh).is_valid()));
   }
 
   /** Is face _fh at boundary, i.e. is one of its edges (or vertices)
@@ -547,13 +547,13 @@ public:
   bool is_boundary(FaceHandle _fh, bool _check_vertex=false) const
   {
      for (ConstFaceEdgeIter cfeit = cfe_iter( _fh ); cfeit; ++cfeit)
-        if (is_boundary( cfeit.handle() ) )
+        if (this->is_boundary( cfeit.handle() ) )
            return true;
 
      if (_check_vertex)
      {
         for (ConstFaceVertexIter cfvit = cfv_iter( _fh ); cfvit; ++cfvit)
-           if (is_boundary( cfvit.handle() ) )
+           if (this->is_boundary( cfvit.handle() ) )
               return true;
      }
      return false;
@@ -571,7 +571,7 @@ public:
     ConstVertexOHalfedgeIter vh_it(*this, _vh);
     if (vh_it)
       for (++vh_it; vh_it; ++vh_it)
-          if (is_boundary(vh_it.handle()))
+          if (this->is_boundary(vh_it.handle()))
             return false;
     return true;
   }
@@ -663,15 +663,15 @@ public:
   */
   void calc_edge_vector(HalfedgeHandle _heh, Normal& _edge_vec) const
   {
-    _edge_vec = (Normal)point(to_vertex_handle(_heh));
-    _edge_vec -= (Normal)point(from_vertex_handle(_heh));
+    _edge_vec = (Normal)this->point(this->to_vertex_handle(_heh));
+    _edge_vec -= (Normal)this->point(this->from_vertex_handle(_heh));
   }
 
   /** Calculates the length of the edge _eh
   */
   Scalar calc_edge_length(EdgeHandle _eh) const
   {
-    return calc_edge_length(halfedge_handle(_eh,0));
+    return calc_edge_length(this->halfedge_handle(_eh,0));
   }
 
   /** Calculates the length of the edge _heh
@@ -683,7 +683,7 @@ public:
 
   Scalar calc_edge_sqr_length(EdgeHandle _eh) const
   {
-    return calc_edge_sqr_length(halfedge_handle(_eh,0));
+    return calc_edge_sqr_length(this->halfedge_handle(_eh,0));
   }
 
   Scalar calc_edge_sqr_length(HalfedgeHandle _heh) const
@@ -700,8 +700,8 @@ public:
   */
   void calc_sector_vectors(HalfedgeHandle _in_heh, Normal& _vec0, Normal& _vec1) const
   {
-    calc_edge_vector(next_halfedge_handle(_in_heh), _vec0);//p2 - p1
-    calc_edge_vector(opposite_halfedge_handle(_in_heh), _vec1);//p0 - p1
+    calc_edge_vector(this->next_halfedge_handle(_in_heh), _vec0);//p2 - p1
+    calc_edge_vector(this->opposite_halfedge_handle(_in_heh), _vec1);//p0 - p1
   }
 
   /** calculates the sector angle

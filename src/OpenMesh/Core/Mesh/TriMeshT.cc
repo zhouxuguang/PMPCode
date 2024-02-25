@@ -102,14 +102,14 @@ bool
 TriMeshT<Kernel>::
 is_collapse_ok(HalfedgeHandle v0v1)
 {
-  HalfedgeHandle  v1v0(opposite_halfedge_handle(v0v1));
-  VertexHandle    v0(to_vertex_handle(v1v0));
-  VertexHandle    v1(to_vertex_handle(v0v1));
+  HalfedgeHandle  v1v0(this->opposite_halfedge_handle(v0v1));
+  VertexHandle    v0(this->to_vertex_handle(v1v0));
+  VertexHandle    v1(this->to_vertex_handle(v0v1));
 
 
 
   // are vertices already deleted ?
-  if (status(v0).deleted() || status(v1).deleted())
+  if (this->status(v0).deleted() || this->status(v1).deleted())
     return false;
 
 
@@ -118,27 +118,27 @@ is_collapse_ok(HalfedgeHandle v0v1)
 
 
   // the edges v1-vl and vl-v0 must not be both boundary edges
-  if (!is_boundary(v0v1))
+  if (!this->is_boundary(v0v1))
   {
-    vl = to_vertex_handle(next_halfedge_handle(v0v1));
+    vl = this->to_vertex_handle(this->next_halfedge_handle(v0v1));
 
-    h1 = next_halfedge_handle(v0v1);
-    h2 = next_halfedge_handle(h1);
-    if (is_boundary(opposite_halfedge_handle(h1)) &&
-	is_boundary(opposite_halfedge_handle(h2)))
+    h1 = this->next_halfedge_handle(v0v1);
+    h2 = this->next_halfedge_handle(h1);
+    if (this->is_boundary(this->opposite_halfedge_handle(h1)) &&
+    this->is_boundary(this->opposite_halfedge_handle(h2)))
       return false;
   }
 
 
   // the edges v0-vr and vr-v1 must not be both boundary edges
-  if (!is_boundary(v1v0))
+  if (!this->is_boundary(v1v0))
   {
-    vr = to_vertex_handle(next_halfedge_handle(v1v0));
+    vr = this->to_vertex_handle(this->next_halfedge_handle(v1v0));
 
-    h1 = next_halfedge_handle(v1v0);
-    h2 = next_halfedge_handle(h1);
-    if (is_boundary(opposite_halfedge_handle(h1)) &&
-	is_boundary(opposite_halfedge_handle(h2)))
+    h1 = this->next_halfedge_handle(v1v0);
+    h2 = this->next_halfedge_handle(h1);
+    if (this->is_boundary(this->opposite_halfedge_handle(h1)) &&
+    this->is_boundary(this->opposite_halfedge_handle(h2)))
       return false;
   }
 
@@ -151,21 +151,21 @@ is_collapse_ok(HalfedgeHandle v0v1)
 
 
   // test intersection of the one-rings of v0 and v1
-  for (vv_it = vv_iter(v0); vv_it; ++vv_it)
-    status(vv_it).set_tagged(false);
+  for (vv_it = this->vv_iter(v0); vv_it; ++vv_it)
+      this->status(vv_it).set_tagged(false);
 
-  for (vv_it = vv_iter(v1); vv_it; ++vv_it)
-    status(vv_it).set_tagged(true);
+  for (vv_it = this->vv_iter(v1); vv_it; ++vv_it)
+      this->status(vv_it).set_tagged(true);
 
-  for (vv_it = vv_iter(v0); vv_it; ++vv_it)
-    if (status(vv_it).tagged() && vv_it.handle() != vl && vv_it.handle() != vr)
+  for (vv_it = this->vv_iter(v0); vv_it; ++vv_it)
+    if (this->status(vv_it).tagged() && vv_it.handle() != vl && vv_it.handle() != vr)
       return false;
 
 
 
   // edge between two boundary vertices should be a boundary edge
-  if ( is_boundary(v0) && is_boundary(v1) &&
-       !is_boundary(v0v1) && !is_boundary(v1v0))
+  if ( this->is_boundary(v0) && this->is_boundary(v1) &&
+       !this->is_boundary(v0v1) && !this->is_boundary(v1v0))
     return false;
 
 
@@ -184,17 +184,17 @@ TriMeshT<Kernel>::
 collapse(HalfedgeHandle _hh)
 {
   HalfedgeHandle h0 = _hh;
-  HalfedgeHandle h1 = prev_halfedge_handle(h0);
-  HalfedgeHandle o0 = opposite_halfedge_handle(h0);
-  HalfedgeHandle o1 = next_halfedge_handle(o0);
+  HalfedgeHandle h1 = this->prev_halfedge_handle(h0);
+  HalfedgeHandle o0 = this->opposite_halfedge_handle(h0);
+  HalfedgeHandle o1 = this->next_halfedge_handle(o0);
 
   // remove edge
   remove_edge(h0);
 
   // remove loops
-  if (next_halfedge_handle(next_halfedge_handle(h1)) == h1)
+  if (this->next_halfedge_handle(this->next_halfedge_handle(h1)) == h1)
     remove_loop(h1);
-  if (next_halfedge_handle(next_halfedge_handle(o1)) == o1)
+  if (this->next_halfedge_handle(this->next_halfedge_handle(o1)) == o1)
     remove_loop(o1);
 }
 
@@ -208,45 +208,47 @@ TriMeshT<Kernel>::
 remove_edge(HalfedgeHandle _hh)
 {
   HalfedgeHandle  h  = _hh;
-  HalfedgeHandle  hn = next_halfedge_handle(h);
-  HalfedgeHandle  hp = prev_halfedge_handle(h);
+  HalfedgeHandle  hn = this->next_halfedge_handle(h);
+  HalfedgeHandle  hp = this->prev_halfedge_handle(h);
 
-  HalfedgeHandle  o  = opposite_halfedge_handle(h);
-  HalfedgeHandle  on = next_halfedge_handle(o);
-  HalfedgeHandle  op = prev_halfedge_handle(o);
+  HalfedgeHandle  o  = this->opposite_halfedge_handle(h);
+  HalfedgeHandle  on = this->next_halfedge_handle(o);
+  HalfedgeHandle  op = this->prev_halfedge_handle(o);
 
-  FaceHandle      fh = face_handle(h);
-  FaceHandle      fo = face_handle(o);
+  FaceHandle      fh = this->face_handle(h);
+  FaceHandle      fo = this->face_handle(o);
 
-  VertexHandle    vh = to_vertex_handle(h);
-  VertexHandle    vo = to_vertex_handle(o);
+  VertexHandle    vh = this->to_vertex_handle(h);
+  VertexHandle    vo = this->to_vertex_handle(o);
 
 
 
   // halfedge -> vertex
-  for (VertexIHalfedgeIter vih_it(vih_iter(vo)); vih_it; ++vih_it)
-    set_vertex_handle(vih_it.handle(), vh);
+  for (VertexIHalfedgeIter vih_it(this->vih_iter(vo)); vih_it; ++vih_it)
+  {
+      this->set_vertex_handle(vih_it.handle(), vh);
+  }
 
 
   // halfedge -> halfedge
-  set_next_halfedge_handle(hp, hn);
-  set_next_halfedge_handle(op, on);
+  this->set_next_halfedge_handle(hp, hn);
+  this->set_next_halfedge_handle(op, on);
 
 
   // face -> halfedge
-  if (fh.is_valid())  set_halfedge_handle(fh, hn);
-  if (fo.is_valid())  set_halfedge_handle(fo, on);
+  if (fh.is_valid())  this->set_halfedge_handle(fh, hn);
+  if (fo.is_valid())  this->set_halfedge_handle(fo, on);
 
 
   // vertex -> halfedge
-  if (halfedge_handle(vh) == o)  set_halfedge_handle(vh, hn);
-  adjust_outgoing_halfedge(vh);
-  set_isolated(vo);
+  if (this->halfedge_handle(vh) == o)  this->set_halfedge_handle(vh, hn);
+  this->adjust_outgoing_halfedge(vh);
+  this->set_isolated(vo);
 
 
   // delete stuff
-  status(edge_handle(h)).set_deleted(true);
-  status(vo).set_deleted(true);
+  this->status(this->edge_handle(h)).set_deleted(true);
+  this->status(vo).set_deleted(true);
 }
 
 
@@ -259,45 +261,47 @@ TriMeshT<Kernel>::
 remove_loop(HalfedgeHandle _hh)
 {
   HalfedgeHandle  h0 = _hh;
-  HalfedgeHandle  h1 = next_halfedge_handle(h0);
+  HalfedgeHandle  h1 = this->next_halfedge_handle(h0);
 
-  HalfedgeHandle  o0 = opposite_halfedge_handle(h0);
-  HalfedgeHandle  o1 = opposite_halfedge_handle(h1);
+  HalfedgeHandle  o0 = this->opposite_halfedge_handle(h0);
+  HalfedgeHandle  o1 = this->opposite_halfedge_handle(h1);
 
-  VertexHandle    v0 = to_vertex_handle(h0);
-  VertexHandle    v1 = to_vertex_handle(h1);
+  VertexHandle    v0 = this->to_vertex_handle(h0);
+  VertexHandle    v1 = this->to_vertex_handle(h1);
 
-  FaceHandle      fh = face_handle(h0);
-  FaceHandle      fo = face_handle(o0);
+  FaceHandle      fh = this->face_handle(h0);
+  FaceHandle      fo = this->face_handle(o0);
 
 
 
   // is it a loop ?
-  assert ((next_halfedge_handle(h1) == h0) && (h1 != o0));
+  assert ((this->next_halfedge_handle(h1) == h0) && (h1 != o0));
 
 
   // halfedge -> halfedge
-  set_next_halfedge_handle(h1, next_halfedge_handle(o0));
-  set_next_halfedge_handle(prev_halfedge_handle(o0), h1);
+  this->set_next_halfedge_handle(h1, this->next_halfedge_handle(o0));
+  this->set_next_halfedge_handle(this->prev_halfedge_handle(o0), h1);
 
 
   // halfedge -> face
-  set_face_handle(h1, fo);
+  this->set_face_handle(h1, fo);
 
 
   // vertex -> halfedge
-  set_halfedge_handle(v0, h1);  adjust_outgoing_halfedge(v0);
-  set_halfedge_handle(v1, o1);  adjust_outgoing_halfedge(v1);
+  this->set_halfedge_handle(v0, h1);  this->adjust_outgoing_halfedge(v0);
+  this->set_halfedge_handle(v1, o1);  this->adjust_outgoing_halfedge(v1);
 
 
   // face -> halfedge
-  if (fo.is_valid() && halfedge_handle(fo) == o0)
-    set_halfedge_handle(fo, h1);
+  if (fo.is_valid() && this->halfedge_handle(fo) == o0)
+  {
+      this->set_halfedge_handle(fo, h1);
+  }
   //set_halfedge_handle(fh, InvalidHalfedgeHandle);//Do we need that - it will be marked as deleted below?
 
   // delete stuff
-  if (fh.is_valid())  status(fh).set_deleted(true);
-  status(edge_handle(h0)).set_deleted(true);
+  if (fh.is_valid())  this->status(fh).set_deleted(true);
+  this->status(this->edge_handle(h0)).set_deleted(true);
 }
 
 
@@ -467,18 +471,18 @@ TriMeshT<Impl>::
 is_flip_ok(EdgeHandle _eh) const
 {
   // boundary edges cannot be flipped
-  if (is_boundary(_eh)) return false;
+  if (this->is_boundary(_eh)) return false;
 
 
-  HalfedgeHandle hh = halfedge_handle(_eh, 0);
-  HalfedgeHandle oh = halfedge_handle(_eh, 1);
+  HalfedgeHandle hh = this->halfedge_handle(_eh, 0);
+  HalfedgeHandle oh = this->halfedge_handle(_eh, 1);
 
 
   // check if the flipped edge is already present
   // in the mesh
 
-  VertexHandle ah = to_vertex_handle(next_halfedge_handle(hh));
-  VertexHandle bh = to_vertex_handle(next_halfedge_handle(oh));
+  VertexHandle ah = this->to_vertex_handle(this->next_halfedge_handle(hh));
+  VertexHandle bh = this->to_vertex_handle(this->next_halfedge_handle(oh));
 
   if (ah == bh)   // this is generally a bad sign !!!
     return false;
@@ -503,47 +507,47 @@ flip(EdgeHandle _eh)
   // a non-manifold mesh, hence check for yourself
   // whether this operation is allowed or not!
   assert(is_flip_ok(_eh));//let's make it sure it is actually checked
-  assert(!is_boundary(_eh));
+  assert(!this->is_boundary(_eh));
 
-  HalfedgeHandle a0 = halfedge_handle(_eh, 0);
-  HalfedgeHandle b0 = halfedge_handle(_eh, 1);
+  HalfedgeHandle a0 = this->halfedge_handle(_eh, 0);
+  HalfedgeHandle b0 = this->halfedge_handle(_eh, 1);
 
-  HalfedgeHandle a1 = next_halfedge_handle(a0);
-  HalfedgeHandle a2 = next_halfedge_handle(a1);
+  HalfedgeHandle a1 = this->next_halfedge_handle(a0);
+  HalfedgeHandle a2 = this->next_halfedge_handle(a1);
 
-  HalfedgeHandle b1 = next_halfedge_handle(b0);
-  HalfedgeHandle b2 = next_halfedge_handle(b1);
+  HalfedgeHandle b1 = this->next_halfedge_handle(b0);
+  HalfedgeHandle b2 = this->next_halfedge_handle(b1);
 
-  VertexHandle   va0 = to_vertex_handle(a0);
-  VertexHandle   va1 = to_vertex_handle(a1);
+  VertexHandle   va0 = this->to_vertex_handle(a0);
+  VertexHandle   va1 = this->to_vertex_handle(a1);
 
-  VertexHandle   vb0 = to_vertex_handle(b0);
-  VertexHandle   vb1 = to_vertex_handle(b1);
+  VertexHandle   vb0 = this->to_vertex_handle(b0);
+  VertexHandle   vb1 = this->to_vertex_handle(b1);
 
-  FaceHandle     fa  = face_handle(a0);
-  FaceHandle     fb  = face_handle(b0);
+  FaceHandle     fa  = this->face_handle(a0);
+  FaceHandle     fb  = this->face_handle(b0);
 
-  set_vertex_handle(a0, va1);
-  set_vertex_handle(b0, vb1);
+  this->set_vertex_handle(a0, va1);
+  this->set_vertex_handle(b0, vb1);
 
-  set_next_halfedge_handle(a0, a2);
-  set_next_halfedge_handle(a2, b1);
-  set_next_halfedge_handle(b1, a0);
+  this->set_next_halfedge_handle(a0, a2);
+  this->set_next_halfedge_handle(a2, b1);
+  this->set_next_halfedge_handle(b1, a0);
 
-  set_next_halfedge_handle(b0, b2);
-  set_next_halfedge_handle(b2, a1);
-  set_next_halfedge_handle(a1, b0);
+  this->set_next_halfedge_handle(b0, b2);
+  this->set_next_halfedge_handle(b2, a1);
+  this->set_next_halfedge_handle(a1, b0);
 
-  set_face_handle(a1, fb);
-  set_face_handle(b1, fa);
+  this->set_face_handle(a1, fb);
+  this->set_face_handle(b1, fa);
 
-  set_halfedge_handle(fa, a0);
-  set_halfedge_handle(fb, b0);
+  this->set_halfedge_handle(fa, a0);
+  this->set_halfedge_handle(fb, b0);
 
-  if (halfedge_handle(va0) == b0)
-    set_halfedge_handle(va0, a1);
-  if (halfedge_handle(vb0) == a0)
-    set_halfedge_handle(vb0, b1);
+  if (this->halfedge_handle(va0) == b0)
+      this->set_halfedge_handle(va0, a1);
+  if (this->halfedge_handle(vb0) == a0)
+      this->set_halfedge_handle(vb0, b1);
 }
 
 

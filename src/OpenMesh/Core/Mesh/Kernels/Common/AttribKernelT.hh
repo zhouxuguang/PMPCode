@@ -545,17 +545,20 @@ public:
 
   VertexTexCoords1DPropertyHandle           vertex_texcoords1D_pph() const
   {
-    return AttribKernel::vertex_tex_coords_;
+      return vertex_texcoords1D_;
+      //return AttribKernel::vertex_tex_coords_;
   }
 
   VertexTexCoords2DPropertyHandle           vertex_texcoords2D_pph() const
   {
-    return AttribKernel::vertex_tex_coords_;
+      return vertex_texcoords2D_;
+      //return AttribKernel::vertex_tex_coords_;
   }
 
   VertexTexCoords3DPropertyHandle           vertex_texcoords3D_pph() const
   {
-    return AttribKernel::vertex_tex_coords_;
+      return vertex_texcoords3D_;
+      //return AttribKernel::vertex_tex_coords_;
   }
 
   VertexStatusPropertyHandle                vertex_status_pph() const

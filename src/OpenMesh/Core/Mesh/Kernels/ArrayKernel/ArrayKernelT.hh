@@ -268,10 +268,10 @@ public:
   VertexHandle new_vertex(const Point& _p)
   {
     vertices_.push_back(Vertex());
-    vprops_resize(n_vertices());
+    this->vprops_resize(n_vertices());
 
     VertexHandle vh(handle(vertices_.back()));
-    set_point(vh, _p);
+    this->set_point(vh, _p);
     return vh;
   }
 
@@ -281,14 +281,14 @@ public:
   {
     assert(_start_vertex_handle != _end_vertex_handle);
     edges_.push_back(Edge());
-    eprops_resize(n_edges());
-    hprops_resize(n_halfedges());
+    this->eprops_resize(n_edges());
+    this->hprops_resize(n_halfedges());
 
     EdgeHandle eh(handle(edges_.back()));
     HalfedgeHandle heh0(halfedge_handle(eh, 0));
     HalfedgeHandle heh1(halfedge_handle(eh, 1));
-    set_vertex_handle(heh0, _end_vertex_handle);
-    set_vertex_handle(heh1, _start_vertex_handle);
+    this->set_vertex_handle(heh0, _end_vertex_handle);
+    this->set_vertex_handle(heh1, _start_vertex_handle);
     return heh0;
   }
 
@@ -296,14 +296,14 @@ public:
   FaceHandle new_face()
   {
     faces_.push_back(Face());
-    fprops_resize(n_faces());
+    this->fprops_resize(n_faces());
     return handle(faces_.back());
   }
 
   FaceHandle new_face(const Face& _f)
   {
     faces_.push_back(_f);
-    fprops_resize(n_faces());
+    this->fprops_resize(n_faces());
     return handle(faces_.back());
   }
 
@@ -629,7 +629,7 @@ garbage_collection(bool _v, bool _e, bool _f)
     };
 
     vertices_.resize(AttribKernel::status(VertexHandle(i0)).deleted() ? i0 : i0+1);
-    vprops_resize(n_vertices());
+    this->vprops_resize(n_vertices());
   }
 
 
@@ -655,8 +655,8 @@ garbage_collection(bool _v, bool _e, bool _f)
     };
 
     edges_.resize(AttribKernel::status(EdgeHandle(i0)).deleted() ? i0 : i0+1);
-    eprops_resize(n_edges());
-    hprops_resize(n_halfedges());
+    this->eprops_resize(n_edges());
+    this->hprops_resize(n_halfedges());
   }
 
 
@@ -679,7 +679,7 @@ garbage_collection(bool _v, bool _e, bool _f)
     };
 
     faces_.resize(AttribKernel::status(FaceHandle(i0)).deleted() ? i0 : i0+1);
-    fprops_resize(n_faces());
+    this->fprops_resize(n_faces());
   }
 
 
